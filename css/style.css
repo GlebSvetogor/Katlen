@@ -1,36 +1,36 @@
 @font-face {
     font-family: 'Futura PT Bold';
-    src: url(../fonts/futur.ttf);
+    src: url(../fonts/FuturaPTBold.otf);
 }
 
 @font-face {
     font-family: 'Futura PT Light';
-    src: url(../fonts/futur.ttf);
+    src: url(../fonts/FuturaPTLight.otf);
 }
 
 @font-face {
     font-family: 'Futura PT Medium';
-    src: url(../fonts/futur.ttf);
+    src: url(../fonts/FuturaPTMedium.otf);
 }
 
 @font-face {
     font-family: 'Futura PT Book';
-    src: url(../fonts/futur.ttf);
+    src: url(../fonts/FuturaPTBook.otf);
 }
 
 @font-face {
     font-family: 'Futura PT ExtraBold';
-    src: url(../fonts/futur.ttf);
+    src: url(../fonts/FuturaPTExtraBold.otf);
 }
 
 @font-face {
     font-family: 'Futura PT Demi';
-    src: url(../fonts/futur.ttf);
+    src: url(../fonts/FuturaPTDemi.otf);
 }
 
 @font-face {
     font-family: 'Futura PT Heavy';
-    src: url(../fonts/futur.ttf);
+    src: url(../fonts/FuturaPTHeavy.otf);
 }
 
 @font-face {
@@ -47,12 +47,33 @@ html{
 
 body{
     box-sizing:inherit;
-    font-family: 'Futura';
-    font-weight: 700;
+    font-family: 'Futura PT Light';
+    color:#111111;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing:inherit;
+    margin: 0;
+    padding: 0;
 }
 
 .container{
+    max-width:1140px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
 
+.container-big{
+    max-width:1836px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -68,10 +89,183 @@ ul{
 }
 
 li{
-
+    list-style-type: none;
 }
 
 a{
+    text-decoration:none;
+}
+
+button{
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+}
+
+/* HEADER */
+
+.header{
+    padding-top: 13px;
+}
+
+.header__heading{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom: 19px;
+}
+
+.header__heading-info{
+    display:flex;
+    max-width:300px;
+    width:100%;
+}
+
+.header__heading-lang{
+    max-width: 78px;
+    display:flex;
+    position:relative;
+    align-items: center;
+    gap: 21px;
+    margin-right: 40px;
+}
+
+.header__heading-lang::before{
+    content:'';
+    width: 1px;
+    height: 38px;
+    background-color: #111;
+    position:absolute;
+    left:50%;
+    top:20%;
+}
+
+.header__heading-btn{
+    color:#A0A0A0;
+    font-size: 18px;
+    cursor:pointer;
+}
+
+.header__heading-btn--active{
+    color:inherit;
+    font-family:'Futura PT Bold';
+}
+
+.header__heading-contacts{
 
 }
+
+.header__heading-link{
+    font-family: 'Futura PT Book';
+    font-size: 16px;
+    display:block;
+}
+
+.header__heading-call{
+    font-family: 'Futura PT Bold';
+    font-size: 14px;
+    text-decoration:underline;
+    color:#6F9033;
+}
+
+
+.header__heading-logo{
+    max-width:234px;
+    width:100%;
+    text-align:center;
+}
+
+.header__heading-text{
+    margin: 0;
+    text-transform: uppercase;
+    font-family:'Futura PT Book';
+}
+
+.header__heading-menu{
+    max-width:350px;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.header__heading-form{
+
+}
+
+.header__heading-form::after{
+    content:'';
+    display:block;
+    background-image:url(../images/search-icon.svg) no-repeat;
+    background-position:center;
+    background-size:cover;
+    width: 45px;
+    height: 45px;
+    position:absolute;
+    top:0;
+    z-index:4;
+}
+
+.header__heading-search{
+    width: 228px;
+    height: 45px;
+    padding: 11px 45px 13px 16px;
+    border-radius: 10px;
+    border: 1px solid #EBEBEB;
+    background: rgba(17, 17, 17, 0.00);
+    position:relative;
+}
+
+.header__heading-user{
+    width:45px;
+    height:45px;
+    background: rgba(17, 17, 17, 0.02);
+    border-radius: 10px;
+    border: 1px solid #EBEBEB;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.header__heading-icon{
+    width:16px;
+    height:16px;
+}
+
+.header__heading-basket{
+    
+}
+
+.nav{
+    
+}
+
+.nav__inner{
+    padding: 10px 0 17px;
+}
+
+.nav__inner-list{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.nav__inner-item{
+    
+}
+
+.nav__inner-link{
+    font-family:'Futura PT Book';
+    font-size: 18px;
+    color:inherit;
+    transition:color .3s ease-in-out;
+}
+
+.nav__inner-link:hover{
+    font-family:'Futura PT Demi';
+    color:#0FBF4D;
+}
+
+/* /. HEADER */
+
+
 
