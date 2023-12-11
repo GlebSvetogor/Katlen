@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katlen</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="js/swiper.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -31,7 +33,10 @@
                 </div>
                 <div class="header__heading-menu">
                     <form class="header__heading-form" action="">
-                        <input class="header__heading-search" type="text" placeholder="Поиск по сайту">
+                        <input class="header__heading-input" type="text" placeholder="Поиск по сайту">
+                        <div class="header__heading-search">
+                            <img class="header__heading-icon" src="images/search-icon.svg" alt="search icon">
+                        </div>
                     </form>
                     <a class="header__heading-user" href="#">
                         <img class="header__heading-icon" src="images/user-icon.svg" alt="user icon">
@@ -44,37 +49,107 @@
             </div>
             <hr>
             <nav class="nav">
-                <div class="nav__inner">
-                    <ul class="nav__inner-list">
-                        <li class="nav__inner-item">
-                            <a href="#" class="nav__inner-link">Каталог</a>
-                        </li>
-                        <li class="nav__inner-item">
-                            <a href="#" class="nav__inner-link">Для мальчиков</a>
-                        </li>
-                        <li class="nav__inner-item">
-                            <a href="#" class="nav__inner-link">Для девочек</a>
-                        </li>
-                        <li class="nav__inner-item">
-                            <a href="#" class="nav__inner-link">Для новорожденных</a>
-                        </li>
-                        <li class="nav__inner-item">
-                            <a href="#" class="nav__inner-link">Распродажа</a>
-                        </li>
-                        <li class="nav__inner-item">
-                            <a href="#" class="nav__inner-link">Помощь</a>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="nav__list">
+                    <li class="nav__list-item">
+                        <a href="#" class="nav__list-link">Каталог</a>
+                    </li>
+                    <li class="nav__list-item">
+                        <a href="#" class="nav__list-link">Для мальчиков</a>
+                    </li>
+                    <li class="nav__list-item">
+                        <a href="#" class="nav__list-link">Для девочек</a>
+                    </li>
+                    <li class="nav__list-item">
+                        <a href="#" class="nav__list-link">Для новорожденных</a>
+                    </li>
+                    <li class="nav__list-item">
+                        <a href="#" class="nav__list-link">Распродажа</a>
+                    </li>
+                    <li class="nav__list-item">
+                        <a href="#" class="nav__list-link">Помощь</a>
+                    </li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    <main></main>
+    <main>
+        <section class="promo">
+            <div class="container-big">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="container">
+                            <h2 class="swiper-slide__title">Детская одежда</h2>
+                            <p class="swiper-slide__text">Покупай одежду оптом вместе с KATLEN</p>
+                            <a class="swiper-slide__link" href="#">Детальнее</a>
+                            <img class="swiper-slide__img" src="images/children-img.png" alt="slider img">
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="container">
+                            <h2 class="swiper-slide__title">Детская одежда</h2>
+                            <p class="swiper-slide__text">Покупай одежду оптом вместе с KATLEN</p>
+                            <a class="swiper-slide__link" href="#">Детальнее</a>
+                            <img class="swiper-slide__img" src="images/children-img.png" alt="slider img">
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="container">
+                            <h2 class="swiper-slide__title">Детская одежда</h2>
+                            <p class="swiper-slide__text">Покупай одежду оптом вместе с KATLEN</p>
+                            <a class="swiper-slide__link" href="#">Детальнее</a>
+                            <img class="swiper-slide__img" src="images/children-img.png" alt="slider img">
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="container">
+                            <h2 class="swiper-slide__title">Детская одежда</h2>
+                            <p class="swiper-slide__text">Покупай одежду оптом вместе с KATLEN</p>
+                            <a class="swiper-slide__link" href="#">Детальнее</a>
+                            <img class="swiper-slide__img" src="images/children-img.png" alt="slider img">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-button-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="52" viewBox="0 0 30 52" fill="none">
+                            <path d="M29.8211 26.0002C29.8211 26.9321 29.4653 27.8639 28.7551 28.5745L6.39607 50.9333C4.97376 52.3556 2.66773 52.3556 1.24599 50.9333C-0.175747 49.5115 -0.175747 47.206 1.24599 45.7835L21.0305 26.0002L1.24668 6.2167C-0.175058 4.79438 -0.175058 2.48904 1.24668 1.06742C2.66842 -0.355583 4.97445 -0.355583 6.39676 1.06742L28.7558 23.4259C29.4661 24.1367 29.8211 25.0686 29.8211 26.0002Z" fill="white"/>
+                          </svg>
+                    </div>
+                    <div class="swiper-button-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="52" viewBox="0 0 30 52" fill="none">
+                            <path d="M0.178881 26.0002C0.178881 26.9321 0.534718 27.8639 1.2449 28.5745L23.6039 50.9333C25.0262 52.3556 27.3323 52.3556 28.754 50.9333C30.1757 49.5115 30.1757 47.206 28.754 45.7835L8.9695 26.0002L28.7533 6.2167C30.1751 4.79438 30.1751 2.48904 28.7533 1.06742C27.3316 -0.355583 25.0256 -0.355583 23.6032 1.06742L1.2442 23.4259C0.533911 24.1367 0.178881 25.0686 0.178881 26.0002Z" fill="white"/>
+                          </svg>
+                    </div>
+                  </div>
+
+                  <div class="promo__inner">
+                    <ul class="promo__inner-list">
+                        <li class="promo__inner-item promo__inner-item--boys">
+                            <div class="promo__inner-content">
+                                <p class="promo__inner-text">Для мальчиков</p>
+                            </div>
+                        </li>
+                        <li class="promo__inner-item promo__inner-item--girls">
+                            <div class="promo__inner-content">
+                                <p class="promo__inner-text">Для девочек</p>
+                            </div>
+                        </li>
+                        <li class="promo__inner-item promo__inner-item--newborns">
+                            <div class="promo__inner-content">
+                                <p class="promo__inner-text">Для новорожденных</p>
+                            </div>
+                        </li>
+                    </ul>
+                  </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
 
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>

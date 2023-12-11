@@ -58,8 +58,6 @@ body{
 *::before,
 *::after{
     box-sizing:inherit;
-    margin: 0;
-    padding: 0;
 }
 
 .container{
@@ -85,7 +83,8 @@ p{
 }
 
 ul{
-
+    padding: 0;
+    margin: 0;
 }
 
 li{
@@ -100,6 +99,14 @@ button{
     background-color: transparent;
     border: 0;
     padding: 0;
+}
+
+hr{
+    margin: 0;
+    width: 1110px;
+    height: 1px;
+    border:0;
+    background:#EBEBEB;
 }
 
 /* HEADER */
@@ -189,30 +196,35 @@ button{
 }
 
 .header__heading-form{
-
+    position:relative;
 }
 
-.header__heading-form::after{
-    content:'';
-    display:block;
-    background-image:url(../images/search-icon.svg) no-repeat;
-    background-position:center;
-    background-size:cover;
-    width: 45px;
-    height: 45px;
-    position:absolute;
-    top:0;
-    z-index:4;
-}
-
-.header__heading-search{
+.header__heading-input{
     width: 228px;
     height: 45px;
     padding: 11px 45px 13px 16px;
     border-radius: 10px;
     border: 1px solid #EBEBEB;
     background: rgba(17, 17, 17, 0.00);
-    position:relative;
+}
+
+.header__heading-search{
+    position:absolute;
+    top:0;
+    right:0;
+    width:45px;
+    height:45px;
+    background: rgba(17, 17, 17, 0.02);
+    border-radius: 10px;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.header__heading-icon{
+    width: 16px;
+    height: 16px;
 }
 
 .header__heading-user{
@@ -233,39 +245,157 @@ button{
 }
 
 .header__heading-basket{
-    
+
 }
 
 .nav{
-    
-}
-
-.nav__inner{
     padding: 10px 0 17px;
 }
 
-.nav__inner-list{
+.nav__list{
     display:flex;
     justify-content: space-evenly;
 }
 
-.nav__inner-item{
-    
+.nav__list-item{
+    max-width: 165px;
+    width: 100%;
+    text-align: center;
 }
 
-.nav__inner-link{
+.nav__list-link{
     font-family:'Futura PT Book';
     font-size: 18px;
     color:inherit;
-    transition:color .3s ease-in-out;
 }
 
-.nav__inner-link:hover{
+.nav__list-link:hover{
     font-family:'Futura PT Demi';
     color:#0FBF4D;
 }
 
 /* /. HEADER */
 
+/* MAIN */
 
+/* PROMO */
 
+.promo{
+
+}
+
+.swiper{
+
+}
+
+.mySwiper{
+    height: 571px;
+    overflow:hidden;
+    border-radius: 15px;
+    margin-bottom: 13px;
+}
+
+.swiper-wrapper{
+
+}
+
+.swiper-slide{
+    background: #8E30A2;
+    position: relative;
+}
+
+.swiper-slide__title{
+    color:#fff;
+    font-size: 80px;
+    max-width:360px;
+    font-family:'Futura PT ExtraBold';
+    line-height: 79.7%; /* 63.76px */
+    margin: 133px 0 39px;
+}
+
+.swiper-slide__text{
+    max-width:227px;
+    color: #FFF;
+    font-family: Futura PT Book;
+    font-size: 24px;
+    line-height: 116.7%; /* 28.008px */
+    margin-bottom: 36px;
+    margin-left: 0;
+}
+
+.swiper-slide__link{
+    display:block;
+    width: 234px;
+    height: 19px;
+    padding: 13px;
+    border-radius: 10px;
+    background: #0FBF4D;
+    box-shadow: 0px 4px 39px 0px rgba(16, 187, 76, 0.20);
+    color: #FFF;
+    text-align: center;
+    font-family: 'Futura PT Bold';
+    font-size: 16px;
+    line-height: 116.7%; /* 18.672px */
+}
+
+.swiper-slide__img{
+    position: absolute;
+    top:0;
+    right:0;
+}
+
+.swiper-button-prev,
+.swiper-button-next{
+    width: 52px;
+    height: 52px;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after{
+    display:none;
+}
+
+.promo__inner{
+
+}
+
+.promo__inner-list{
+    display:flex;
+    justify-content:space-between;
+}
+
+.promo__inner-item{
+    max-width:592px;
+    width:100%;
+    border-radius: 15px;
+}
+
+.promo__inner-item--boys{
+    background:url() no-repeat;
+    background-position:center;
+    background-size:cover;
+}
+
+.promo__inner-item--girls{
+    background:url() no-repeat;
+    background-position:center;
+    background-size:cover;
+}
+
+.promo__inner-item--newborns{
+    background:url() no-repeat;
+    background-position:center;
+    background-size:cover;
+}
+
+.promo__inner-content{
+
+}
+
+.promo__inner-text{
+
+}
+
+/* /. PROMO */
+
+/* /. MAIN */
