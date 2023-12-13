@@ -368,32 +368,44 @@ hr{
     max-width:592px;
     width:100%;
     border-radius: 15px;
+    height:434px;
+    position: relative;
+
 }
 
 .promo__inner-item--boys{
-    background:url() no-repeat;
+    background:url(../images/boy-img.jpg) no-repeat;
     background-position:center;
     background-size:cover;
 }
 
 .promo__inner-item--girls{
-    background:url() no-repeat;
+    background:url(../images/girl-img.jpg) no-repeat;
     background-position:center;
     background-size:cover;
 }
 
 .promo__inner-item--newborns{
-    background:url() no-repeat;
+    background:url(../images/newborn-img.jpg) no-repeat;
     background-position:center;
     background-size:cover;
 }
 
 .promo__inner-content{
-
+    position: absolute;
+    left:0;
+    right:0;
+    bottom: 0;
+    padding: 24px 40px;
 }
 
 .promo__inner-text{
-
+    color: #111;
+    margin: 0;
+    font-family: 'Futura PT Book';
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 79.7%; /* 39.85px */
 }
 
 /* /. PROMO */
