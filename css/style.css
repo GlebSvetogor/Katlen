@@ -391,12 +391,25 @@ hr{
     background-size:cover;
 }
 
-.promo__inner-content{
+.promo__inner-link{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: absolute;
     left:0;
     right:0;
     bottom: 0;
     padding: 24px 40px;
+    cursor:pointer;
+}
+
+.promo__inner-link:hover .promo__inner-text{
+    color: #0FBF4D;
+    font-weight: 450;
+}
+
+.promo__inner-link:hover path{
+    fill: #0FBF4D;
 }
 
 .promo__inner-text{
@@ -404,7 +417,6 @@ hr{
     margin: 0;
     font-family: 'Futura PT Book';
     font-size: 50px;
-    font-weight: 400;
     line-height: 79.7%; /* 39.85px */
 }
 
