@@ -1,53 +1,9 @@
-@font-face {
-    font-family: 'Futura PT Bold';
-    src: url(../fonts/FuturaPTBold.otf);
-}
-
-@font-face {
-    font-family: 'Futura PT Light';
-    src: url(../fonts/FuturaPTLight.otf);
-}
-
-@font-face {
-    font-family: 'Futura PT Medium';
-    src: url(../fonts/FuturaPTMedium.otf);
-}
-
-@font-face {
-    font-family: 'Futura PT Book';
-    src: url(../fonts/FuturaPTBook.otf);
-}
-
-@font-face {
-    font-family: 'Futura PT ExtraBold';
-    src: url(../fonts/FuturaPTExtraBold.otf);
-}
-
-@font-face {
-    font-family: 'Futura PT Demi';
-    src: url(../fonts/FuturaPTDemi.otf);
-}
-
-@font-face {
-    font-family: 'Futura PT Heavy';
-    src: url(../fonts/FuturaPTHeavy.otf);
-}
-
-@font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/roboto-v30-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
 html{
     box-sizing: border-box;
 }
 
 body{
     box-sizing:inherit;
-    font-family: 'Futura PT Light';
     color:#111111;
     font-size: 14px;
     margin: 0;
@@ -162,13 +118,11 @@ hr{
 }
 
 .header__heading-link{
-    font-family: 'Futura PT Book';
     font-size: 16px;
     display:block;
 }
 
 .header__heading-call{
-    font-family: 'Futura PT Bold';
     font-size: 14px;
     text-decoration:underline;
     color:#6F9033;
@@ -184,7 +138,6 @@ hr{
 .header__heading-text{
     margin: 0;
     text-transform: uppercase;
-    font-family:'Futura PT Book';
 }
 
 .header__heading-menu{
@@ -264,14 +217,13 @@ hr{
 }
 
 .nav__list-link{
-    font-family:'Futura PT Book';
     font-size: 18px;
     color:inherit;
 }
 
 .nav__list-link:hover{
-    font-family:'Futura PT Demi';
     color:#0FBF4D;
+    font-family:'Futura PT Demi';
 }
 
 /* /. HEADER */
@@ -308,15 +260,14 @@ hr{
     color:#fff;
     font-size: 80px;
     max-width:360px;
-    font-family:'Futura PT ExtraBold';
     line-height: 79.7%; /* 63.76px */
     margin: 133px 0 39px;
 }
 
+
 .swiper-slide__text{
     max-width:227px;
     color: #FFF;
-    font-family: Futura PT Book;
     font-size: 24px;
     line-height: 116.7%; /* 28.008px */
     margin-bottom: 36px;
@@ -333,7 +284,6 @@ hr{
     box-shadow: 0px 4px 39px 0px rgba(16, 187, 76, 0.20);
     color: #FFF;
     text-align: center;
-    font-family: 'Futura PT Bold';
     font-size: 16px;
     line-height: 116.7%; /* 18.672px */
 }
@@ -356,10 +306,6 @@ hr{
 }
 
 .promo__inner{
-
-}
-
-.promo__inner-list{
     display:flex;
     justify-content:space-between;
 }
@@ -415,11 +361,126 @@ hr{
 .promo__inner-text{
     color: #111;
     margin: 0;
-    font-family: 'Futura PT Book';
     font-size: 50px;
     line-height: 79.7%; /* 39.85px */
 }
 
 /* /. PROMO */
+
+/* News */
+
+.news{
+    padding: 76px 0 89px;
+}
+
+.news__title{
+    font-size: 50px;
+    line-height: 79.7%; /* 39.85px */
+    text-align:center;
+    margin-bottom: 37px;
+}
+
+.news__inner{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:28px 30px;
+    margin-bottom: 40px;
+}
+
+.news__inner-item{
+    padding: 30px 45px;
+    max-width: 350px;
+    width: 100%;
+    height: 486px;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 70px 0px rgba(0, 0, 0, 0.05);
+}
+
+.news__inner-img{
+    
+}
+
+.news__inner-descr{
+    
+}
+
+.news__inner-grade{
+    margin-bottom: 10px;
+}
+
+.news__inner-title{
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 79.7%;
+    margin-bottom: 20px;
+}
+
+.news__inner-list{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    margin-bottom: 20px;
+}
+
+.news__inner-content{   
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+}
+
+.news__inner-tall{
+    float:left;
+}
+
+.news__inner-value{
+    float:right;
+    margin: 0;
+}
+
+.news__inner-tissue{
+    float:left;
+}
+
+.news__inner-price{
+    float:left;
+}
+
+.news__inner-price-value{
+   
+}
+
+.news__inner-link{
+    display:block;
+    padding: 13px;
+    width: 260px;
+    height: 45px;
+    border-radius: 10px;
+    border: 1px solid #0FBF4D;
+    background: #0FBF4D;
+    text-align: center;
+    color:#fff;
+    transition:color .3s ease-in-out;
+    transition:background .3s ease-in-out;
+}
+
+.news__inner-link:hover{
+    background:#fff;
+    color:#0FBF4D;
+}
+
+.news__inner-link--global{
+    margin: 0 auto;
+}
+
+/* .news__inner-value--prace::after{
+    font-family:'Futura PT Bold';
+    content: '300 ₴';
+    color: #FF003D;
+    font-size: 16px;
+    line-height: 79.7%;
+} */
+
+/* /. News */
 
 /* /. MAIN */

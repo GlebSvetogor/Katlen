@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'Futura PT Bold';
+    src: url(../fonts/FuturaPTBold.otf);
+}
+
+@font-face {
+    font-family: 'Futura PT Light';
+    src: url(../fonts/FuturaPTLight.otf);
+}
+
+@font-face {
+    font-family: 'Futura PT Medium';
+    src: url(../fonts/FuturaPTMedium.otf);
+}
+
+@font-face {
+    font-family: 'Futura PT Book';
+    src: url(../fonts/FuturaPTBook.otf);
+}
+
+@font-face {
+    font-family: 'Futura PT ExtraBold';
+    src: url(../fonts/FuturaPTExtraBold.otf);
+}
+
+@font-face {
+    font-family: 'Futura PT Demi';
+    src: url(../fonts/FuturaPTDemi.otf);
+}
+
+@font-face {
+    font-family: 'Futura PT Heavy';
+    src: url(../fonts/FuturaPTHeavy.otf);
+}
+
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-v30-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+.fut-b{
+    font-family: 'Futura PT Bold';
+}
+
+.fut-l{
+    font-family: 'Futura PT Light';
+}
+
+.fut-m{
+    font-family: 'Futura PT Medium';
+}
+
+.fut-book{
+    font-family: 'Futura PT Book';
+}
+
+.fut-eb{
+    font-family: 'Futura PT ExtraBold';
+}
+
+.fut-d{
+    font-family: 'Futura PT Demi';
+}
+
+.fut-h{
+    font-family: 'Futura PT Heavy';
+}
+
+.rob-r{
+    font-family: 'Roboto';
+}
