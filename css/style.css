@@ -72,6 +72,11 @@ hr{
     margin-bottom: 37px;
 }
 
+.text{
+    font-size: 20px;
+    line-height: 136.7%; /* 27.34px */
+}
+
 /* HEADER */
 
 .header{
@@ -518,5 +523,100 @@ hr{
 }
 
 /* /. News */
+
+/* Categories */
+
+.categories{
+    padding-bottom:87.13px;
+}
+
+.categories__inner{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:30px;
+}
+
+.categories__inner-item{
+    display:flex;
+    justify-content: space-between;
+    width: 884.723px;
+    height: 292.874px;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 70px 0px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.categories__inner-item--dresses{
+    background: #E7E1E1;
+}
+
+.categories__inner-item--complect{
+    background: #F0F0F2;
+}
+
+.categories__inner-item--pajamas{
+    background: #F7F6FA;
+}
+
+.categories__inner-title{
+    display:flex;
+    height: 65px;
+    justify-content: start;
+    align-items: top;
+    font-size: 40px;
+    line-height: 79.7%;
+    margin:0 0 56px 81px;
+    align-self: end;
+}
+
+.categories__inner-img{
+    scale: 1.5;
+}
+
+.categories__inner-img--dresses{
+    scale:none;
+    margin-right: 30px;
+}
+
+.categories__inner-img--pajams{
+    scale:none;
+}
+
+/* /. Categories */
+
+/* Bestsellers */
+
+.bestsellers{
+    padding-bottom: 93px;
+}
+
+/* /. Bestsellers */
+
+/* Wholesale */
+
+.wholesale{
+    
+}
+
+.wholesale__title{
+    text-align: start;
+}
+
+.wholesale__inner{
+    padding: 77px 0 73px 0;
+    width: 1836px;
+    height: 623px;
+    border-radius: 15px;
+    background: #FAFAFA;
+}
+
+.wholesale__text{
+    margin: 0 0 33px 0;
+    width: 978px;
+}
+
+/* /. Wholesale */
 
 /* /. MAIN */
