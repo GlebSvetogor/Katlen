@@ -602,6 +602,11 @@ hr{
 
 .wholesale__title{
     text-align: start;
+    margin-bottom: 22px;
+}
+
+.wholesale__title:first-child{
+    margin-bottom: 26px;
 }
 
 .wholesale__inner{
@@ -613,10 +618,73 @@ hr{
 }
 
 .wholesale__text{
-    margin: 0 0 33px 0;
+    margin: 0 0 26px 0;
     width: 978px;
 }
 
+.wholesale__text:first-child{
+    margin: 0 0 33px 0;
+}
+
+.wholesale__details{
+    display:flex;
+    align-items: center;
+}
+
+.wholesale__link{
+    margin-right: 8px;
+    color:#0FBF4D;
+}
+
+.wholesale__icon{
+    font-size: 20px;
+}
+
 /* /. Wholesale */
+
+/* Properties */
+
+.properties{
+    padding:81px 0 75px;
+}
+
+.properties__inner{
+    display:flex;
+    justify-content: space-between;
+}
+
+.properties__inner-item{
+
+}
+
+.properties__icon{
+    margin-bottom: 18px;
+}
+
+.properties__icon:first-child{
+    margin-bottom: 21px;
+}
+
+.properties__title{
+    font-size: 25px;
+    margin-bottom: 14px;
+    line-height:79%;
+}
+
+.properties__text{
+    max-width:184px;
+    font-size: 14px;
+    margin: 0;
+}
+
+.properties__inner-item:first-child .properties__text{
+    max-width: 136px;
+}
+
+.properties__inner-item:last-child .properties__text{
+    max-width: 101px;
+}
+
+/* /. Properties */
 
 /* /. MAIN */
