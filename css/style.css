@@ -48,6 +48,7 @@ li{
 }
 
 a{
+    color:inherit;
     text-decoration:none;
 }
 
@@ -75,6 +76,26 @@ hr{
 .text{
     font-size: 20px;
     line-height: 136.7%; /* 27.34px */
+}
+
+.link{
+    display:block;
+    padding: 13px;
+    width: 260px;
+    height: 45px;
+    border-radius: 10px;
+    border: 1px solid #0FBF4D;
+    background: #0FBF4D;
+    text-align: center;
+    color:#fff;
+    transition:color .3s ease-in-out;
+    transition:background .3s ease-in-out;
+    margin: 0 auto;
+}
+
+.link:hover{
+    background:#fff;
+    color:#0FBF4D;
 }
 
 /* HEADER */
@@ -502,26 +523,6 @@ hr{
     bottom: 0px;
 }
 
-.products__link{
-    display:block;
-    padding: 13px;
-    width: 260px;
-    height: 45px;
-    border-radius: 10px;
-    border: 1px solid #0FBF4D;
-    background: #0FBF4D;
-    text-align: center;
-    color:#fff;
-    transition:color .3s ease-in-out;
-    transition:background .3s ease-in-out;
-    margin: 0 auto;
-}
-
-.products__link:hover{
-    background:#fff;
-    color:#0FBF4D;
-}
-
 /* /. News */
 
 /* Categories */
@@ -688,3 +689,93 @@ hr{
 /* /. Properties */
 
 /* /. MAIN */
+
+/* Footer */
+
+.footer{
+    padding: 76px 0 67px;
+    background-color: #C3F2B6;
+}
+
+.footer__inner{
+
+}
+
+.footer__inner-list{
+    display:flex;
+    column-gap:108px;
+}
+
+.footer__item{
+
+}
+
+.footer__item-title{
+    font-size: 18px;
+    color:#0C5959;
+    margin-bottom: 9px;
+}
+
+.footer__item-list{
+    margin-bottom: 9px;
+}
+
+.footer__list-el{
+    line-height:29px;
+    font-size: 14px;
+    color:#0C5959;
+}
+
+.footer__list-el{
+
+}
+
+.footer__el-link{
+    font-size: 14px;
+    width:182px;
+    height:45px;
+    padding:13px 0 16px;
+    border:1px solid #0C5959;
+    color:#0FBF4D;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__inner-social{
+
+}
+
+.footer__social-link{
+
+}
+
+.footer__social-img{
+
+}
+
+.footer__inner-info{
+
+}
+
+.footer__inner-text{
+
+}
+
+.footer__payment{
+
+}
+.footer__payment-link{
+
+}
+
+.footer__payment-img{
+
+}
+
+
+
+
+
+/* /. Footer */
