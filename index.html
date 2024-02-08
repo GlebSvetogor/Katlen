@@ -17,17 +17,17 @@
             <div class="header__heading">
                 <div class="header__heading-info">
                     <div class="header__heading-lang">
-                        <button class="header__heading-btn header__heading-btn--active">Укр</button>
-                        <button class="header__heading-btn">Рус</button>
+                        <button class="header__heading-btn">Укр</button>
+                        <button class="header__heading-btn header__heading-btn--active">Рус</button>
                     </div>
                     <div class="header__heading-contacts">
-                        <a class="header__heading-link fut-book" href="tel:+38(098)9012102">+38 (098) 901 21 02</a>
-                        <a class="header__heading-link fut-book" href="tel:+38(073)9012102">+38 (073) 901-21-02</a>
+                        <a class="header__heading-but-link fut-book" href="tel:+38(098)9012102">+38 (098) 901 21 02</a>
+                        <a class="header__heading-but-link fut-book" href="tel:+38(073)9012102">+38 (073) 901-21-02</a>
                         <a class="header__heading-call fut-b" href="#">Заказать обратный звонок</a>
                     </div>
                 </div>
                 <div class="header__heading-logo">
-                    <a class="header__heading-link" href="#">
+                    <a class="header__heading-but-link" href="#">
                         <img src="images/logo-icon.svg" alt="logo img">
                     </a>
                     <p class="header__heading-text fut-book">производитель детской одежды</p>
@@ -52,22 +52,22 @@
             <nav class="nav">
                 <ul class="nav__list">
                     <li class="nav__list-item">
-                        <a href="#" class="nav__list-link fut-book">Каталог</a>
+                        <a href="#" class="nav__list-but-link fut-book">Каталог</a>
                     </li>
                     <li class="nav__list-item">
-                        <a href="#" class="nav__list-link fut-book">Для мальчиков</a>
+                        <a href="#" class="nav__list-but-link fut-book">Для мальчиков</a>
                     </li>
                     <li class="nav__list-item">
-                        <a href="#" class="nav__list-link fut-book">Для девочек</a>
+                        <a href="#" class="nav__list-but-link fut-book">Для девочек</a>
                     </li>
                     <li class="nav__list-item">
-                        <a href="#" class="nav__list-link fut-book">Для новорожденных</a>
+                        <a href="#" class="nav__list-but-link fut-book">Для новорожденных</a>
                     </li>
                     <li class="nav__list-item">
-                        <a href="#" class="nav__list-link fut-book">Распродажа</a>
+                        <a href="#" class="nav__list-but-link fut-book">Распродажа</a>
                     </li>
                     <li class="nav__list-item">
-                        <a href="#" class="nav__list-link fut-book">Помощь</a>
+                        <a href="#" class="nav__list-but-link fut-book">Помощь</a>
                     </li>
                 </ul>
             </nav>
@@ -83,7 +83,7 @@
                         <div class="container">
                             <h2 class="swiper-slide__title fut-eb">Детская одежда</h2>
                             <p class="swiper-slide__text fut-book">Покупай одежду оптом вместе с KATLEN</p>
-                            <a class="swiper-slide__link fut-b" href="#">Детальнее</a>
+                            <a class="but-link swiper-slide__but-link fut-b" href="#">Детальнее</a>
                             <img class="swiper-slide__img" src="images/children-img.png" alt="slider img">
                         </div>
                       </div>
@@ -91,26 +91,11 @@
                         <div class="container">
                             <h2 class="swiper-slide__title fut-eb">Детская одежда</h2>
                             <p class="swiper-slide__text fut-book">Покупай одежду оптом вместе с KATLEN</p>
-                            <a class="swiper-slide__link fut-b" href="#">Детальнее</a>
+                            <a class="but-link swiper-slide__but-link fut-b" href="#">Детальнее</a>
                             <img class="swiper-slide__img" src="images/children-img.png" alt="slider img">
                         </div>
                       </div>
-                      <div class="swiper-slide">
-                        <div class="container">
-                            <h2 class="swiper-slide__title fut-eb">Детская одежда</h2>
-                            <p class="swiper-slide__text fut-book">Покупай одежду оптом вместе с KATLEN</p>
-                            <a class="swiper-slide__link fut-b" href="#">Детальнее</a>
-                            <img class="swiper-slide__img" src="images/children-img.png" alt="slider img">
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="container">
-                            <h2 class="swiper-slide__title fut-eb">Детская одежда</h2>
-                            <p class="swiper-slide__text fut-book">Покупай одежду оптом вместе с KATLEN</p>
-                            <a class="swiper-slide__link fut-b" href="#">Детальнее</a>
-                            <img class="swiper-slide__img" src="images/children-img.png" alt="slider img">
-                        </div>
-                      </div>
+
                     </div>
                     <div class="swiper-button-next">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="52" viewBox="0 0 30 52" fill="none">
@@ -125,30 +110,33 @@
                 </div>
 
                 <div class="promo__inner">
-                    <div class="promo__inner-item promo__inner-item--boys">
-                        <a class="promo__inner-link" href="#" alt="promo link">
+                    <a class="promo__inner-link promo__inner-link--boys" href="#">
+                        <div class="promo__inner-content" href="#" alt="promo content">
                             <p class="promo__inner-text fut-book">Для мальчиков</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="46" height="13" viewBox="0 0 46 13" fill="none">
                                 <path d="M35.6089 12.8837L45.54 7.32371C45.6813 7.23427 45.7973 7.11212 45.8776 6.9683C45.9579 6.82449 46 6.66353 46 6.5C46 6.33647 45.9579 6.17552 45.8776 6.0317C45.7973 5.88788 45.6813 5.76573 45.54 5.6763L35.6089 0.1163C35.4154 0.014548 35.1924 -0.0218874 34.9752 0.0127379C34.7579 0.0473632 34.5587 0.15108 34.409 0.307537C34.2593 0.463994 34.1676 0.664291 34.1483 0.876851C34.129 1.08941 34.1833 1.30215 34.3026 1.48151L34.3026 5.54664L0.983669 5.54664C0.722782 5.54664 0.472584 5.64708 0.288109 5.82587C0.103634 6.00466 -7.44966e-08 6.24715 -7.75117e-08 6.5C-8.05269e-08 6.75285 0.103634 6.99534 0.288109 7.17413C0.472584 7.35292 0.722782 7.45336 0.983669 7.45336L34.3026 7.45336L34.3026 11.5185C34.1833 11.6979 34.129 11.9106 34.1483 12.1231C34.1676 12.3357 34.2593 12.536 34.409 12.6925C34.5587 12.8489 34.7579 12.9526 34.9752 12.9873C35.1924 13.0219 35.4154 12.9855 35.6089 12.8837Z" fill="#111111"/>
                             </svg>
-                        </a> 
-                    </div>
-                    <div class="promo__inner-item promo__inner-item--girls">
-                        <a class="promo__inner-link" href="#" alt="promo link">
+                        </div>
+                    </a>
+
+                    <a class="promo__inner-link promo__inner-link--girls" href="#">
+                        <div class="promo__inner-content" href="#" alt="promo content">
                             <p class="promo__inner-text fut-book">Для девочек</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="46" height="13" viewBox="0 0 46 13" fill="none">
                                 <path d="M35.6089 12.8837L45.54 7.32371C45.6813 7.23427 45.7973 7.11212 45.8776 6.9683C45.9579 6.82449 46 6.66353 46 6.5C46 6.33647 45.9579 6.17552 45.8776 6.0317C45.7973 5.88788 45.6813 5.76573 45.54 5.6763L35.6089 0.1163C35.4154 0.014548 35.1924 -0.0218874 34.9752 0.0127379C34.7579 0.0473632 34.5587 0.15108 34.409 0.307537C34.2593 0.463994 34.1676 0.664291 34.1483 0.876851C34.129 1.08941 34.1833 1.30215 34.3026 1.48151L34.3026 5.54664L0.983669 5.54664C0.722782 5.54664 0.472584 5.64708 0.288109 5.82587C0.103634 6.00466 -7.44966e-08 6.24715 -7.75117e-08 6.5C-8.05269e-08 6.75285 0.103634 6.99534 0.288109 7.17413C0.472584 7.35292 0.722782 7.45336 0.983669 7.45336L34.3026 7.45336L34.3026 11.5185C34.1833 11.6979 34.129 11.9106 34.1483 12.1231C34.1676 12.3357 34.2593 12.536 34.409 12.6925C34.5587 12.8489 34.7579 12.9526 34.9752 12.9873C35.1924 13.0219 35.4154 12.9855 35.6089 12.8837Z" fill="#111111"/>
                             </svg>
-                        </a>
-                    </div>
-                    <div class="promo__inner-item promo__inner-item--newborns">
-                        <a class="promo__inner-link" href="#" alt="promo link">
+                        </div>
+                    </a>
+
+                    <a class="promo__inner-link promo__inner-link--newborns" href="#">
+                        <div class="promo__inner-content" href="#" alt="promo content">
                             <p class="promo__inner-text fut-book">Для новорожденных</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="46" height="13" viewBox="0 0 46 13" fill="none">
-                                <path d="M35.6089 12.8837L45.54 7.32371C45.6813 7.23427 45.7973 7.11212 45.8776 6.9683C45.9579 6.82449 46 6.66353 46 6.5C46 6.33647 45.9579 6.17552 45.8776 6.0317C45.7973 5.88788 45.6813 5.76573 45.54 5.6763L35.6089 0.1163C35.4154 0.014548 35.1924 -0.0218874 34.9752 0.0127379C34.7579 0.0473632 34.5587 0.15108 34.409 0.307537C34.2593 0.463994 34.1676 0.664291 34.1483 0.876851C34.129 1.08941 34.1833 1.30215 34.3026 1.48151L34.3026 5.54664L0.983669 5.54664C0.722782 5.54664 0.472584 5.64708 0.288109 5.82587C0.103634 6.00466 -7.44966e-08 6.24715 -7.75117e-08 6.5C-8.05269e-08 6.75285 0.103634 6.99534 0.288109 7.17413C0.472584 7.35292 0.722782 7.45336 0.983669 7.45336L34.3026 7.45336L34.3026 11.5185C34.1833 11.6979 34.129 11.9106 34.1483 12.1231C34.1676 12.3357 34.2593 12.536 34.409 12.6925C34.5587 12.8489 34.7579 12.9526 34.9752 12.9873C35.1924 13.0219 35.4154 12.9855 35.6089 12.8837Z" fill="#111111"/>
+                                <path d="M35.6089 12.8837L45.54 7.32371C45.6813 7.23427 45.7973 7.11212 45.8776 6.9683C45.9579 6.82449 46 6.66353 46 6.5C46 6.33647 45.9579 6.17552 45.8776 6.0317C45.7973 5.88788 45.6813 5.76573 45.54 5.6763L35.6089 0.1163C35.4154 0.014548 35.1924 -0.0218874 34.9752 0.0127379C34.7579 0.0473632 34.5587 0.15108 34.409 0.307537C34.2593 0.463994 34.1676 0.664291 34.1483 0.876851C34.129 1.08941 34.1833 1.30215 34.3026 1.48151L34.3026 5.54664L0.983669 5.54664C0.722782 5.54664 0.472584 5.64708 0.288109 5.82587C0.103634 6.00466    -7.44966e-08 6.24715 -7.75117e-08 6.5C-8.05269e-08 6.75285 0.103634 6.99534 0.288109 7.17413C0.472584 7.35292 0.722782 7.45336 0.983669 7.45336L34.3026 7.45336L34.3026 11.5185C34.1833 11.6979 34.129 11.9106 34.1483 12.1231C34.1676 12.3357 34.2593 12.536 34.409 12.6925C34.5587 12.8489 34.7579 12.9526 34.9752 12.9873C35.1924 13.0219 35.4154 12.9855 35.6089 12.8837Z" fill="#111111"/>
                             </svg>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
+
                 </div><!-- /. promo__inner -->
             </div>
         </section>
@@ -176,14 +164,16 @@
                             <ul class="products__item-list">
                                 <li class="products__item-content">
                                     <span class="products__item-tall">Рост (см)</span>
-                                    <span class="products__item-value fut-m">92-98</span>
+                                    <hr>
+                                    <span class="products__item-value fut-m ">92-98</span>
                                 </li>
-                                <li class="products__item-content">
+                                <li class="products__item-content products__without-line">
                                     <span class="products__item-tissue">Ткань</span>
                                     <span class="products__item-value fut-m">двунитка пенье с начесом</span>
                                 </li>
                                 <li class="products__item-content">
                                     <span class="products__item-price fut-b">Цена</span>
+                                    <hr>
                                     <div class="products__sale">
                                         <span class="products__sale-value fut-b">250 ₴</span>
                                         <span class="products__full-price fut-b">
@@ -195,12 +185,12 @@
                                     </div>
                                 </li>
                             </ul>
-                            <a class="link fut-b" href="#">Детальнее</a>
+                            <a class="but-link fut-b" href="#">Детальнее</a>
                         </div>
                     </div>
 
                 </div><!-- /.products -->
-                <a class="link fut-b" href="#">Все новинки</a>
+                <a class="but-link fut-b" href="#">Все новинки</a>
             </div>
         </section><!-- /. news -->
 
@@ -250,14 +240,16 @@
                             <ul class="products__item-list">
                                 <li class="products__item-content">
                                     <span class="products__item-tall">Рост (см)</span>
+                                    <hr>
                                     <span class="products__item-value fut-m ">92-98</span>
                                 </li>
-                                <li class="products__item-content">
+                                <li class="products__item-content products__without-line">
                                     <span class="products__item-tissue">Ткань</span>
                                     <span class="products__item-value fut-m">двунитка пенье с начесом</span>
                                 </li>
                                 <li class="products__item-content">
                                     <span class="products__item-price fut-b">Цена</span>
+                                    <hr>
                                     <div class="products__sale">
                                         <span class="products__sale-value fut-b">250 ₴</span>
                                         <span class="products__full-price fut-b">
@@ -269,12 +261,12 @@
                                     </div>
                                 </li>
                             </ul>
-                            <a class="link fut-b" href="#">Детальнее</a>
+                            <a class="but-link fut-b" href="#">Детальнее</a>
                         </div>
                     </div>
 
                 </div><!-- /.products -->
-                <a class="link fut-b" href="#">Все новинки</a>
+                <a class="but-link fut-b" href="#">Все новинки</a>
             </div>
         </section>
 
@@ -291,10 +283,10 @@
                             На официальном сайте оптом от производителя детская одежда включает все интересующие виды детского трикотажа с доставкой и приятными ценами для девочек, для мальчиков и даже для новорожденных. Такие условия особенно важны для тех, кто предпочитает крупный и мелкий опт. Это качественная детская одежда оптом, которая будет удобной, комфортной и пропускать воздух в зависимости от сезона.
                         </p>
                         <div class="wholesale__details">
-                            <a class="wholesale__link fut-b" href="#">
-                                Читать полностью
+                            <a class="wholesale__but-link fut-b" href="#">
+                                <p class="wholesale__details-readfull m-0">Читать полностью</p>
+                                <img class="wholesale__icon" src="images/arrowDown-icon.svg" alt="arrow down">
                             </a>
-                            <img class="wholesale__icon" src="images/arrowDown-icon.svg" alt="arrow down">
                         </div>
                     </div>
                 </div>
@@ -350,26 +342,26 @@
         <div class="container">
             <div class="footer__inner">
                 <ul class="footer__inner-list">
-                    <li class="footer__item">
+                    <li class="footer__item footer__info">
                         <h3 class="footer__item-title fut-b">
                             Информация
                         </h3>
                         <ul class="footer__item-list">
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">О нас</a> 
+                                <a class="footer__link" href="#">О нас</a>
                             </li>
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Новости</a> 
+                                <a class="footer__link" href="#">Новости</a>
                             </li>
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Правила пользования</a> 
+                                <a class="footer__link" href="#">Правила пользования</a>
                             </li>
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Сертификаты качества</a> 
+                                <a class="footer__link" href="#">Сертификаты качества</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="footer__item">
+                    <li class="footer__item footer__help">
                         <h3 class="footer__item-title fut-b">
                             Помощь
                         </h3>
@@ -381,10 +373,10 @@
                             <li class="footer__list-el fut-l">
                                 <a class="footer__link" href="#">Доставка</a>
                             <li class="footer__list-el">
-                                <a class="footer__link" href="#">Таблица размерв</a> 
+                                <a class="footer__link" href="#">Таблица размерв</a>
                             </li>
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Вопросы и ответы</a> 
+                                <a class="footer__link" href="#">Вопросы и ответы</a>
                             </li>
                         </ul>
                     </li>
@@ -394,15 +386,15 @@
                         </h3>
                         <ul class="footer__item-list">
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Каталог</a> 
+                                <a class="footer__link" href="#">Каталог</a>
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Для мальчиков</a> 
+                                <a class="footer__link" href="#">Для мальчиков</a>
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Для девочек</a> 
+                                <a class="footer__link" href="#">Для девочек</a>
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Ясельный трикотаж</a> 
+                                <a class="footer__link" href="#">Ясельный трикотаж</a>
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Карта сайта</a> 
+                                <a class="footer__link" href="#">Карта сайта</a>
                         </ul>
                     </li>
                     <li class="footer__item">
@@ -411,14 +403,14 @@
                         </h3>
                         <ul class="footer__item-list">
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Вход</a> 
+                                <a class="footer__link" href="#">Вход</a>
                             </li>
                             <li class="footer__list-el fut-l">
-                                <a class="footer__link" href="#">Регистрация</a> 
+                                <a class="footer__link" href="#">Регистрация</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="footer__item">
+                    <li class="footer__item footer__connect">
                         <h3 class="footer__item-title fut-b">
                             Связаться с нами
                         </h3>
@@ -433,34 +425,35 @@
                                 <a class="footer__link" href="mailto:office@katlen.com.ua">e-mail: office@katlen.com.ua</a>
                             </li>
                         </ul>
-                        <a class="footer__connect-link fut-b" href="#">Обратная связь</a>
+                        <a class="footer__connect-but fut-b" href="#">Обратная связь</a>
                     </li>
                 </ul>
                 <div class="footer__inner-social">
-                    <a class="footer__social-link" href="#">
-                        <img class="footer__social-img" src="images/facebook-icon.svg" alt="facebook link">
+                    <a class="footer__social-but-link" href="#">
+                        <img class="footer__social-img" src="images/facebook-icon.svg" alt="facebook but-link">
                     </a>
-                    <a class="footer__social-link" href="#">
-                        <img class="footer__social-img" src="images/youtube-icon.svg" alt="youtube link">
+                    <a class="footer__social-but-link" href="#">
+                        <img class="footer__social-img" src="images/youtube-icon.svg" alt="youtube but-link">
                     </a>
-                    <a class="footer__social-link" href="#">
-                        <img class="footer__social-img" src="images/instagram-icon.svg" alt="instagram link">
+                    <a class="footer__social-but-link" href="#">
+                        <img class="footer__social-img" src="images/instagram-icon.svg" alt="instagram but-link">
                     </a>
                 </div>
-                <div class="footer__inner-info">
-                    <p class="footer__inner-text fut-l">©Интернет-магазин детской одежды «Катлен» 2005-2022</p>  
+                <div class="footer__inner-subinfo">
+                    <p class="footer__inner-text fut-l">©Интернет-магазин детской одежды «Катлен» 2005-2022</p>
                     <div class="footer__payment">
-                        <a class="footer__payment-link" href="#">
-                            <img class="footer__payment-img" src="images/mastercard-icon.svg" alt="master card link">
+                        <a class="footer__payment-but-link" href="#">
+                            <img class="footer__payment-img" src="images/mastercard-icon.svg" alt="master card but-link">
                         </a>
-                        <a class="footer__payment-link" href="#">
-                            <img class="footer__payment-img" src="images/visa-icon.svg" alt="visa link">
+                        <a class="footer__payment-but-link" href="#">
+                            <img class="footer__payment-img" src="images/visa-icon.svg" alt="visa but-link">
                         </a>
-                        <a class="footer__payment-link" href="#">
-                            <img class="footer__payment-img" src="images/liqpay-icon.svg" alt="liqpay link">
+                        <a class="footer__payment-but-link" href="#">
+                            <img class="footer__payment-img" src="images/liqpay-icon.svg" alt="liqpay but-link">
                         </a>
                     </div>
                 </div>
+                <a class="footer__getUp" href="#">Вверх</a>
             </div><!-- ./ footer__inner -->
         </div>
     </footer>

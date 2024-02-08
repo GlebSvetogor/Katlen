@@ -13,7 +13,7 @@ body{
 *,
 *::before,
 *::after{
-    box-sizing:inherit;
+    box-sizing:border-box;
 }
 
 .container{
@@ -154,7 +154,7 @@ hr{
 
 }
 
-.header__heading-link{
+.header__heading-but-link{
     font-size: 16px;
     display:block;
 }
@@ -239,7 +239,7 @@ hr{
 }
 
 .nav{
-    
+
 }
 
 .nav__list{
@@ -253,7 +253,7 @@ hr{
 }
 
 
-.nav__list-link{
+.nav__list-but-link{
     display:block;
     padding: 10px 0 17px;
     font-size: 18px;
@@ -262,7 +262,7 @@ hr{
 
 
 
-.nav__list-link:hover{
+.nav__list-but-link:hover{
     color:#0FBF4D;
     font-family:'Futura PT Demi';
 }
@@ -315,18 +315,13 @@ hr{
     margin-left: 0;
 }
 
-.swiper-slide__link{
-    display:block;
-    width: 234px;
-    height: 19px;
-    padding: 13px;
-    border-radius: 10px;
-    background: #0FBF4D;
+.swiper-slide__but-link{
+    display:flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0px 4px 39px 0px rgba(16, 187, 76, 0.20);
-    color: #FFF;
-    text-align: center;
+    margin: 0;
     font-size: 16px;
-    line-height: 116.7%; /* 18.672px */
 }
 
 .swiper-slide__img{
@@ -351,7 +346,7 @@ hr{
     justify-content:space-between;
 }
 
-.promo__inner-item{
+.promo__inner-link{
     max-width:592px;
     width:100%;
     border-radius: 15px;
@@ -360,25 +355,45 @@ hr{
 
 }
 
-.promo__inner-item--boys{
+.promo__inner-link--boys{
     background:url(../images/boy-img.jpg) no-repeat;
     background-position:center;
     background-size:cover;
+    transition: background .3s ease-in-out;
 }
 
-.promo__inner-item--girls{
+.promo__inner-link--boys:hover{
+    background:url(../images/boyHover-img.jpg);
+}
+
+.promo__inner-link--girls{
     background:url(../images/girl-img.jpg) no-repeat;
     background-position:center;
     background-size:cover;
+    transition: background .3s ease-in-out;
 }
 
-.promo__inner-item--newborns{
+.promo__inner-link--girls:hover{
+    background:url(../images/girlHover-img.jpg);
+}
+
+.promo__inner-link--newborns{
     background:url(../images/newborn-img.jpg) no-repeat;
     background-position:center;
     background-size:cover;
+    transition: background .3s ease-in-out;
 }
 
-.promo__inner-link{
+.promo__inner-link--newborns:hover{
+    background:url(../images/newbornHover-img.jpg);
+}
+
+.promo__inner-link:hover .promo__inner-text{
+    color: #0FBF4D;
+    font-weight: 450;
+}
+
+.promo__inner-content{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -390,20 +405,15 @@ hr{
     cursor:pointer;
 }
 
-.promo__inner-link:hover .promo__inner-text{
-    color: #0FBF4D;
-    font-weight: 450;
-}
-
-.promo__inner-link:hover path{
-    fill: #0FBF4D;
-}
-
 .promo__inner-text{
     color: #111;
     margin: 0;
     font-size: 50px;
     line-height: 79.7%; /* 39.85px */
+}
+
+.promo__inner-link:hover path{
+    fill: #0FBF4D;
 }
 
 /* /. PROMO */
@@ -457,7 +467,7 @@ hr{
 }
 
 .products__item-descr{
-    
+
 }
 
 .products__item-title{
@@ -474,18 +484,20 @@ hr{
     margin-bottom: 20px;
 }
 
-.products__item-content{   
+.products__item-content{
     width:100%;
     display:flex;
-    justify-content:space-between;
-    gap:10px;
 }
 
-.products__item-content > hr{   
+.products__item-content > hr{
     height:1px;
-    max-width:100%;
+    width:100%;
     background: #EAEAEA;
-    margin:auto 0;
+    margin:auto 10px;
+}
+
+.products__without-line{
+    justify-content: space-between;
 }
 
 .products__item-tall{
@@ -493,10 +505,11 @@ hr{
 }
 
 .products__item-tissue{
-    float:left;
+
 }
 
 .products__item-value{
+    white-space: nowrap;
     min-width:41px;
 }
 
@@ -505,6 +518,7 @@ hr{
 }
 
 .products__sale{
+    white-space: nowrap;
     display:flex;
     gap:6px;
 }
@@ -602,7 +616,7 @@ hr{
 /* Wholesale */
 
 .wholesale{
-    
+
 }
 
 .wholesale__title{
@@ -636,8 +650,12 @@ hr{
     align-items: center;
 }
 
-.wholesale__link{
-    margin-right: 8px;
+.wholesale__but-link{
+    display:flex;
+    gap:8px;
+}
+
+.wholesale__details-readfull{
     color:#0FBF4D;
 }
 
@@ -699,10 +717,30 @@ hr{
 .footer{
     padding: 76px 0 67px;
     background-color: #C3F2B6;
+    overflow: hidden;
 }
 
 .footer__inner{
+    position: relative;
+}
 
+.footer__getUp{
+    content:'Вверх';
+    display:flex;
+    align-items: center;
+    position: absolute;
+    bottom: -110px;
+    right: -310px;
+    padding: 13px 16px;
+    text-align: start;
+    width:260px;
+    height: 45px;
+    transform:rotate(90deg);
+    border:1px #0C5959 solid;
+    color:#0C5959;
+    border-radius:10px;
+    font-family:'Futura PT Bold';
+    font-size: 16px;
 }
 
 .footer__inner-list{
@@ -714,8 +752,19 @@ hr{
 
 }
 
+.footer__info{
+    width:127px;
+}
+
+.footer__help{
+    max-width: 98px;
+}
+
+.footer__connect{
+    width:182px;
+}
+
 .footer__item-title{
-    white-space: nowrap;
     font-size: 18px;
     color:#0C5959;
     margin-bottom: 9px;
@@ -726,7 +775,7 @@ hr{
 }
 
 .footer__list-el{
-    
+
 }
 
 .footer__link{
@@ -740,7 +789,7 @@ hr{
     font-family: 'Futura PT Demi';
 }
 
-.footer__connect-link{
+.footer__connect-but{
     width:182px;
     height:45px;
     padding:13px 0 16px;
@@ -750,6 +799,13 @@ hr{
     display:flex;
     justify-content: center;
     align-items: center;
+    transition:background-color .3s ease-in-out;
+}
+
+.footer__connect-but:hover{
+    background-color:#0FBF4D;
+    color: #fff;
+    border-color: #0fbf4d;
 }
 
 .footer__inner-social{
@@ -759,7 +815,7 @@ hr{
     margin-bottom: 26px;
 }
 
-.footer__social-link{
+.footer__social-but-link{
 
 }
 
@@ -767,7 +823,7 @@ hr{
 
 }
 
-.footer__inner-info{
+.footer__inner-subinfo{
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -784,7 +840,7 @@ hr{
     gap: 10px;
 }
 
-.footer__payment-link{
+.footer__payment-but-link{
     height:35px;
 }
 
