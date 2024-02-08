@@ -78,7 +78,7 @@ hr{
     line-height: 136.7%; /* 27.34px */
 }
 
-.link{
+.but-link{
     display:block;
     padding: 13px;
     width: 260px;
@@ -93,9 +93,13 @@ hr{
     margin: 0 auto;
 }
 
-.link:hover{
+.but-link:hover{
     background:#fff;
     color:#0FBF4D;
+}
+
+.m-0{
+    margin:0;
 }
 
 /* HEADER */
@@ -703,7 +707,7 @@ hr{
 
 .footer__inner-list{
     display:flex;
-    column-gap:108px;
+    justify-content: space-between;
 }
 
 .footer__item{
@@ -711,6 +715,7 @@ hr{
 }
 
 .footer__item-title{
+    white-space: nowrap;
     font-size: 18px;
     color:#0C5959;
     margin-bottom: 9px;
@@ -721,17 +726,21 @@ hr{
 }
 
 .footer__list-el{
+    
+}
+
+.footer__link{
     line-height:29px;
-    font-size: 14px;
     color:#0C5959;
+    white-space: nowrap;
 }
 
-.footer__list-el{
-
+.footer__link:hover{
+    color: #0FBF4D;
+    font-family: 'Futura PT Demi';
 }
 
-.footer__el-link{
-    font-size: 14px;
+.footer__connect-link{
     width:182px;
     height:45px;
     padding:13px 0 16px;
@@ -744,7 +753,10 @@ hr{
 }
 
 .footer__inner-social{
-
+    display:flex;
+    justify-content: center;
+    gap:30px;
+    margin-bottom: 26px;
 }
 
 .footer__social-link{
@@ -756,18 +768,24 @@ hr{
 }
 
 .footer__inner-info{
-
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .footer__inner-text{
-
+    color:#0C5959;
 }
 
 .footer__payment{
-
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
-.footer__payment-link{
 
+.footer__payment-link{
+    height:35px;
 }
 
 .footer__payment-img{
