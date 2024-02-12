@@ -252,19 +252,69 @@ hr{
     text-align: center;
 }
 
-
-.nav__list-but-link{
+.nav__list-link{
     display:block;
     padding: 10px 0 17px;
     font-size: 18px;
     color:inherit;
 }
 
-
-
-.nav__list-but-link:hover{
+.nav__list-link:hover{
     color:#0FBF4D;
     font-family:'Futura PT Demi';
+}
+
+.nav__list-item--boys:hover .nav__pop-boys{
+    display:grid;
+}
+
+.nav__pop-boys{
+    display: none;
+    grid-template-columns: 74px 54px 67px 152px;
+    column-gap: 51px;
+    padding: 20px;
+    width: 540px;
+    z-index: 2;
+    position: absolute;
+    background-color: #fff;
+    border-radius:0 0 15px 15px;
+}
+
+.nav__pop-boys li{
+    width:calc(100% / 4);
+}
+
+.nav__list-item--help:hover .nav__pop-help{
+    display:block;
+}
+
+.nav__pop-help{
+    display:none;
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    width:226px;
+    border-radius:0 0 15px 15px;
+    padding:23px 44px 23px 19px;
+}
+
+.nav__pop-el{
+    margin-bottom: 15px;
+}
+
+.nav__pop-link{
+    padding: 0;
+    text-align: left;
+    line-height:79.7%;
+    white-space: nowrap;
+}
+
+.nav__pop-link:hover{
+    font-family:'Futura PT Medium';
+}
+
+.nav__pop-el:last-child{
+    margin: 0;
 }
 
 /* /. HEADER */
