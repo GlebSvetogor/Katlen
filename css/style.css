@@ -265,13 +265,11 @@ hr{
 }
 
 .nav__list-item--boys:hover .nav__pop-boys{
-    display:grid;
+    display:block;
 }
 
 .nav__pop-boys{
-    display: none;
-    grid-template-columns: 74px 54px 67px 152px;
-    column-gap: 51px;
+    display:none;
     padding: 20px;
     width: 540px;
     z-index: 2;
@@ -280,22 +278,11 @@ hr{
     border-radius:0 0 15px 15px;
 }
 
-.nav__pop-boys li{
-    width:calc(100% / 4);
-}
-
-.nav__list-item--help:hover .nav__pop-help{
-    display:block;
-}
-
-.nav__pop-help{
-    display:none;
-    position: absolute;
-    z-index: 2;
-    background-color: #fff;
-    width:226px;
-    border-radius:0 0 15px 15px;
-    padding:23px 44px 23px 19px;
+.nav__pop-list{
+    display: grid;
+    grid-template-columns: 74px 54px 67px 152px;
+    column-gap: 51px;
+    margin-bottom: 30px;
 }
 
 .nav__pop-el{
@@ -315,6 +302,44 @@ hr{
 
 .nav__pop-el:last-child{
     margin: 0;
+}
+
+.nav__pop-buttons{
+    display:flex;
+    gap:20px;
+}
+
+.nav__pop-but{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:85px;
+    height:45px;
+    margin: 0;
+    font-size: 16px;
+    background-color:#fff;
+    color:#0FBF4D;
+    transition:color .3s ease-in-out;
+    transition:background-color .3s ease-in-out;
+}
+
+.nav__pop-but:hover{
+    background-color:#0FBF4D;
+    color:#fff;
+}
+
+.nav__list-item--help:hover .nav__pop-help{
+    display:block;
+}
+
+.nav__pop-help{
+    display:none;
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    width:226px;
+    border-radius:0 0 15px 15px;
+    padding:23px 44px 23px 19px;
 }
 
 /* /. HEADER */
@@ -621,12 +646,21 @@ hr{
     background: #E7E1E1;
 }
 
+.categories__inner-item--dresses > img{
+    scale:none;
+    margin-right: 30px;
+}
+
 .categories__inner-item--complect{
     background: #F0F0F2;
 }
 
 .categories__inner-item--pajamas{
     background: #F7F6FA;
+}
+
+.categories__inner-item--pajamas > img{
+    scale:none;
 }
 
 .categories__inner-title{
@@ -642,15 +676,6 @@ hr{
 
 .categories__inner-img{
     scale: 1.5;
-}
-
-.categories__inner-img--dresses{
-    scale:none;
-    margin-right: 30px;
-}
-
-.categories__inner-img--pajams{
-    scale:none;
 }
 
 /* /. Categories */
@@ -774,25 +799,6 @@ hr{
     position: relative;
 }
 
-.footer__getUp{
-    content:'Вверх';
-    display:flex;
-    align-items: center;
-    position: absolute;
-    bottom: -110px;
-    right: -310px;
-    padding: 13px 16px;
-    text-align: start;
-    width:260px;
-    height: 45px;
-    transform:rotate(90deg);
-    border:1px #0C5959 solid;
-    color:#0C5959;
-    border-radius:10px;
-    font-family:'Futura PT Bold';
-    font-size: 16px;
-}
-
 .footer__inner-list{
     display:flex;
     justify-content: space-between;
@@ -898,6 +904,29 @@ hr{
 
 }
 
+.footer__getUp{
+    content:'Вверх';
+    display:flex;
+    align-items: center;
+    position: absolute;
+    bottom: -110px;
+    right: -310px;
+    padding: 13px 16px;
+    text-align: start;
+    width:260px;
+    height: 45px;
+    transform:rotate(90deg);
+    border:1px #0C5959 solid;
+    color:#0C5959;
+    border-radius:10px;
+    font-family:'Futura PT Bold';
+    font-size: 16px;    
+    transition:bottom .3s ease-in-out;
+}
+
+.footer__getUp:hover{
+    bottom:-80px;
+}
 
 
 
