@@ -39,12 +39,39 @@
                             <img class="header__heading-icon" src="images/search-icon.svg" alt="search icon">
                         </div>
                     </form>
-                    <a class="header__heading-user" href="#">
+
+                    <div popover id="loginPopover" class="login">
+                        <div class="login__inner">
+                            <h2 class="title fut-b">Вход</h2>
+                            <form class="login__form" action="">
+                                <label for="email-input" style="visibility:hidden;">Почта</label>
+                                <input class="input email-input" type="text" placeholder="Почта">
+
+                                <label for="password-input" style="visibility:hidden;">Пароль</label>
+                                <input class="input password-input" type="text" placeholder="Пароль">
+
+                                <p class="form-text">Новый пользователь?</p><a class="form-text form-link" href="#">Зарегистрироваться</a>
+
+                                <p class="form-text">Забыли пароль?</p><a class="form-text form-link" href="#">Восстановить</a>
+
+                                <input type="checkbox">
+                                <p class="form-text">Я согласен с условиями персональных данных</p>
+
+                                <button class="but-link" type="submit">Войти</button>
+
+                                <button popovertarget="loginPopover" popovertargetaction="hide">Close</button>
+                            </form>
+                        </div>
+                        <button popovertarget="loginPopover" popovertargetaction="hide">Close</button>
+                    </div>
+
+                    <button class="header__heading-user" popovertarget="loginPopover">
                         <img class="header__heading-icon" src="images/user-icon.svg" alt="user icon">
-                    </a>
-                    <a class="header__heading-user" href="#">
+                    </button>
+
+                    <button class="header__heading-user">
                         <img class="header__heading-icon" src="images/basket-icon.svg" alt="user basket">
-                    </a>
+                    </button>
                     <!-- Иконки -->
                 </div>
             </div>
@@ -56,13 +83,13 @@
                         <div class="pop pop--catalog">
                             <ul class="pop__list">
                                 <li class="pop__list-item">
-                                    <a class="nav__link pop__list-link fut-l" href="#"></a>
+                                    <a class="nav__link pop__list-link fut-l" href="#">Фильтр</a>
                                 </li>
                                 <li class="pop__list-item">
-                                    <a class="nav__link pop__list-link fut-l" href="#"></a>
+                                    <a class="nav__link pop__list-link fut-l" href="#">Цена</a>
                                 </li>
                                 <li class="pop__list-item">
-                                    <a class="nav__link pop__list-link fut-l" href="#"></a>
+                                    <a class="nav__link pop__list-link fut-l" href="#">Цвет</a>
                                 </li>
                             </ul>
                         </div>
@@ -110,41 +137,95 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav__list-item">
+                    <li class="nav__list-item nav__list-item--girls">
                         <a href="#" class="nav__link fut-book">Для девочек</a>
-                        <div class="pop">
+                        <div class="pop pop--girls">
                             <ul class="pop__list">
                                 <li class="pop__list-item">
-                                    <a class="nav__link pop__list-link fut-l" href="#"></a>
+                                    <a class="nav-link pop__list-link fut-l" href="#">Костюмы</a>
                                 </li>
                                 <li class="pop__list-item">
-                                    <a class="nav__link pop__list-link fut-l" href="#"></a>
+                                    <a class="nav-link pop__list-link fut-l" href="#">Брюки</a>
                                 </li>
                                 <li class="pop__list-item">
-                                    <a class="nav__link pop__list-link fut-l" href="#"></a>
+                                    <a class="nav-link pop__list-link fut-l" href="#">Пижамы</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Спортивные</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Футболки</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Гольфы</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="pop__list-link fut-l" href="#">Рубашки</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Шорты</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Борцовки</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Кофты</a>
                                 </li>
                             </ul>
+                            <div class="pop-buttons">
+                                <a class="but-link pop-but fut-b" href="#">Весна</a>
+                                <a class="but-link pop-but fut-b" href="#">Лето</a>
+                                <a class="but-link pop-but fut-b" href="#">Осень</a>
+                                <a class="but-link pop-but fut-b" href="#">Зима</a>
+                            </div>
                         </div>
                     </li>
-                    <li class="nav__list-item">
+                    <li class="nav__list-item nav__list-item--newborns">
                         <a href="#" class="nav__link fut-book">Для новорожденных</a>
-                        <div class="pop">
+                        <div class="pop pop--newborns">
                             <ul class="pop__list">
                                 <li class="pop__list-item">
-                                    <a class="nav__link pop__list-link fut-l" href="#"></a>
+                                    <a class="nav-link pop__list-link fut-l" href="#">Костюмы</a>
                                 </li>
                                 <li class="pop__list-item">
-                                    <a class="nav__link pop__list-link fut-l" href="#"></a>
+                                    <a class="nav-link pop__list-link fut-l" href="#">Брюки</a>
                                 </li>
                                 <li class="pop__list-item">
-                                    <a class="nav__link pop__list-link fut-l" href="#"></a>
+                                    <a class="nav-link pop__list-link fut-l" href="#">Пижамы</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Спортивные</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Футболки</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Гольфы</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="pop__list-link fut-l" href="#">Рубашки</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Шорты</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Борцовки</a>
+                                </li>
+                                <li class="pop__list-item">
+                                    <a class="nav-link pop__list-link fut-l" href="#">Кофты</a>
                                 </li>
                             </ul>
+                            <div class="pop-buttons">
+                                <a class="but-link pop-but fut-b" href="#">Весна</a>
+                                <a class="but-link pop-but fut-b" href="#">Лето</a>
+                                <a class="but-link pop-but fut-b" href="#">Осень</a>
+                                <a class="but-link pop-but fut-b" href="#">Зима</a>
+                            </div>
                         </div>
                     </li>
-                    <li class="nav__list-item">
+                    <li class="nav__list-item nav__list-item--sale">
                         <a href="#" class="nav__link fut-book">Распродажа</a>
-                        <div class="pop">
+                        <div class="pop pop--sale">
                             <ul class="pop__list">
                                 <li class="pop__list-item">
                                     <a class="nav__link pop__list-link fut-l" href="#">Новинки</a>
@@ -157,7 +238,7 @@
                     </li>
                     <li class="nav__list-item nav__list-item--help">
                         <a href="#" class="nav__link fut-book">Помощь</a>
-                        <div class="pop">
+                        <div class="pop pop--help">
                             <ul class="pop__list">
                                 <li class="pop__list-item">
                                     <a class="nav__link pop__list-link fut-l" href="#">О нас</a>
@@ -318,22 +399,22 @@
         <section class="categories">
             <div class="container-big">
                 <div class="categories__inner">
-                    <div class="categories__inner-item">
+                    <a class="categories__inner-item categories__inner-item--catalog" href="#">
                         <h3 class="categories__inner-title fut-m">Каталог</h3>
                         <img class="categories__inner-img" src="images/kidsCloses-img.png" alt="categories img">
-                    </div>
-                    <div class="categories__inner-item categories__inner-item--complect">
+                    </a>
+                    <a class="categories__inner-item categories__inner-item--complect" href="#">
                         <h3 class="categories__inner-title fut-m">Костюм/комплект</h3>
                         <img class="categories__inner-img" src="images/kidsComplect-img.png" alt="categories img">
-                    </div>
-                    <div class="categories__inner-item categories__inner-item--dresses">
+                    </a>
+                    <a class="categories__inner-item categories__inner-item--dresses" href="#">
                         <h3 class="categories__inner-title fut-m">Платье</h3>
                         <img class="categories__inner-img" src="images/kidsDresses.png" alt="categories img">
-                    </div>
-                    <div class="categories__inner-item categories__inner-item--pajamas">
+                    </a>
+                    <a class="categories__inner-item categories__inner-item--pajamas" href="#">
                         <h3 class="categories__inner-title fut-m">Пижами</h3>
                         <img class="categories__inner-img" src="images/kidsPajams-img.png" alt="categories img">
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>

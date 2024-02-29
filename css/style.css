@@ -78,6 +78,16 @@ hr{
     line-height: 136.7%; /* 27.34px */
 }
 
+.form-text{
+    font-size: 16px;
+    line-height:116.7%;
+}
+
+.form-link{
+    color:#0FBF4D;
+    text-decoration:underline;
+}
+
 .but-link{
     display:block;
     padding: 13px;
@@ -212,6 +222,15 @@ hr{
     align-items:center;
 }
 
+.login{
+    width:100%;
+    height:100%;
+}
+
+.login__inner{
+
+}
+
 .header__heading-icon{
     width: 16px;
     height: 16px;
@@ -253,27 +272,27 @@ hr{
 }
 
 .nav__list-item--catalog:hover .pop--catalog{
-
+    display:block;
 }
 
 .nav__list-item--boys:hover .pop--boys{
-    display:grid;
+    display:block;
 }
 
 .nav__list-item--girls:hover .pop--girls{
-
+    display:block;
 }
 
 .nav__list-item--newborns:hover .pop--newborns{
-
+    display:block;
 }
 
 .nav__list-item--sale:hover .pop--sale{
-
+    display:block;
 }
 
 .nav__list-item--help:hover .pop--help{
-
+    display:block;
 }
 
 .nav__link{
@@ -293,71 +312,73 @@ hr{
     position: absolute;
     background-color: #fff;
     border-radius: 0 0 15px 15px;
+    padding: 20px;
 }
 
 .pop--catalog{
-
+    display:none;
+    width:184.99px;
 }
 
 .pop--boys{
-    display:block;
-    padding: 20px;
+    display:none;
     width: 540px;
-    
 }
 
 .pop--girls{
-
+    display: none;
 }
 
 .pop--newborns{
-
+    display: none;
 }
 
 .pop--sale{
-
+    display: none;
+    max-width: 185px;
+    width: 100%;
 }
 
 .pop--help{
-    
-}
-
-.pop--catalog > ul{
-
-}
-
-.pop--boys > ul{
-    display: grid;
-    grid-template-columns: 74px 54px 67px 152px;
-    column-gap: 51px;
-    margin-bottom: 30px;
-}
-
-.pop--girls > ul{
-    
-}
-
-.pop--newborns > ul{
-    
-}
-
-.pop--sal > ul{
-    
-}
-
-.pop--help > ul{
-    
+    display: none;
+    max-width: 202.5px;
+    width: 100%;
 }
 
 .pop__list{
-    display:flex;
-    
+    display: grid;
+    column-gap: 51px;
+    margin-bottom: 20px;
+}
+
+.pop--catalog > ul{
+    margin: 0;
+}
+
+.pop--boys > ul{
+    grid-template-columns: 74px 54px 67px 152px;
+}
+
+.pop--girls > ul{
+    grid-template-columns: 74px 54px 67px 152px;
+}
+
+.pop--newborns > ul{
+    grid-template-columns: 74px 54px 67px 152px;
+}
+
+.pop--sale > ul{
+    margin: 0;
+}
+
+.pop--help > ul{
+    margin: 0;
 }
 
 .pop__list-item{
     max-width:185px;
     width:100%;
-    text-align: center;
+    text-align: left;
     margin-bottom: 15px;
 }
 
@@ -366,9 +387,10 @@ hr{
 }
 
 .pop__list-link{
-    text-align: left;
+    font-size: 18px;
     line-height:79.7%;
     white-space: nowrap;
+    padding: 0;
 }
 
 .pop__list-link:hover{
@@ -780,6 +802,22 @@ hr{
     overflow: hidden;
 }
 
+.categories__inner-item--catalog:hover .categories__inner-title{
+    color:#0FBF4D;
+}
+
+.categories__inner-item--complect{
+    background: #F0F0F2;
+}
+
+.categories__inner-item--complect:hover .categories__inner-title{
+    color:#0FBF4D;
+}
+
+.categories__inner-item--dresses:hover .categories__inner-title{
+    color:#0FBF4D;
+}
+
 .categories__inner-item--dresses{
     background: #E7E1E1;
 }
@@ -789,16 +827,16 @@ hr{
     margin-right: 30px;
 }
 
-.categories__inner-item--complect{
-    background: #F0F0F2;
-}
-
 .categories__inner-item--pajamas{
     background: #F7F6FA;
 }
 
 .categories__inner-item--pajamas > img{
     scale:none;
+}
+
+.categories__inner-item--pajamas:hover .categories__inner-title{
+    color:#0FBF4D;
 }
 
 .categories__inner-title{
@@ -810,6 +848,7 @@ hr{
     line-height: 79.7%;
     margin:0 0 56px 81px;
     align-self: end;
+    transition:color .3s ease-in-out;
 }
 
 .categories__inner-img{
@@ -1058,7 +1097,7 @@ hr{
     color:#0C5959;
     border-radius:10px;
     font-family:'Futura PT Bold';
-    font-size: 16px;    
+    font-size: 16px;
     transition:bottom .3s ease-in-out;
 }
 
