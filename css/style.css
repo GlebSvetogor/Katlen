@@ -252,24 +252,162 @@ hr{
     text-align: center;
 }
 
-.nav__list-link{
+.nav__list-item--catalog:hover .pop--catalog{
+
+}
+
+.nav__list-item--boys:hover .pop--boys{
+    display:grid;
+}
+
+.nav__list-item--girls:hover .pop--girls{
+
+}
+
+.nav__list-item--newborns:hover .pop--newborns{
+
+}
+
+.nav__list-item--sale:hover .pop--sale{
+
+}
+
+.nav__list-item--help:hover .pop--help{
+
+}
+
+.nav__link{
     display:block;
     padding: 10px 0 17px;
     font-size: 18px;
     color:inherit;
 }
 
-.nav__list-link:hover{
-    color:#0FBF4D;
+.nav__link:hover{
     font-family:'Futura PT Demi';
+    color:#0FBF4D;
 }
 
-.nav__list-item--boys:hover .nav__pop-boys{
+.pop{
+    z-index: 2;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 0 0 15px 15px;
+}
+
+.pop--catalog{
+
+}
+
+.pop--boys{
     display:block;
+    padding: 20px;
+    width: 540px;
+    
 }
 
-.nav__pop-boys{
-    display:none;
+.pop--girls{
+
+}
+
+.pop--newborns{
+
+}
+
+.pop--sale{
+
+}
+
+.pop--help{
+    
+}
+
+.pop--catalog > ul{
+
+}
+
+.pop--boys > ul{
+    display: grid;
+    grid-template-columns: 74px 54px 67px 152px;
+    column-gap: 51px;
+    margin-bottom: 30px;
+}
+
+.pop--girls > ul{
+    
+}
+
+.pop--newborns > ul{
+    
+}
+
+.pop--sal > ul{
+    
+}
+
+.pop--help > ul{
+    
+}
+
+.pop__list{
+    display:flex;
+    
+}
+
+.pop__list-item{
+    max-width:185px;
+    width:100%;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.pop__list-item:last-child{
+    margin: 0;
+}
+
+.pop__list-link{
+    text-align: left;
+    line-height:79.7%;
+    white-space: nowrap;
+}
+
+.pop__list-link:hover{
+    color:#0FBF4D;
+    font-family:'Futura PT Medium';
+}
+
+.pop-buttons{
+    display:flex;
+    gap:20px;
+}
+
+.pop-but{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:85px;
+    height:45px;
+    margin: 0;
+    font-size: 16px;
+    background-color:#fff;
+    color:#0FBF4D;
+    transition:color .3s ease-in-out;
+    transition:background-color .3s ease-in-out;
+}
+
+.pop-but:hover{
+    background-color:#0FBF4D;
+    color:#fff;
+}
+
+/*  */
+
+/* .nav__list-item--boys:hover .nav__pop-boys{
+    display:block;
+} */
+
+/* .nav__pop-boys{
+    display:block;
     padding: 20px;
     width: 540px;
     z-index: 2;
@@ -340,7 +478,7 @@ hr{
     width:226px;
     border-radius:0 0 15px 15px;
     padding:23px 44px 23px 19px;
-}
+} */
 
 /* /. HEADER */
 
