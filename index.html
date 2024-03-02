@@ -40,29 +40,34 @@
                         </div>
                     </form>
 
-                    <div popover id="loginPopover" class="login">
-                        <div class="login__inner">
-                            <h2 class="title fut-b">Вход</h2>
-                            <form class="login__form" action="">
-                                <label for="email-input" style="visibility:hidden;">Почта</label>
-                                <input class="input email-input" type="text" placeholder="Почта">
+                    <div popover id="loginPopover" class="window">
+                        <div class="window__wrapper">
+                            <div class="window__inner">
+                                <h2 class="title window__title fut-b">Вход</h2>
+                                <form class="window__form" action="">
+                                    <label for="email" style="visibility:hidden;">Почта</label>
+                                    <input class="input email" type="text" placeholder="Почта">
+    
+                                    <label for="password" style="visibility:hidden;">Пароль</label>
+                                    <input class="input password" type="text" placeholder="Пароль">
+    
+                                    <p class="form-text">Новый пользователь?</p><a class="form-text form-link" href="#">Зарегистрироваться</a>
+    
+                                    <p class="form-text">Забыли пароль?</p><a class="form-text form-link" href="#">Восстановить</a>
+                                    
+                                    <br>
 
-                                <label for="password-input" style="visibility:hidden;">Пароль</label>
-                                <input class="input password-input" type="text" placeholder="Пароль">
-
-                                <p class="form-text">Новый пользователь?</p><a class="form-text form-link" href="#">Зарегистрироваться</a>
-
-                                <p class="form-text">Забыли пароль?</p><a class="form-text form-link" href="#">Восстановить</a>
-
-                                <input type="checkbox">
-                                <p class="form-text">Я согласен с условиями персональных данных</p>
-
-                                <button class="but-link" type="submit">Войти</button>
-
-                                <button popovertarget="loginPopover" popovertargetaction="hide">Close</button>
-                            </form>
+                                    <div class="approval">
+                                        <input type="checkbox">
+                                        <p class="form-text">Я согласен с условиями <u>персональных данных</u></p>
+                                    </div>
+    
+                                    <button class="but-link" type="submit">Войти</button>
+    
+                                    <button popovertarget="loginPopover" popovertargetaction="hide">Close</button>
+                                </form>
+                            </div>
                         </div>
-                        <button popovertarget="loginPopover" popovertargetaction="hide">Close</button>
                     </div>
 
                     <button class="header__heading-user" popovertarget="loginPopover">
