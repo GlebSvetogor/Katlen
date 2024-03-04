@@ -81,6 +81,7 @@ hr{
 .form-text{
     display:inline-block;
     font-size: 16px;
+    color:#A0A0A0;
     line-height:116.7%;
     margin: 0;
 }
@@ -88,6 +89,13 @@ hr{
 .form-link{
     color:#0FBF4D;
     text-decoration:underline;
+}
+
+.input{
+    width:100%;
+    padding:13px 20px;
+    border-radius:10px;
+    border: 1px solid #EBEBEB;
 }
 
 .but-link{
@@ -241,7 +249,7 @@ hr{
     border:0;
     position:relative;
     text-align: center;
-
+    position:fixed;
 }
 
 .window__wrapper{
@@ -287,18 +295,13 @@ hr{
     margin-bottom: 6px;
 }
 
-.input{
-    width:100%;
-    padding:13px 20px;
-    border-radius:10px;
-    border-color:#EBEBEB;
-    border: 1px solid #ebebeb;
-
+.form-text--parol{
+    margin-bottom: 18px;
 }
 
 .email{
-
-}   
+    margin-bottom: 20px;
+}
 
 .password{
     margin-bottom: 16px;
@@ -311,11 +314,10 @@ hr{
 
 .approval{
     display:flex;
-    max-width:324px;
-    width:100%;
-    /* justify-content:space-between; */
+    max-width:100%;
+    justify-content:center;
     gap: 9px;
-    margin-bottom: 21px;
+    margin-bottom: 18px;
 }
 
 .header__heading-user{
