@@ -236,13 +236,13 @@ hr{
     width:16px;
     height:16px;
 }
+    
+#login-window{
+   display:none;
+}
 
-#loginPopover{
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
+#signin-window{
+    display:none;
 }
 
 .window{
@@ -250,13 +250,17 @@ hr{
     position:relative;
     text-align: center;
     position:fixed;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
 }
 
 .window__wrapper{
     width: 440px;
-    height: 483px;
-    padding: 50px 37px 0 0;
-    position:absolute;
+    padding: 50px 30px 0 0;
+    position:relative;
     left:50%;
     top:78px;
     transform:translate(-50%, 0);
@@ -264,7 +268,6 @@ hr{
 
 .window__inner{
     width: 410px;
-    height: 433px;
     border-radius: 15px;
     padding: 40px 30px;
     background-color: #fff;
@@ -295,10 +298,6 @@ hr{
     margin-bottom: 6px;
 }
 
-.form-text--parol{
-    margin-bottom: 18px;
-}
-
 .email{
     margin-bottom: 20px;
 }
@@ -307,18 +306,30 @@ hr{
     margin-bottom: 16px;
 }
 
-.header__heading-icon{
-    width: 16px;
-    height: 16px;
+.form-text--parol{
+    margin-bottom: 18px;
 }
 
-.approval{
+.window__approval{
     display:flex;
     max-width:100%;
     justify-content:center;
     gap: 9px;
     margin-bottom: 18px;
 }
+
+.window__close-btn{
+    position:absolute;
+    top:0;
+    right:0;
+    cursor:pointer;
+}
+
+.header__heading-icon{
+    width: 16px;
+    height: 16px;
+}
+
 
 .header__heading-user{
     width:45px;
