@@ -78,26 +78,6 @@ hr{
     line-height: 136.7%; /* 27.34px */
 }
 
-.form-text{
-    display:inline-block;
-    font-size: 16px;
-    color:#A0A0A0;
-    line-height:116.7%;
-    margin: 0;
-}
-
-.form-link{
-    color:#0FBF4D;
-    text-decoration:underline;
-}
-
-.input{
-    width:100%;
-    padding:13px 20px;
-    border-radius:10px;
-    border: 1px solid #EBEBEB;
-}
-
 .but-link{
     display:block;
     padding: 13px;
@@ -119,7 +99,7 @@ hr{
 }
 
 .m-0{
-    margin:0;
+    margin:0 !important;
 }
 
 /* HEADER */
@@ -237,37 +217,29 @@ hr{
     height:16px;
 }
 
-#login-window{
-   display:none;
+.window{
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
 }
 
-#signin-window{
+.window--login{
     display:none;
 }
 
-.window{
-    border:0;
-    position:relative;
-    text-align: center;
-    position:fixed;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-}
-
 .window__wrapper{
+    position: relative;
     width: 440px;
     padding: 50px 30px 0 0;
-    position:relative;
-    left:50%;
-    top:78px;
-    transform:translate(-50%, 0);
 }
 
 .window__inner{
-    width: 410px;
+    text-align: center;
     border-radius: 15px;
     padding: 40px 30px;
     background-color: #fff;
@@ -277,11 +249,11 @@ hr{
     content: '';
     display: block;
     position: absolute;
-    width: 100%;
-    height: 100%;
     background-color: #000;
     opacity: 0.75;
     left: 0;
+    right: 0;
+    bottom: 0;
     top: 0;
     z-index: -1;
 }
@@ -294,28 +266,40 @@ hr{
 
 }
 
-.window__form > p {
-    margin-bottom: 6px;
-}
-
-.email{
+.window__input{
+    width:100%;
+    padding:13px 20px;
+    border-radius:10px;
+    border: 1px solid #EBEBEB;
     margin-bottom: 20px;
 }
 
-.password{
+.window__input:last-child {
     margin-bottom: 16px;
 }
 
-.form-text--parol{
-    margin-bottom: 18px;
+.window__text{
+    display:inline-block;
+    font-size: 16px;
+    color:#A0A0A0;
+    margin:0 0 9px 0;
+    line-height:116.7%;
+}
+
+.window__link{
+    color:#0FBF4D;
+    text-decoration:underline;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 116.7%;
 }
 
 .window__approval{
     display:flex;
-    max-width:100%;
+    width:100%;
     justify-content:center;
     gap: 9px;
-    margin-bottom: 18px;
+    margin-bottom: 21px;
 }
 
 .window__close-btn{
