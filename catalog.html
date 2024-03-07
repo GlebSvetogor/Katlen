@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalog</title>
     <script src="js/app.js" defer></script>
+    <script src="js/dropdownFilter.js" defer></script>
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -355,7 +356,40 @@
                 </div>
                 <div class="catalog__inner">
                     <aside class="catalog__filter">
-                        <h2>Фильтр</h2>
+                        <h2 class="catalog__inner-title fut-m">Фильтр</h2>
+                        <ul class="catalog__list">
+                            <li class="catalog__list-item">
+                                <div class="catalog__list-content">
+                                    <h3 class="catalog__filter-title fut-m">Одежда</h3>
+                                    <img src="/images/arrow-down-sign-to-navigate.svg" alt="">
+                                </div>
+                                <form action=""></form>
+                                <form class="dropdown__list" action="">
+                                    <li class="dropdown__list-item">Костюм</li>
+                                    <li class="dropdown__list-item">Платье</li>
+                                    <li class="dropdown__list-item">Цвет</li>
+                                </ul>
+                            </li>
+                            <hr>
+                            <li class="catalog__list-item">
+                                <div class="catalog__list-content">
+                                    <h3 class="catalog__filter-title fut-m">Цена</h3>
+                                </div>
+                            </li>
+                            <hr>
+                            <li class="catalog__list-item">
+                                <div class="catalog__list-content">
+                                    <h3 class="catalog__filter-title fut-m">Размеры</h3>
+                                </div>
+                            </li>
+                            <hr>
+                            <li class="catalog__list-item">
+                                <div class="catalog__list-content">
+                                    <h3 class="catalog__filter-title fut-m">Цвет</h3>
+                                </div>
+                            </li>
+                            <hr>
+                        </ul>
                     </aside>
                     <div class="products catalog__products">
                         <div class="products__item catalog__products-item">
