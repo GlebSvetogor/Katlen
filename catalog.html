@@ -201,7 +201,7 @@
                                 <li class="pop__list-item">
                                     <a class="pop__list-link fut-l" href="#">Рубашки</a>
                                 </li>
-                                <li class="pop__list-item">
+                                <li class="pop__list-item"> 
                                     <a class="nav-link pop__list-link fut-l" href="#">Шорты</a>
                                 </li>
                                 <li class="pop__list-item">
@@ -315,7 +315,6 @@
     </header>
     <hr>
 
-
     <main>
         <section class="catalog">
             <div class="container">
@@ -325,8 +324,34 @@
                     <a class="catalog__link fut-b" href="#">Каталог</a>
                 </p>
                 <h1 class="title fub-b">Каталог</h1>
-                <div class="catalog__quality">
-                    
+                <div class="catalog__menu">
+                    <div class="catalog__menu-inner">
+                        <div class="catalog__menu-item">
+                            <p class="catalog__text fut-l m-0">Количество товаров:</p>
+                            <p id="general-quality" class="catalog__text fut-b m-0">1200</p>
+                        </div>
+                        
+                        <div class="catalog__menu-item">
+                            <p class="catalog__text fut-l m-0">Товаров на странице:</p>
+                            <p class="catalog__text catalog__text--page fut-b m-0">
+                                <span id="page-quality">25</span>
+                                <img class="dropdown-arrow" src="images/dropDown_BlackArrow-icon.svg" alt="dropDown arrow">
+                            </p>
+                            
+                        </div>
+    
+                        <div class="catalog__menu-item">
+                            <p class="catalog__text fut-l m-0">Сортировка:</p>
+                            <div class="sort">
+                                <select class="sort__choice fut-b" name="choice">
+                                    <option class="sort__option" value="first" selected>По цене</option>
+                                    <option class="sort__option" value="second">По размерам</option>
+                                    <option class="sort__option" value="third">По новизне</option>
+                                </select>
+                                <img class="dropdown-arrow dropdown-arrow--sort fut-b" src="images/dropDown_BlackArrow-icon.svg" alt="dropdown arrow">
+                            </div>
+                        </div>
+                    </div><!-- ./ catalog__menu-inner -->   
                 </div>
                 <div class="catalog__inner">
                     <aside class="catalog__filter"></aside>
