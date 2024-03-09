@@ -1237,11 +1237,11 @@ hr{
 }
 
 .catalog__list-item{
-    
+
 }
 
 .catalog__list-content{
-    padding: 29px 0;
+    padding: 30px 0;
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -1253,17 +1253,29 @@ hr{
 }
 
 .dropdown__list{
-    display:none;
-    transition:display .3s ease-in-out;
-    margin-bottom: 30px;
+    max-height: 0;
+    transition: max-height 0.8s ease-in-out;
+    overflow: hidden;
 }
 
 .dropdown__list--active{
-    display:block;
+    max-height:300px;
 }
 
 .dropdown__list-item{
+    display:flex;
+    gap:8px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
 
+.catalog__line{
+    margin-bottom:0;
+    transition:margin .5s ease-in-out;
+}
+
+.catalog__line--active{
+    margin-top:30px;
 }
 
 .catalog__products{
