@@ -1,9 +1,14 @@
-const dropdownButton = document.querySelector(".catalog__list-content");
-const catalogLine = document.querySelector(".catalog__line");
+const catalogList = document.querySelector(".catalog__list");
 
-dropdownButton.addEventListener('click', ()=>{
-    const dropdownMenu = document.querySelector(".dropdown__list");
-    dropdownMenu.classList.toggle("dropdown__list--active");
-    catalogLine.classList.toggle("catalog__line--active");
+catalogList.addEventListener('click', (event) => {
+    const target = event.target;
+
+    if (target.closest('.catalog__list-content')) {
+        const catalogListItem = target.closest('.catalog__list-item');
+        const dropdownList = catalogListItem.querySelector('.dropdown__list');
+        const catalogFilterArrow = catalogListItem.querySelector('.catalog__filter-arrow');
+
+        dropdownList.classList.toggle("dropdown__list--active");
+        catalogFilterArrow.classList.toggle("catalog__filter-arrow--active");
+    }
 });
-

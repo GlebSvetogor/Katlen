@@ -6,6 +6,7 @@
     <title>Catalog</title>
     <script src="js/app.js" defer></script>
     <script src="js/dropdownFilter.js" defer></script>
+    <script src="js/priceFilter.js" defer></script>
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -202,7 +203,7 @@
                                 <li class="pop__list-item">
                                     <a class="pop__list-link fut-l" href="#">Рубашки</a>
                                 </li>
-                                <li class="pop__list-item"> 
+                                <li class="pop__list-item">
                                     <a class="nav-link pop__list-link fut-l" href="#">Шорты</a>
                                 </li>
                                 <li class="pop__list-item">
@@ -331,16 +332,16 @@
                             <p class="catalog__text fut-l m-0">Количество товаров:</p>
                             <p id="general-quality" class="catalog__text fut-b m-0">1200</p>
                         </div>
-                        
+
                         <div class="catalog__menu-item">
                             <p class="catalog__text fut-l m-0">Товаров на странице:</p>
                             <p class="catalog__text catalog__text--page fut-b m-0">
                                 <span id="page-quality">25</span>
                                 <img class="dropdown-arrow" src="images/dropDown_BlackArrow-icon.svg" alt="dropDown arrow">
                             </p>
-                            
+
                         </div>
-    
+
                         <div class="catalog__menu-item">
                             <p class="catalog__text fut-l m-0">Сортировка:</p>
                             <div class="sort">
@@ -352,7 +353,7 @@
                                 <img class="dropdown-arrow dropdown-arrow--sort fut-b" src="images/dropDown_BlackArrow-icon.svg" alt="dropdown arrow">
                             </div>
                         </div>
-                    </div><!-- ./ catalog__menu-inner -->   
+                    </div><!-- ./ catalog__menu-inner -->
                 </div>
                 <div class="catalog__inner">
                     <aside class="catalog__filter">
@@ -361,7 +362,7 @@
                             <li class="catalog__list-item">
                                 <div class="catalog__list-content">
                                     <h3 class="catalog__filter-title fut-m">Одежда</h3>
-                                    <img src="/images/arrow-down-sign-to-navigate.svg" alt="">
+                                    <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
                                 <form class="dropdown__list" action="">
                                     <div class="dropdown__list-item">
@@ -374,31 +375,72 @@
                                     </div>
                                     <div class="dropdown__list-item m-0">
                                         <input type="checkbox">
-                                        <p class="text m-0 fut-l">Цвет</p>
+                                        <p class="text m-0 fut-l">Комплект</p>
                                     </div>
                                 </form>
                             </li>
-                            <hr class="catalog__line">
+                            <hr>
                             <li class="catalog__list-item">
                                 <div class="catalog__list-content">
                                     <h3 class="catalog__filter-title fut-m">Цена</h3>
+                                    <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
+                                <form class="dropdown__list" action="">
+                                    <div class="price-input">
+                                        <div class="field">
+                                          <span>Min</span>
+                                          <input type="number" class="input-min" value="2500">
+                                        </div>
+                                        <div class="separator">-</div>
+                                        <div class="field">
+                                          <span>Max</span>
+                                          <input type="number" class="input-max" value="7500">
+                                        </div>
+                                      </div>
+                                      <div class="slider">
+                                        <div class="progress"></div>
+                                      </div>
+                                      <div class="range-input">
+                                        <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+                                        <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+                                      </div>
+                                </form>
                             </li>
                             <hr>
                             <li class="catalog__list-item">
                                 <div class="catalog__list-content">
                                     <h3 class="catalog__filter-title fut-m">Размеры</h3>
+                                    <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
+                                <form class="dropdown__list" action="">
+                                    <div class="dropdown__list-item">
+                                        <input type="checkbox">
+                                        <p class="text m-0 fut-l">Костюм</p>
+                                    </div>
+                                    <div class="dropdown__list-item">
+                                        <input type="checkbox">
+                                        <p class="text m-0 fut-l">Платье</p>
+                                    </div>
+                                    <div class="dropdown__list-item m-0">
+                                        <input type="checkbox">
+                                        <p class="text m-0 fut-l">Комплект</p>
+                                    </div>
+                                </form>
                             </li>
                             <hr>
                             <li class="catalog__list-item">
                                 <div class="catalog__list-content">
                                     <h3 class="catalog__filter-title fut-m">Цвет</h3>
+                                    <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
+                                <form class="dropdown__list" action="">
+                                    <input name="Color Picker" type="color"/>
+                                </form>
                             </li>
                             <hr>
                         </ul>
                     </aside>
+
                     <div class="products catalog__products">
                         <div class="products__item catalog__products-item">
                             <div class="products__sale-stick fut-b">
