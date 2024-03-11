@@ -1222,6 +1222,10 @@ hr{
     justify-content: space-between;
 }
 
+.catalog__inner-promo{
+
+}
+
 .catalog__filter{
     width: 255px;
     line-height: 79.7%;
@@ -1362,8 +1366,11 @@ hr{
 
   /* /. price input */
 
+
+
 .catalog__products{
     width:825px;
+    margin-bottom: 30px;
 }
 
 .catalog__products-item{
@@ -1372,7 +1379,52 @@ hr{
     padding:33px 27px 24px;
 }
 
+.catalog__item-img{
+    width: 186px;
+    height: 144px;
+}
+
 .catalog__but-link{
     width:200px;
     height:45px;
+}
+
+.catalog__pages{
+    display:flex;
+    margin-bottom: 88px;
+    justify-content: center;
+    gap: 9px;
+}
+
+.catalog__pages-item{
+    width: 30px;
+    height: 40px;
+    padding: 13px 10px;
+    border:1px solid #E4E4E4;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+    font-size: 18px;
+    font-family: 'Futura PT Light';
+}
+
+.catalog__pages-item--active{
+    color:#fff;
+    background-color: #0FBF4D;
+    font-family: 'Futura PT Bold';
+
+}
+
+.catalog__pages-arrow{
+    padding: 17px 5px;
+}
+
+.catalog__pages-arrow--rotate{
+    transform:rotate(180deg);
+}
+
+.catalog__wholesale{
+
 }
