@@ -1316,6 +1316,36 @@ hr{
     font-size: 18px;
 }
 
+.close__dropdown{
+
+}
+
+.price__dropdown{
+    display: flex;
+}
+
+.price__dropdown-input{
+
+}
+
+#from{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#to{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.size__dropdown{
+
+}
+
+.color__dropdown{
+
+}
+
 .catalog__products{
     margin-bottom: 30px;
 }

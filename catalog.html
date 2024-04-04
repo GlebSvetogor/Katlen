@@ -338,7 +338,6 @@
                                 <span id="page-quality">25</span>
                                 <img class="dropdown-arrow" src="images/dropDown_BlackArrow-icon.svg" alt="dropDown arrow">
                             </p>
-
                         </div>
 
                         <div class="catalog__menu-item catalog__menu-item--sort">
@@ -363,7 +362,7 @@
                                     <h3 class="catalog__filter-title fut-m">Одежда</h3>
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                                <form class="dropdown__list" action="">
+                                <form class="dropdown__list close__dropdown" action="">
                                     <div class="dropdown__list-item">
                                         <input type="checkbox">
                                         <p class="text m-0 fut-l">Костюм</p>
@@ -384,9 +383,9 @@
                                     <h3 class="catalog__filter-title fut-m">Цена</h3>
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                                <form class="dropdown__list" action="">
-                                    <input type="number" placeholder="от" minlength="100">
-                                    <input type="number" placeholder="до" minlength="2500">
+                                <form class="dropdown__list price__dropdown" action="">
+                                    <input id="from" class="window__input price__dropdown-input m-0" type="text" placeholder="от 39">
+                                    <input id="to" class="window__input price__dropdown-input m-0" type="text" placeholder="до 249">
                                 </form>
                             </li>
                             <hr>
@@ -395,7 +394,7 @@
                                     <h3 class="catalog__filter-title fut-m">Размеры</h3>
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                                <form class="dropdown__list" action="">
+                                <form class="dropdown__list size__dropdown" action="">
                                     <div class="dropdown__list-item">
                                         <input type="checkbox">
                                         <p class="text m-0 fut-l">92-98</p>
@@ -416,7 +415,7 @@
                                     <h3 class="catalog__filter-title fut-m">Цвет</h3>
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                                <form class="dropdown__list" action="">
+                                <form class="dropdown__list color__dropdown" action="">
                                     <input name="Color Picker" type="color"/>
                                 </form>
                             </li>
