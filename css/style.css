@@ -912,6 +912,15 @@ hr{
     margin: 0 0 33px 0;
 }
 
+.wholesale__more{
+    height:0;
+    transition:height 0.3s ease-in-out;
+}
+
+.wholesale__more--active{
+    height:auto;
+}
+
 .wholesale__details{
     display:flex;
     align-items: center;

@@ -41,7 +41,7 @@ function windowVisibility(elementClassName) {
     if(el){
         const computedStyle = window.getComputedStyle(el);
         const displayValue = computedStyle.getPropertyValue('display');
-        console.log(elementClassName);
+        // console.log(elementClassName);
         switch (displayValue){
             case "none":
                 el.style.display = "flex";
