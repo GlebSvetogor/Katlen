@@ -16,6 +16,5 @@ function toggleActiveFunction(elementClassName){
     if(!regex.test(className)){
         className += "--active";
     }
-    console.log(className);
     el.classList.toggle(className.slice(1));
 }

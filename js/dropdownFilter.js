@@ -1,6 +1,5 @@
 const catalogList = document.querySelector(".catalog__list");
 
-
 catalogList.addEventListener('click', (event) => {
     const target = event.target;
 

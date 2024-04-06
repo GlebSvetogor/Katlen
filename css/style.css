@@ -94,11 +94,16 @@ hr{
     transition:color .3s ease-in-out;
     transition:background .3s ease-in-out;
     margin: 0 auto;
+    cursor:pointer;
 }
 
 .but-link:hover{
     background:#fff;
     color:#0FBF4D;
+}
+
+input[type="checkbox"]{
+    cursor: pointer;
 }
 
 .m-0{
@@ -1254,6 +1259,7 @@ hr{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    cursor: pointer;
 }
 
 .dropdown-arrow--sort{
