@@ -1,12 +1,21 @@
 const butLinkWholesale = document.querySelector(".wholesale__but-link");
 const wholesaleMore = document.querySelector(".wholesale__more");
+const wholesaleIcon = document.querySelector(".wholesale__icon");
 
 butLinkWholesale.addEventListener('click', () => {
-    const result = getClassNameFromElement(wholesaleMore);
-    toggleActiveFunction(result);
+    const moreInfo = getClassNameFromElement(wholesaleMore);
+    const moreIcon = getClassNameFromElement(wholesaleIcon);
+    toggleActiveFunction(moreInfo);
+    toggleActiveFunction(moreIcon);
 });
 
 function toggleActiveFunction(elementClassName){
+    const regex = /--active/;
     var el = document.querySelector(elementClassName);
-    el.classList.toggle("--active");
+    var className = getClassNameFromElement(el);
+    if(!regex.test(className)){
+        className += "--active";
+    }
+    console.log(className);
+    el.classList.toggle(className.slice(1));
 }

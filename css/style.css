@@ -898,7 +898,6 @@ hr{
 .wholesale__inner{
     padding: 77px 0 73px 0;
     width: 1836px;
-    height: 623px;
     border-radius: 15px;
     background: #FAFAFA;
 }
@@ -913,12 +912,13 @@ hr{
 }
 
 .wholesale__more{
-    height:0;
-    transition:height 0.3s ease-in-out;
+    max-height:0;
+    transition:max-height 0.3s ease-in-out;
+    overflow:hidden;
 }
 
 .wholesale__more--active{
-    height:auto;
+    max-height:300px;
 }
 
 .wholesale__details{
@@ -929,6 +929,7 @@ hr{
 .wholesale__but-link{
     display:flex;
     gap:8px;
+    cursor:pointer;
 }
 
 .wholesale__details-readfull{
@@ -937,6 +938,11 @@ hr{
 
 .wholesale__icon{
     font-size: 20px;
+    transition: transform .3s ease-in-out;
+}
+
+.wholesale__icon--active{
+    transform: rotate(180deg);
 }
 
 /* /. Wholesale */
