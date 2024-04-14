@@ -407,6 +407,7 @@ input[type="checkbox"]{
     background-color: #fff;
     border-radius: 0 0 15px 15px;
     padding: 20px;
+    border: 1px solid #e4e4e4;
 }
 
 .pop--catalog{
@@ -1426,3 +1427,76 @@ input[type="checkbox"]{
 .catalog__pages-arrow--rotate{
     transform:rotate(180deg);
 }
+
+/* Card (cardProduct.html) */
+
+.card{
+
+}
+
+.card__inner{
+    display: flex;
+    gap:27px;
+}
+
+.card__img{
+    max-width:540px;
+    min-height:545px;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__img-icon{
+
+}
+
+.card__info{
+    width:100%;
+    position:relative;
+
+}
+
+.card__title{
+    font-size:50px;
+    margin-bottom: 16px;
+}
+
+.card__rate{
+    margin-bottom: 25px;
+}
+
+.card__item-descr{
+    max-width:431px;
+    margin-right: 112px;
+    margin-bottom: 31px;
+}
+
+.cards__item-list{
+    gap:30px;
+    margin-bottom: 31px;
+}
+
+.cards__item-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cards__item-text{
+    font-size: 20px;
+}
+
+.card__liked{
+    position:absolute;
+    top: 57px;
+    right:0;
+    cursor:pointer;
+    padding:10px;
+}
+
+.card__liked-img{
+
+}
+
+/* /. Card (cardProduct.html) */
