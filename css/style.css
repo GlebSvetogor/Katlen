@@ -1446,6 +1446,8 @@ input[type="checkbox"]{
     display:flex;
     justify-content: center;
     align-items: center;
+    border-radius:15px;
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 }
 
 .card__img-icon{
@@ -1492,7 +1494,16 @@ input[type="checkbox"]{
     top: 57px;
     right:0;
     cursor:pointer;
-    padding:10px;
+    padding: 10px;
+    border-radius:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:background .3s ease-in-out;
+}
+
+.card__liked--active{
+    background:red;
 }
 
 .card__liked-img{
