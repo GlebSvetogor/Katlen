@@ -1716,6 +1716,8 @@ input[type="checkbox"]{
 
 .order__inner-box{
     width: 100%;
+    display: grid;
+    gap: 30px;
 }
 
 .order__pay-item{
@@ -1735,28 +1737,91 @@ input[type="checkbox"]{
 }
 
 .order__products{
-    margin-top: 30px;
 }
 
 .product__card{
+    display: grid;
+    gap:30px;
+    margin-bottom: 30px;
+}
 
+.product__card-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 36px;
+    border-radius:15px;
+    box-shadow: 0 4px 70px 0 rgba(0, 0, 0, 0.05);
+    position: relative;
+    border: 1px solid #e4e4e4;
 }
 
 .product__card-info{
+    display: flex;
+    gap: 30px;
+}
+
+.product__card-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product__card-img{
+    width:124px;
+}
+
+.product__card-content{
 
 }
 
 .product__card-price{
-
+    display: flex;
 }
 
 .product__card-quality{
-
+    border-right: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .product__main-price{
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product__main-sale{
 
 }
 
-/* /. orderRequest (orderRequest.html) */
+.product__card-can{
+    position: absolute;
+    top:15px;
+    right:15px;
+    cursor:pointer;
+}
 
+.order__request{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.order__final-list{
+    max-width:300px;
+    width:100%;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.order__final-item{
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* /. orderRequest (orderRequest.html) */
