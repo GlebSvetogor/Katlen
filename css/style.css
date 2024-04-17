@@ -1635,43 +1635,107 @@ input[type="checkbox"]{
 }
 
 .order__check{
-
+    display: flex;
+    gap: 27px;
+    margin-left:82px;
+    margin-bottom: 28px;
 }
 
 .order__check-text{
+    font-size: 16px;
+    text-decoration: underline;
+}
 
+.order__check-text--active{
+    color: #0FBF4D;
 }
 
 .order__inner{
-
+    display: grid;
+    gap:30px;
 }
 
 .order__inner-item{
-
+    display: flex;
+    gap: 16px;
 }
 
 .order__inner-num{
-
+    width: 66px;
+    height: 40px;
 }
 
 .order__inner-content{
-
+    width: 100%;
 }
 
 .order__inner-title{
-
+    font-size: 25px;
+    margin-bottom: 30px;
 }
 
 .order__inner-form{
+    display: grid;
+    gap:30px;
+}
 
+.order__pay-form{
+    display: flex;
+    gap:30px;
+    justify-content: space-between;
 }
 
 .order__headline{
+    display: flex;
+    gap:30px;
+}
 
+.order__input{
+    margin:0 !important;
+    height: 45px;
+}
+
+.order__place{
+    display: grid;
+    gap: 30px;
+}
+
+.order__place-region{
+    display: flex;
+    gap:30px
+}
+
+.order__place-item{
+    width:100%;
+}
+
+.order__place-address{
+    display:flex;
+    gap:30px;
+}
+
+.order__inner-box{
+    width: 100%;
+}
+
+.order__pay-item{
+    display: flex;
+    align-items:center;
+    gap:20px
+}
+
+.order__checkbox{
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.order__checkbox-label{
+    font-size: 20px;
 }
 
 .order__products{
-
+    margin-top: 30px;
 }
 
 .product__card{

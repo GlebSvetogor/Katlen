@@ -48,9 +48,9 @@
                                 <h2 class="title window__title fut-b">Вход</h2>
                                 <form class="window__form" action="">
 
-                                    <input class="window__input" type="text" placeholder="Почта">
+                                    <input class="window__input order__input order__input" type="text" placeholder="Почта">
 
-                                    <input class="window__input" type="text" placeholder="Пароль">
+                                    <input class="window__input order__input order__input" type="text" placeholder="Пароль">
 
                                     <p class="window__text">
                                         Новый пользователь?&nbsp;
@@ -78,15 +78,15 @@
                                 <h2 class="title window__title fut-b">Регистрация</h2>
                                 <form class="window__form" action="">
 
-                                    <input class="window__input" type="text" placeholder="Почта">
+                                    <input class="window__input order__input order__input" type="text" placeholder="Почта">
 
-                                    <input class="window__input" type="text" placeholder="Имя">
+                                    <input class="window__input order__input order__input" type="text" placeholder="Имя">
 
-                                    <input class="window__input" type="text" placeholder="Телефон">
+                                    <input class="window__input order__input order__input" type="text" placeholder="Телефон">
 
-                                    <input class="window__input" type="text" placeholder="Пароль">
+                                    <input class="window__input order__input order__input" type="text" placeholder="Пароль">
 
-                                    <input class="window__input" type="text" placeholder="Повторите пароль">
+                                    <input class="window__input order__input order__input" type="text" placeholder="Повторите пароль">
 
                                     <p class="window__text">
                                         Уже есть аккаунт?&nbsp;
@@ -323,21 +323,21 @@
                     Оформить заявку
                 </h1>
                 <div class="order__check">
-                    <p class="text order__check-text fut-b">Я зарегестрирован</p>
-                    <p class="text fut-b">Новый покупатель</p>
+                    <p class="text order__check-text order__check-text--active m-0 fut-b">Я зарегестрирован</p>
+                    <p class="text order__check-text m-0 fut-b">Новый покупатель</p>
                 </div>
                 <div class="order__inner">
                     <div class="order__inner-item">
-                        <img src="" alt="" class="order__inner-num">
+                        <img src="images/01.png" alt="first img" class="order__inner-num">
                         <div class="order__inner-content">
-                            <h3 class="order__inner-title fut-b">Контактная информация</h3>
+                            <h3 class="order__inner-title fut-m">Контактная информация</h3>
                             <form action="" class="order__inner-form">
                                 <div class="order__headline">
-                                    <input type="text" class="window__input">
-                                    <input type="text" class="window__input">
-                                    <input type="text" class="window__input">
+                                    <input type="text" class="window__input order__input" placeholder="Имя">
+                                    <input type="text" class="window__input order__input" placeholder="Фамилия">
+                                    <input type="text" class="window__input order__input" placeholder="Телефон">
                                 </div>
-                                <input class="window__input">
+                                <input class="window__input order__input" placeholder="Email">
                             </form>
                         </div>
                     </div>
@@ -345,20 +345,38 @@
                     <hr>
 
                     <div class="order__inner-item">
-                        <img src="" alt="" class="order__inner-num">
+                        <img src="images/02.png" alt="second img" class="order__inner-num">
                         <div class="order__inner-content">
                             <h3 class="order__inner-title fut-b">Способ доставки</h3>
                             <form action="" class="order__inner-form">
                                 <div class="order__place">
-                                    <input type="text" class="window__input">
-                                    <input type="text" class="window__input">
-                                    <input type="text" class="window__input">
-                                    <input type="text" class="window__input">
+                                    <div class="order__place-region">
+                                        <div class="order__place-item">
+                                            <label for="region">Область</label>
+                                            <input id="region" type="text" class="window__input order__input">
+                                        </div>
+                                        <div class="order__place-item">
+                                            <label for="city">Город</label>
+                                            <input id="city" type="text" class="window__input order__input">
+                                        </div>
+                                    </div>
                                     <div class="order__place-address">
-                                        <input type="text" class="window__input">
-                                        <input type="text" class="window__input">
-                                        <input type="text" class="window__input">
-                                        <input type="text" class="window__input">
+                                        <div class="order__place-item">
+                                            <label for="street">Улица</label>
+                                            <input id="street" type="text" class="window__input order__input">
+                                        </div>
+                                        <div class="order__place-item">
+                                            <label for="house">Дом</label>
+                                            <input id="house" type="text" class="window__input order__input">
+                                        </div>
+                                        <div class="order__place-item">
+                                            <label for="float">Квартира</label>
+                                            <input id="float" type="text" class="window__input order__input">
+                                        </div>
+                                        <div class="order__place-item">
+                                            <label for="index">Индекс</label>
+                                            <input id="index" type="text" class="window__input order__input">
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -368,17 +386,23 @@
                     <hr>
 
                     <div class="order__inner-item">
-                        <img src="" alt="" class="order__inner-num">
+                        <img src="images/03.png" alt="third img" class="order__inner-num">
                         <div class="order__inner-box">
                             <div class="order__inner-content">
                                 <h3 class="order__inner-title fut-b">Способ оплаты</h3>
-                                <form action="" class="order__inner-form">
-                                    <label for=""></label>
-                                    <input type="checkbox" class="">
-                                    <label for=""></label>
-                                    <input type="checkbox" class="">
-                                    <label for=""></label>
-                                    <input type="checkbox" class="">
+                                <form action="" class="order__pay-form">
+                                    <div class="order__pay-item">
+                                        <input id="bank" type="checkbox" class="order__checkbox">
+                                        <label class="order__checkbox-label fut-m" for="bank">Банковская карта</label>
+                                    </div>
+                                    <div class="order__pay-item">
+                                        <input id="money" type="checkbox" class="order__checkbox">
+                                        <label class="order__checkbox-label fut-m" for="money">Наличными при получении</label>
+                                    </div>
+                                    <div class="order__pay-item">
+                                        <input if="" type="checkbox" class="order__checkbox">
+                                        <label class="order__checkbox-label fut-m" for="">Наличными при получении</label>
+                                    </div>
                                 </form>
                             </div>
                             <hr>
