@@ -1825,3 +1825,43 @@ input[type="checkbox"]{
 }
 
 /* /. orderRequest (orderRequest.html) */
+
+/* error.html */
+
+.error{
+    padding: 60px 0;
+}
+
+.error__inner{
+    background: url(../images/404-img.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 571px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.index__link{
+    position: absolute;
+    left: 50px;
+    bottom: 112px;
+}
+/* /. error.html */
+
+/* /. orderGratitude.html */
+
+.gratitude{
+    padding: 60px 0;
+}
+
+.gratitude__inner{
+    background: url(../images/thankForOrder-img.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 571px;
+    border-radius: 15px;
+    position: relative;
+}
+
+/* /. orderGratitude.html */
+
