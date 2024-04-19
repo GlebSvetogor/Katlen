@@ -1832,20 +1832,16 @@ input[type="checkbox"]{
     padding: 60px 0;
 }
 
-.error__inner{
+.error__content{
     background: url(../images/404-img.jpg) no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 571px;
-    border-radius: 15px;
-    position: relative;
 }
 
-.index__link{
+.error__link{
     position: absolute;
-    left: 50px;
+    left: 54px;
     bottom: 112px;
 }
+
 /* /. error.html */
 
 /* /. orderGratitude.html */
@@ -1854,8 +1850,17 @@ input[type="checkbox"]{
     padding: 60px 0;
 }
 
-.gratitude__inner{
+.gratitude__content{
     background: url(../images/thankForOrder-img.jpg) no-repeat;
+}
+
+.gratitude__inner{
+    left: 69px;
+    top: 159px;
+    max-width:605px;
+}
+
+.content{
     background-position: center;
     background-size: cover;
     height: 571px;
@@ -1863,5 +1868,20 @@ input[type="checkbox"]{
     position: relative;
 }
 
-/* /. orderGratitude.html */
+.content__inner{
+    position: absolute;
+    text-align:start;
+}
 
+.content__title{
+    text-align:start;
+    margin-bottom: 24px;
+}
+
+.content__text{
+    margin:0 0 30px 0;
+    line-height:136.7%;
+}
+
+
+/* /. orderGratitude.html */
