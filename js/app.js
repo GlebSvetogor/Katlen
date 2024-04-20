@@ -7,6 +7,17 @@ const signupWindow = document.querySelector(".window--signup");
 const signupWindowLoginBtn = document.querySelector(".window__login-btn");
 const closeSignupBtn = document.querySelector(".window__close-btn--signup");
 
+const inputField = document.getElementById('search-input');
+const outputBlock = document.getElementById('search-result');
+
+inputField.addEventListener('focus', function() {
+    outputBlock.classList.remove('hidden');
+});
+
+  inputField.addEventListener('blur', function() {
+    outputBlock.classList.add('hidden');
+});
+
 closeLoginBtn.addEventListener('click',() => {
     const result = getClassNameFromElement(loginWindow);
     windowVisibility(result);

@@ -348,6 +348,7 @@ input[type="checkbox"]{
 }
 
 .header__search-result{
+    display: block;
     position:absolute;
     width:318px;
     height:314px;
@@ -358,6 +359,10 @@ input[type="checkbox"]{
     top: 70px;
     z-index: 2;
     overflow: overlay;
+}
+
+.hidden{
+    display:none;
 }
 
 /* Полоса прокрутки (скроллбар) */
