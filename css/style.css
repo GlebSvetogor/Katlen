@@ -347,6 +347,8 @@ input[type="checkbox"]{
     height: 16px;
 }
 
+#search-result{}
+
 .menu__window{
     display: grid;
     gap: 10px;
@@ -384,6 +386,19 @@ input[type="checkbox"]{
     margin-bottom: 12px;
 }
 
+#basket-result{}
+
+.basket__window{
+    right: 1px;
+}
+
+.basket__window-wrapper{
+
+}
+
+.basket__window-total{
+    
+}
 
 .hidden{
     display:none;
