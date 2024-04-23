@@ -447,7 +447,23 @@
                             </div>
                         </div>
                     </div><!-- /. card__comments__inner -->
-                    <div class="but-link fut-b">Оставить отзыв</div>
+                    <div id="comment-btn" class="but-link fut-b">Оставить отзыв</div>
+                    <div id="comment-block" class="window hidden" style="display: flex;">
+                        <div class="window__wrapper comment__wrapper">
+                            <div class="window__inner comment__inner">
+                                <h2 class="title window__title fut-b">Написать отзыв</h2>
+                                <form class="window__form" action="">
+                                    <textarea class="comment__textarea" name="" id="" cols="30" rows="10" placeholder="Комментарий"></textarea>
+
+                                    <button class="but-link fut-b" type="submit">Отправить</button>
+
+                                </form>
+                                <button id="comment-closeBtn" class="window__close-btn">
+                                    <img src="images/closeBtn-icon.svg" alt="close-btn icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div><!-- /. card__comments -->
 
             </div><!-- /. container -->
