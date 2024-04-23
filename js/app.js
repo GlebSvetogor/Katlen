@@ -13,10 +13,22 @@ const outputBlock = document.getElementById('search-result');
 const basketBtn = document.getElementById('basket-btn');
 const basketOutputBlock = document.getElementById('basket-result');
 
+const commentBtn = document.getElementById('comment-btn');
+const commentOutputBlock = document.getElementById('comment-block');
+const commentCloseBtn = document.getElementById('comment-closeBtn');
+
 document.addEventListener('click', function(event) {
     if (event.target !== basketBtn && !basketOutputBlock.contains(event.target)) {
         basketOutputBlock.classList.add('hidden');
     }
+});
+
+commentBtn.addEventListener('click', function() {
+    commentOutputBlock.classList.Remove('hidden');
+});
+
+commentCloseBtn.addEventListener('click', function() {
+    commentOutputBlock.classList.Add('hidden');
 });
 
 basketBtn.addEventListener('click', function() {
