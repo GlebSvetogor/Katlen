@@ -10,6 +10,19 @@ const closeSignupBtn = document.querySelector(".window__close-btn--signup");
 const inputField = document.getElementById('search-input');
 const outputBlock = document.getElementById('search-result');
 
+const basketBtn = document.getElementById('basket-btn');
+const basketOutputBlock = document.getElementById('basket-result');
+
+document.addEventListener('click', function(event) {
+    if (event.target !== basketBtn && !basketOutputBlock.contains(event.target)) {
+        basketOutputBlock.classList.add('hidden');
+    }
+});
+
+basketBtn.addEventListener('click', function() {
+    basketOutputBlock.classList.toggle('hidden');
+});
+
 inputField.addEventListener('focus', function() {
     outputBlock.classList.remove('hidden');
 });

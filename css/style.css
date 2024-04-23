@@ -389,15 +389,45 @@ input[type="checkbox"]{
 #basket-result{}
 
 .basket__window{
+    height: auto;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
     right: 1px;
+    padding: 10px 0 10px 10px;
 }
 
 .basket__window-wrapper{
+    height: 314px;
+    display: grid;
+    gap: 10px;
+    overflow:overlay;
+    padding-right: 10px;
+}
 
+.basket__delete-btn{
+    cursor: pointer;
+}
+
+.basket__delete-icon{
+    padding: 5px;
 }
 
 .basket__window-total{
-    
+    display: grid;
+    gap:24px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.basket__window-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.basket__but-link{
+    width: 100%;
 }
 
 .hidden{
