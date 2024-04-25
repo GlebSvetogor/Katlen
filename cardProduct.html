@@ -7,6 +7,7 @@
     <script src="js/app.js" defer></script>
     <script src="js/cardLikedAnimation.js" defer></script>
     <script src="js/activeToggle.js" defer></script>
+    <script src="js/commentWindow.js" defer></script>
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -16,7 +17,7 @@
             <div class="header__heading">
                 <div class="header__heading-info">
                     <div class="header__heading-lang">
-                        <button class="header__heading-btn">Укр</button>
+                        <button class="header__heading-btn">Анг</button>
                         <button class="header__heading-btn header__heading-btn--active">Рус</button>
                     </div>
                     <div class="header__heading-contacts">
@@ -33,7 +34,7 @@
                 </div>
                 <div class="header__heading-menu">
                     <form class="header__heading-form" action="">
-                        <input class="header__heading-input" type="text" placeholder="Поиск по сайту">
+                        <input id="search-input" class="header__heading-input" type="text" placeholder="Поиск по сайту">
                         <div class="header__heading-search">
                             <img class="header__heading-icon" src="images/search-icon.svg" alt="search icon">
                         </div>
@@ -109,18 +110,123 @@
                         </div>
                     </div>
 
-                    <button class="header__heading-user">
+                    <button id="basket-btn" class="header__heading-user">
                         <img class="header__heading-icon" src="images/basket-icon.svg" alt="user basket">
                     </button>
                     <!-- Иконки -->
                 </div>
-            </div>
 
-            <hr>
+                <div id="search-result" class="menu__window hidden">
+                    <div class="menu__window-item">
+                        <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                        <div class="menu__window-content">
+                            <h3 class="menu__window-title fut-l">Костюм Гномик длинное
+                                название</h3>
+                            <div class="products__sale">
+                                <span class="products__sale-value fut-b">250 ₴</span>
+                                <span class="products__full-price fut-b">
+                                    300 ₴
+                                    <svg class="cross-line" xmlns="http://www.w3.org/2000/svg" width="62" height="18" viewBox="0 0 62 18" fill="none">
+                                        <path d="M61 1L1 17" stroke="#FF003D"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu__window-item">
+                        <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                        <div class="menu__window-content">
+                            <h3 class="menu__window-title fut-l">Костюм Гномик длинное
+                                название</h3>
+                            <div class="products__sale">
+                                <span class="products__sale-value fut-b">250 ₴</span>
+                                <span class="products__full-price fut-b">
+                                    300 ₴
+                                    <svg class="cross-line" xmlns="http://www.w3.org/2000/svg" width="62" height="18" viewBox="0 0 62 18" fill="none">
+                                        <path d="M61 1L1 17" stroke="#FF003D"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu__window-item">
+                        <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                        <div class="menu__window-content">
+                            <h3 class="menu__window-title fut-l">Костюм Гномик длинное
+                                название</h3>
+                            <div class="products__sale">
+                                <span class="products__sale-value fut-b">250 ₴</span>
+                                <span class="products__full-price fut-b">
+                                    300 ₴
+                                    <svg class="cross-line" xmlns="http://www.w3.org/2000/svg" width="62" height="18" viewBox="0 0 62 18" fill="none">
+                                        <path d="M61 1L1 17" stroke="#FF003D"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="basket-result" class="menu__window basket__window hidden">
+                    <div class="basket__window-wrapper">
+                        <div class="menu__window-item">
+                            <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                            <div class="menu__window-content">
+                                <h3 class="menu__window-title fut-l">Костюм Гномик длинное название</h3>
+                                <span class="products__sale-value fut-b">250 ₴</span>
+                            </div>
+                            <button class="basket__delete-btn">
+                                <img class="basket__delete-icon" src="images/BasketClose-icon.svg" alt="basket close-btn icon">
+                            </button>
+                        </div>
+                        <div class="menu__window-item">
+                            <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                            <div class="menu__window-content">
+                                <h3 class="menu__window-title fut-l">Костюм Гномик длинное название</h3>
+                                <span class="products__sale-value fut-b">250 ₴</span>
+                            </div>
+                            <button class="basket__delete-btn">
+                                <img class="basket__delete-icon" src="images/BasketClose-icon.svg" alt="basket close-btn icon">
+                            </button>
+                        </div>
+                        <div class="menu__window-item">
+                            <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                            <div class="menu__window-content">
+                                <h3 class="menu__window-title fut-l">Костюм Гномик длинное название</h3>
+                                <span class="products__sale-value fut-b">250 ₴</span>
+                            </div>
+                            <button class="basket__delete-btn">
+                                <img class="basket__delete-icon" src="images/BasketClose-icon.svg" alt="basket close-btn icon">
+                            </button>
+                        </div>
+                        <div class="menu__window-item">
+                            <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                            <div class="menu__window-content">
+                                <h3 class="menu__window-title fut-l">Костюм Гномик длинное название</h3>
+                                <span class="products__sale-value fut-b">250 ₴</span>
+                            </div>
+                            <button class="basket__delete-btn">
+                                <img class="basket__delete-icon" src="images/BasketClose-icon.svg" alt="basket close-btn icon">
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="basket__window-total">
+                        <div class="basket__window-info">
+                            <p class="text m-0 fut-m">Всего 3 товара</p>
+                            <span class="products__sale-value fut-b">250 ₴</span>
+                        </div>
+                        <a class="but-link basket__but-link fut-b" href="">Перейти к оформлению заказа</a>
+                    </div>
+                </div>
+            </div><!-- /. header__heading -->
+
+
+            <hr class="header__line">
             <nav class="nav">
                 <ul class="nav__list">
                     <li class="nav__list-item nav__list-item--catalog">
-                        <a href="#" class="nav__link fut-book">Каталог</a>
+                        <a href="catalog.html" class="nav__link fut-book">Каталог</a>
                         <div class="pop pop--catalog">
                             <ul class="pop__list">
                                 <li class="pop__list-item">
@@ -310,11 +416,13 @@
                                 </li>
                             </ul>
                         </div>
+
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
+
     <hr>
 
     <main>
@@ -396,7 +504,7 @@
                             <li class="products__item-content">
                                 <form class="cards__item-content card__price-form" action="">
                                     <span class="cards__item-text card__price-text fut-l">Количество товара:</span>
-                                    <input class="cards__item-input m-0" min="1" max="99" value="1" type="number">
+                                    <input class="cards__item-input fut-b m-0" min="1" max="99" value="1" type="number">
                                     <div class="but-link card__price-but m-0 fut-b">Добавить в корзину</div>
                                 </form>
                             </li>
@@ -448,7 +556,9 @@
                         </div>
                     </div><!-- /. card__comments__inner -->
                     <div id="comment-btn" class="but-link fut-b">Оставить отзыв</div>
-                    <div id="comment-block" class="window hidden" style="display: flex;">
+
+
+                    <div id="comment-block" class="window comment__window hidden">
                         <div class="window__wrapper comment__wrapper">
                             <div class="window__inner comment__inner">
                                 <h2 class="title window__title fut-b">Написать отзыв</h2>
@@ -464,6 +574,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div><!-- /. card__comments -->
 
             </div><!-- /. container -->
