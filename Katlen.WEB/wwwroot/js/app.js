@@ -12,22 +12,17 @@ const outputBlock = document.getElementById('search-result');
 
 const basketBtn = document.getElementById('basket-btn');
 const basketOutputBlock = document.getElementById('basket-result');
+const body = document.getElementsByClassName('body');
 
 document.addEventListener('click', function(event) {
-    if (event.target !== basketBtn && !basketOutputBlock.contains(event.target)) {
+    if (event.target != basketBtn && !basketOutputBlock.contains(event.target) && !basketBtn.contains(event.target)) {
+        console.log(event.target)
         basketOutputBlock.classList.add('hidden');
     }
 });
 
-commentBtn.addEventListener('click', function() {
-    commentOutputBlock.classList.Remove('hidden');
-});
-
-commentCloseBtn.addEventListener('click', function() {
-    commentOutputBlock.classList.Add('hidden');
-});
-
 basketBtn.addEventListener('click', function() {
+    console.log('Событие кнопки сработало');
     basketOutputBlock.classList.toggle('hidden');
 });
 
