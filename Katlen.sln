@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katlen.WEB", "Katlen.WEB\Katlen.WEB.csproj", "{4A768408-D919-42A0-A6DC-4B115B340401}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Katlen.WEB", "Katlen.WEB\Katlen.WEB.csproj", "{4A768408-D919-42A0-A6DC-4B115B340401}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katlen.DAL", "Katlen.DAL\Katlen.DAL.csproj", "{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4A768408-D919-42A0-A6DC-4B115B340401}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A768408-D919-42A0-A6DC-4B115B340401}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A768408-D919-42A0-A6DC-4B115B340401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
