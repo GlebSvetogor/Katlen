@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Katlen.DAL.Entities
+namespace Katlen.BLL.DTO
 {
-    public class ProductDAL
+    public class CardProductDTO
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public int Rate { get; set; }
         public string Model { get; set; }
         public string Tall { get; set; }
@@ -18,6 +18,5 @@ namespace Katlen.DAL.Entities
         public string ImgSource { get; set; }
         public int Price { get; set; }
         public int Sale { get; set; }
-
     }
 }
