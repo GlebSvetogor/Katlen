@@ -15,6 +15,7 @@ namespace Katlen.DAL.Entities
         public string Size { get; set; }
         public string Material { get; set; }
         public bool IsAvailable { get; set; }
+        public string ImgSource { get; set; }
 
     }
 }

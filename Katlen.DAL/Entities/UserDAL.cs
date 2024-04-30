@@ -8,15 +8,14 @@ namespace Katlen.DAL.Entities
 {
     public class UserDAL
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Password { get; set; }
-        public string RepeatPassword { get; set; }
         public ICollection<OrderDAL> Orders { get; set; }
         public ICollection<CommentDAL> Comments { get; set; }
-        public ICollection<Basket> Baskets { get; set; }
-        public ICollection<Like> Likes { get; set; }
+        public ICollection<ProductDAL> Baskets { get; set; }
+        public ICollection<ProductDAL> Likes { get; set; }
     }
 }

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Katlen.WEB", "Katlen.WEB\Katlen.WEB.csproj", "{4A768408-D919-42A0-A6DC-4B115B340401}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katlen.DAL", "Katlen.DAL\Katlen.DAL.csproj", "{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Katlen.DAL", "Katlen.DAL\Katlen.DAL.csproj", "{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katlen.BLL", "Katlen.BLL\Katlen.BLL.csproj", "{DE79B9D0-8D34-4FCC-8E1D-1A5483CFF06F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE79B9D0-8D34-4FCC-8E1D-1A5483CFF06F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE79B9D0-8D34-4FCC-8E1D-1A5483CFF06F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE79B9D0-8D34-4FCC-8E1D-1A5483CFF06F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE79B9D0-8D34-4FCC-8E1D-1A5483CFF06F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
