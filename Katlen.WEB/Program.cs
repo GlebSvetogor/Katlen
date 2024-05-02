@@ -1,20 +1,25 @@
 using Katlen.DAL.EF;
 using Microsoft.EntityFrameworkCore;
-using Katlen.WEB.Data;
 using Microsoft.AspNetCore.Identity;
+using Katlen.WEB.Models;
+using Microsoft.Extensions.Configuration;
+using Katlen.DAL.Interfaces;
+using Katlen.DAL.Entities;
+using Katlen.DAL.Implementations;
+using Katlen.BLL.Interfaces;
+using Katlen.BLL.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// �������� ������ ����������� �� ����� ������������
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// ��������� �������� ApplicationContext � �������� ������� � ����������
 builder.Services.AddDbContext<KatlenContext>(options => options.UseSqlServer(connection));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<KatlenWEBContext>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICatalog, CatalogBL>();
 
 var app = builder.Build();
 
@@ -31,6 +36,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

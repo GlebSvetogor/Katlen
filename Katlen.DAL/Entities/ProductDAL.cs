@@ -18,7 +18,8 @@ namespace Katlen.DAL.Entities
         public bool IsAvailable { get; set; }
         public string ImgSource { get; set; }
         public int Price { get; set; }
-        public int Sale { get; set; }
+        public int FullPrice { get; set; }
+        public ICollection<CommentDAL> Comments { get; set; }
 
     }
 }

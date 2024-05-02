@@ -82,7 +82,7 @@
                         <div class="window__wrapper">
                             <div class="window__inner">
                                 <h2 class="title window__title fut-b">Регистрация</h2>
-                                <form class="window__form" action="">
+                                <form method="post" asp-controller="Account" asp-action="Register" class="window__form">
 
                                     <input class="window__input" type="text" placeholder="Почта">
 
@@ -104,7 +104,7 @@
                                         <p class="window__text m-0">Я согласен с условиями <u>персональных данных</u></p>
                                     </div>
 
-                                    <button class="but-link fut-b" type="submit">Зарегестрироваться</button>
+                                    <input class="but-link fut-b" type="submit" value="Зарегестрироваться">
 
                                     <button class="window__close-btn window__close-btn--signup">
                                         <img src="images/closeBtn-icon.svg" alt="close-btn icon">

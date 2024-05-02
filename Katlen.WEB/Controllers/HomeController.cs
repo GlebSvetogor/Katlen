@@ -1,3 +1,4 @@
+using Katlen.BLL.Interfaces;
 using Katlen.WEB.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -15,6 +16,7 @@ namespace Katlen.WEB.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
