@@ -9,6 +9,7 @@ namespace Katlen.BLL.DTO
     public class ProductDTO
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public int Rate { get; set; }
         public string Tall { get; set; }
         public string Material { get; set; }

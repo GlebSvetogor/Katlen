@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Katlen.BLL.DTO;
 using Katlen.BLL.Interfaces;
-using Katlen.WEB.Models;
+using Katlen.WEB.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

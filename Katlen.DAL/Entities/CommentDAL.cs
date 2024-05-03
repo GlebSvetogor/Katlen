@@ -8,7 +8,7 @@ namespace Katlen.DAL.Entities
 {
     public class CommentDAL
     {
-        public int CommentId { get; set; }
+        public int Id { get; set; }
         public UserDAL User { get; set; }
         public ProductDAL Product { get; set; }
         public int Rate { get; set; }

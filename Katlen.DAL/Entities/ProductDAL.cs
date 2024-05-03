@@ -8,7 +8,7 @@ namespace Katlen.DAL.Entities
 {
     public class ProductDAL
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Rate { get; set; }
         public string Model { get; set; }

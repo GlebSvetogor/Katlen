@@ -1,4 +1,4 @@
-﻿namespace Katlen.WEB.Models
+﻿namespace Katlen.WEB.ViewModels
 {
     public class ProductViewModel
     {

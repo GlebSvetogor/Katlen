@@ -1485,10 +1485,13 @@ input[type="checkbox"]{
     margin-bottom: 30px;
 }
 
-.catalog__products-item{
-    width:255px;
-    height:428px;
-    padding:33px 27px 24px;
+.catalog__products-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    width: 255px;
+    padding: 33px 27px 24px;
 }
 
 .catalog__item-img{
