@@ -49,7 +49,7 @@ namespace Katlen.WEB.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("Katlen.DAL.Entities.OrderDAL", b =>
@@ -87,7 +87,7 @@ namespace Katlen.WEB.Migrations
 
                     b.HasIndex("UserDALId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("Katlen.DAL.Entities.ProductDAL", b =>
@@ -151,7 +151,7 @@ namespace Katlen.WEB.Migrations
 
                     b.HasIndex("UserDALId1");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Katlen.DAL.Entities.UserDAL", b =>
@@ -180,7 +180,7 @@ namespace Katlen.WEB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("KatlenUsers");
+                    b.ToTable("KatlenUsers", (string)null);
                 });
 
             modelBuilder.Entity("Katlen.DAL.Entities.CommentDAL", b =>

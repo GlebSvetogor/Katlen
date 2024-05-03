@@ -24,7 +24,6 @@ namespace Katlen.BLL.Implementations
             this.db = db;
             this.pr = pr;
         }
-
         public IEnumerable<ProductDTO> GetAllProducts()
         {
             // Создание конфигурации сопоставления

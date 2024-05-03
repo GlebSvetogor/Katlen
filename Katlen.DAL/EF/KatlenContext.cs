@@ -16,7 +16,6 @@ namespace Katlen.DAL.EF
         public DbSet<CommentDAL> Comments { get; set; }
         public KatlenContext(DbContextOptions<KatlenContext> options) : base(options) 
         {
-            Database.EnsureCreated();
         }
     }
 }

@@ -1,83 +1,26 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Katlen.BLL.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Katlen.WEB.Controllers
 {
     public class CardProductController : Controller
     {
+        private readonly ICardProduct cp;
+        public CardProductController(ICardProduct cp) 
+        {
+            this.cp = cp;
+        }
         // GET: CardProductController
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
-        }
-
-        // GET: CardProductController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: CardProductController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CardProductController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+            var cardProduct = cp.GetCardProductById(id);
+            if(cardProduct is not null)
             {
-                return RedirectToAction(nameof(Index));
+                return View(cardProduct);
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Error");
         }
 
-        // GET: CardProductController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: CardProductController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CardProductController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CardProductController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

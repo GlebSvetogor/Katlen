@@ -1,4 +1,4 @@
-﻿@model List<ProductViewModel>
+﻿@model List<Katlen.WEB.ViewModels.ProductViewModel>
 
 <hr>
 
@@ -158,7 +158,6 @@
                                                     break;
                                             }
                                         }
-
                                     </svg>
                                     <h3 class="products__item-title fut-m">
                                         @item.Name
@@ -191,7 +190,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <a class="but-link catalog__but-link fut-b" href="#">Детальнее</a>
+                                    <a asp-controller="CardProduct" asp-action="Index" class="but-link catalog__but-link fut-b">Детальнее</a>
                                 </div>
                             </div>
                         }

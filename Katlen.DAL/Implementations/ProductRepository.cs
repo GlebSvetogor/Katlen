@@ -49,7 +49,7 @@ namespace Katlen.DAL.Implementations
             List<ProductDAL> products = new List<ProductDAL>();
             foreach (string size in sizes)
             {
-                var selectedProducts = from p in db.Products where p.Size.Contains(size) select p;
+                var selectedProducts = from p in db.Products where p.Sizes.Contains(size) select p;
                 products.AddRange(selectedProducts);
             }
             return products;
@@ -74,7 +74,7 @@ namespace Katlen.DAL.Implementations
 
         public IEnumerable<ProductDAL> SortBySize()
         {
-            var sortedProducts = db.Products.OrderBy(p => p.Size);
+            var sortedProducts = db.Products.OrderBy(p => p.Sizes);
             return sortedProducts;
         }
 
