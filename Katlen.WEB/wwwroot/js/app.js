@@ -16,13 +16,11 @@ const body = document.getElementsByClassName('body');
 
 document.addEventListener('click', function(event) {
     if (event.target != basketBtn && !basketOutputBlock.contains(event.target) && !basketBtn.contains(event.target)) {
-        console.log(event.target)
         basketOutputBlock.classList.add('hidden');
     }
 });
 
 basketBtn.addEventListener('click', function() {
-    console.log('Событие кнопки сработало');
     basketOutputBlock.classList.toggle('hidden');
 });
 
@@ -68,7 +66,6 @@ function windowVisibility(elementClassName) {
     if(el){
         const computedStyle = window.getComputedStyle(el);
         const displayValue = computedStyle.getPropertyValue('display');
-        // console.log(elementClassName);
         switch (displayValue){
             case "none":
                 el.style.display = "flex";

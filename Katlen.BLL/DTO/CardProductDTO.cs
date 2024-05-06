@@ -13,12 +13,10 @@ namespace Katlen.BLL.DTO
         public int Rate { get; set; }
         public string Model { get; set; }
         public string Tall { get; set; }
-        public List<string> Sizes { get; set; }
-        public List<bool> SizesAreAvailable { get; set; }
+        public Dictionary<string, bool> Sizes { get; set; }
         public string Material { get; set; }
         public string ImgSource { get; set; }
         public int Price { get; set; }
         public int FullPrice { get; set; }
-        public int Sale { get; set; }
     }
 }

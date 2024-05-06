@@ -26,11 +26,9 @@ namespace Katlen.BLL.Implementations
         }
         public IEnumerable<ProductDTO> GetAllProducts()
         {
-            // Создание конфигурации сопоставления
+            
             var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDAL, ProductDTO>());
-            // Настройка AutoMapper
             var mapper = new Mapper(config);
-            // сопоставление
             var products = mapper.Map<List<ProductDTO>>(pr.GetAll());
 
             return products;

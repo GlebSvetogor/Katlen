@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"] - Katlen.WEB</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="js/swiper.js" defer></script>
-    <script src="js/app.js" defer></script>
-    <script src="js/activeToggle.js" defer></script>
-    <script src="js/dropdownFilter.js" defer></script>
-    <link rel="stylesheet" href="fonts/fonts.css">
-    <link rel="stylesheet" href="css/style.css">
+    <script src="~/js/swiper.js" defer></script>
+    <script src="~/js/app.js" defer></script>
+    <script src="~/js/activeToggle.js" defer></script>
+    <script src="~/js/dropdownFilter.js" defer></script>
+    <link rel="stylesheet" href="~/fonts/fonts.css">
+    <link rel="stylesheet" href="~/css/style.css">
 </head>
 
 <body class="fut-l">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="header__heading-logo">
                     <a class="header__heading-but-link" href="#">
-                        <img src="images/logo-icon.svg" alt="logo img">
+                        <img src="~/images/logo-icon.svg" alt="logo img">
                     </a>
                     <p class="header__heading-text fut-book">производитель детской одежды</p>
                 </div>
@@ -41,12 +41,12 @@
                     <form class="header__heading-form" action="">
                         <input id="search-input" class="header__heading-input" type="text" placeholder="Поиск по сайту">
                         <div class="header__heading-search">
-                            <img class="header__heading-icon" src="images/search-icon.svg" alt="search icon">
+                            <img class="header__heading-icon" src="~/images/search-icon.svg" alt="search icon">
                         </div>
                     </form>
 
                     <button class="header__heading-user">
-                        <img class="header__heading-icon" src="images/user-icon.svg" alt="user icon">
+                        <img class="header__heading-icon" src="~/images/user-icon.svg" alt="user icon">
                     </button>
 
                     <div class="window window--login">
@@ -71,7 +71,7 @@
                                     <button class="but-link fut-b" type="submit">Войти</button>
 
                                     <button class="window__close-btn window__close-btn--login">
-                                        <img src="images/closeBtn-icon.svg" alt="close-btn icon">
+                                        <img src="~/images/closeBtn-icon.svg" alt="close-btn icon">
                                     </button>
                                 </form>
                             </div>
@@ -107,7 +107,7 @@
                                     <input class="but-link fut-b" type="submit" value="Зарегестрироваться">
 
                                     <button class="window__close-btn window__close-btn--signup">
-                                        <img src="images/closeBtn-icon.svg" alt="close-btn icon">
+                                        <img src="~/images/closeBtn-icon.svg" alt="close-btn icon">
                                     </button>
                                 </form>
                             </div>
@@ -115,14 +115,14 @@
                     </div>
 
                     <button id="basket-btn" class="header__heading-user">
-                        <img class="header__heading-icon" src="images/basket-icon.svg" alt="user basket">
+                        <img class="header__heading-icon" src="~/images/basket-icon.svg" alt="user basket">
                     </button>
                     <!-- Иконки -->
                 </div>
 
                 <div id="search-result" class="menu__window hidden">
                     <div class="menu__window-item">
-                        <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                        <img class="menu__window-img" src="~/images/costumTiger-img.jpg" alt="window img">
                         <div class="menu__window-content">
                             <h3 class="menu__window-title fut-l">
                                 Костюм Гномик длинное
@@ -140,7 +140,7 @@
                         </div>
                     </div>
                     <div class="menu__window-item">
-                        <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                        <img class="menu__window-img" src="~/images/costumTiger-img.jpg" alt="window img">
                         <div class="menu__window-content">
                             <h3 class="menu__window-title fut-l">
                                 Костюм Гномик длинное
@@ -158,7 +158,7 @@
                         </div>
                     </div>
                     <div class="menu__window-item">
-                        <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                        <img class="menu__window-img" src="~/images/costumTiger-img.jpg" alt="window img">
                         <div class="menu__window-content">
                             <h3 class="menu__window-title fut-l">
                                 Костюм Гномик длинное
@@ -180,7 +180,17 @@
                 <div id="basket-result" class="menu__window basket__window hidden">
                     <div class="basket__window-wrapper">
                         <div class="menu__window-item">
-                            <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                            <img class="menu__window-img" src="~/images/costumTiger-img.jpg" alt="window img">
+                            <div class="menu__window-content">
+                                <h3 class="menu__window-title fut-l">Костюм Гномик длинное название</h3>
+                                <span class="products__sale-value fut-b">250 ₴</span>
+                            </div>
+                            <button class="basket__delete-btn">
+                                <img class="basket__delete-icon" src="~/images/BasketClose-icon.svg" alt="basket close-btn icon">
+                            </button>
+                        </div>
+                        <div class="menu__window-item">
+                            <img class="menu__window-img" src="~/images/costumTiger-img.jpg" alt="window img">
                             <div class="menu__window-content">
                                 <h3 class="menu__window-title fut-l">Костюм Гномик длинное название</h3>
                                 <span class="products__sale-value fut-b">250 ₴</span>
@@ -190,33 +200,23 @@
                             </button>
                         </div>
                         <div class="menu__window-item">
-                            <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                            <img class="menu__window-img" src="~/images/costumTiger-img.jpg" alt="window img">
                             <div class="menu__window-content">
                                 <h3 class="menu__window-title fut-l">Костюм Гномик длинное название</h3>
                                 <span class="products__sale-value fut-b">250 ₴</span>
                             </div>
                             <button class="basket__delete-btn">
-                                <img class="basket__delete-icon" src="images/BasketClose-icon.svg" alt="basket close-btn icon">
+                                <img class="basket__delete-icon" src="~/images/BasketClose-icon.svg" alt="basket close-btn icon">
                             </button>
                         </div>
                         <div class="menu__window-item">
-                            <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
+                            <img class="menu__window-img" src="~/images/costumTiger-img.jpg" alt="window img">
                             <div class="menu__window-content">
                                 <h3 class="menu__window-title fut-l">Костюм Гномик длинное название</h3>
                                 <span class="products__sale-value fut-b">250 ₴</span>
                             </div>
                             <button class="basket__delete-btn">
-                                <img class="basket__delete-icon" src="images/BasketClose-icon.svg" alt="basket close-btn icon">
-                            </button>
-                        </div>
-                        <div class="menu__window-item">
-                            <img class="menu__window-img" src="images/costumTiger-img.jpg" alt="window img">
-                            <div class="menu__window-content">
-                                <h3 class="menu__window-title fut-l">Костюм Гномик длинное название</h3>
-                                <span class="products__sale-value fut-b">250 ₴</span>
-                            </div>
-                            <button class="basket__delete-btn">
-                                <img class="basket__delete-icon" src="images/BasketClose-icon.svg" alt="basket close-btn icon">
+                                <img class="basket__delete-icon" src="~/images/BasketClose-icon.svg" alt="basket close-btn icon">
                             </button>
                         </div>
                     </div>
@@ -527,26 +527,26 @@
                 </ul>
                 <div class="footer__inner-social">
                     <a class="footer__social-but-link" href="#">
-                        <img class="footer__social-img" src="images/facebook-icon.svg" alt="facebook but-link">
+                        <img class="footer__social-img" src="~/images/facebook-icon.svg" alt="facebook but-link">
                     </a>
                     <a class="footer__social-but-link" href="#">
-                        <img class="footer__social-img" src="images/youtube-icon.svg" alt="youtube but-link">
+                        <img class="footer__social-img" src="~/images/youtube-icon.svg" alt="youtube but-link">
                     </a>
                     <a class="footer__social-but-link" href="#">
-                        <img class="footer__social-img" src="images/instagram-icon.svg" alt="instagram but-link">
+                        <img class="footer__social-img" src="~/images/instagram-icon.svg" alt="instagram but-link">
                     </a>
                 </div>
                 <div class="footer__inner-subinfo">
                     <p class="footer__inner-text fut-l">©Интернет-магазин детской одежды «Катлен» 2005-2022</p>
                     <div class="footer__payment">
                         <a class="footer__payment-but-link" href="#">
-                            <img class="footer__payment-img" src="images/mastercard-icon.svg" alt="master card but-link">
+                            <img class="footer__payment-img" src="~/images/mastercard-icon.svg" alt="master card but-link">
                         </a>
                         <a class="footer__payment-but-link" href="#">
-                            <img class="footer__payment-img" src="images/visa-icon.svg" alt="visa but-link">
+                            <img class="footer__payment-img" src="~/images/visa-icon.svg" alt="visa but-link">
                         </a>
                         <a class="footer__payment-but-link" href="#">
-                            <img class="footer__payment-img" src="images/liqpay-icon.svg" alt="liqpay but-link">
+                            <img class="footer__payment-img" src="~/images/liqpay-icon.svg" alt="liqpay but-link">
                         </a>
                     </div>
                 </div>
