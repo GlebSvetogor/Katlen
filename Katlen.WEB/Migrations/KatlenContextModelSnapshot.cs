@@ -49,7 +49,7 @@ namespace Katlen.WEB.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Katlen.DAL.Entities.OrderDAL", b =>
@@ -87,7 +87,7 @@ namespace Katlen.WEB.Migrations
 
                     b.HasIndex("UserDALId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Katlen.DAL.Entities.ProductDAL", b =>
@@ -104,9 +104,6 @@ namespace Katlen.WEB.Migrations
                     b.Property<string>("ImgSource")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Material")
                         .IsRequired()
@@ -129,7 +126,11 @@ namespace Katlen.WEB.Migrations
                     b.Property<int>("Rate")
                         .HasColumnType("int");
 
-                    b.Property<string>("Size")
+                    b.Property<string>("Sizes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SizesAreAvailable")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -151,7 +152,7 @@ namespace Katlen.WEB.Migrations
 
                     b.HasIndex("UserDALId1");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Katlen.DAL.Entities.UserDAL", b =>
@@ -180,7 +181,7 @@ namespace Katlen.WEB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("KatlenUsers", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Katlen.DAL.Entities.CommentDAL", b =>
