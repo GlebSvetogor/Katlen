@@ -199,37 +199,55 @@
 
                     <div class="catalog__pages">
                         <ul class="catalog__pages-list">
-                            <li class="catalog__pages-item catalog__pages-arrow">
-                                @if (Model.PageViewModel.HasPreviousPage)
-                                {
-                                    <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber - 1)">
+                            @if (Model.PageViewModel.HasPreviousPage)
+                            {
+                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber - 1)">
+                                    <li class="catalog__pages-item catalog__pages-arrow">
                                         <img src="images/pageArrow-icon.svg" alt="previous page">
-                                    </a>
-                                }
-                            </li>
-                            <li class="catalog__pages-item catalog__pages-item--active">
-                                <a asp-action="Index" asp-route-page="@Model.PageViewModel.Pages[0]">@Model.PageViewModel.Pages[0]</a>
-                            </li>
-                            <li class="catalog__pages-item">
-                                <a asp-action="Index" asp-route-page="@Model.PageViewModel.Pages[1]">@Model.PageViewModel.Pages[1]</a>
-                            </li>
-                            <li class="catalog__pages-item">
-                                <a asp-action="Index" asp-route-page="@Model.PageViewModel.Pages[2]">@Model.PageViewModel.Pages[2]</a>
-                            </li>
-                            <li class="catalog__pages-item">
-                                <a asp-action="Index" asp-route-page="@Model.PageViewModel.Pages[3]">@Model.PageViewModel.Pages[3]</a>
-                            </li>
-                            <li class="catalog__pages-item">
-                                <a asp-action="Index" asp-route-page="@Model.PageViewModel.Pages[4]">@Model.PageViewModel.Pages[4]</a>
-                            </li>
-                            <li class="catalog__pages-item catalog__pages-arrow">
-                                @if (Model.PageViewModel.HasNextPage)
+                                    </li>
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber)">
+                                    <li class="catalog__pages-item catalog__pages-arrow">
+                                        <img src="images/pageArrow-icon.svg" alt="previous page">
+                                    </li>
+                                </a>
+                            }
+                            
+                            @foreach (var item in Model.PageViewModel.Pages)
+                            {
+                                if(Model.PageViewModel.PageNumber == item)
                                 {
-                                    <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber + 1)">
-                                        <img class="catalog__pages-arrow--rotate" src="images/pageArrow-icon.svg" alt="next page">
+                                    <a asp-action="Index" asp-route-page="@item">
+                                        <li class="catalog__pages-item catalog__pages-item--active">@item</li>
                                     </a>
                                 }
-                            </li>
+                                else
+                                {
+                                    <a asp-action="Index" asp-route-page="@item">
+                                        <li class="catalog__pages-item">@item</li>
+                                    </a>
+                                }
+                            }
+
+                            @if (Model.PageViewModel.HasNextPage)
+                            {
+                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber + 1)">
+                                    <li class="catalog__pages-item catalog__pages-arrow">
+                                        <img class="catalog__pages-arrow--rotate" src="images/pageArrow-icon.svg" alt="next page">
+                                    </li>
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber)">
+                                    <li class="catalog__pages-item catalog__pages-arrow">
+                                        <img class="catalog__pages-arrow--rotate" src="images/pageArrow-icon.svg" alt="next page">
+                                    </li>
+                                </a>
+                            }
                         </ul>
                     </div><!-- /.catalog__pages -->
 

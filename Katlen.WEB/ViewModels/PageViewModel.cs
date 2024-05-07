@@ -10,8 +10,7 @@
         {
             PageNumber = pageNumber;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
-            Pages = new();
-            Pages.Add(pageNumber - 2); Pages.Add(pageNumber - 1); Pages.Add(pageNumber); Pages.Add(pageNumber + 1); Pages.Add(pageNumber + 2);
+            InitPagesList(pageNumber);
         }
 
         public bool HasPreviousPage
@@ -27,6 +26,30 @@
             get
             {
                 return (PageNumber < TotalPages);
+            }
+        }
+
+        public void InitPagesList(int pageNumber)
+        {
+            if (pageNumber == 1)
+            {
+                Pages = new() { pageNumber, pageNumber + 1, pageNumber + 2, pageNumber + 3, pageNumber + 4 };
+            }
+            else if (pageNumber == 2)
+            {
+                Pages = new() { pageNumber - 1, pageNumber, pageNumber + 1, pageNumber + 2, pageNumber + 3 };
+            }
+            else if (pageNumber == TotalPages)
+            {
+                Pages = new() { pageNumber - 4, pageNumber - 3, pageNumber - 2, pageNumber - 1, pageNumber };
+            }
+            else if (pageNumber == TotalPages - 1)
+            {
+                Pages = new() { pageNumber - 3, pageNumber - 2, pageNumber - 1, pageNumber, pageNumber + 1 };
+            }
+            else
+            {
+                Pages = new() { pageNumber - 2, pageNumber - 1, pageNumber, pageNumber + 1, pageNumber + 2 };
             }
         }
     }
