@@ -32,7 +32,7 @@
                             <select class="sort__choice fut-b" name="choice">
                                 <option class="sort__option" value="first" selected>По цене</option>
                                 <option class="sort__option" value="second">По размерам</option>
-                                <option class="sort__option" value="third">По новизне</option>
+                                <option class="sort__option" value="third">По рейтингу</option>
                             </select>
                             <img class="dropdown-arrow dropdown-arrow--sort fut-b" src="images/dropDown_BlackArrow-icon.svg" alt="dropdown arrow">
                         </div>
@@ -42,71 +42,81 @@
             <div class="catalog__inner">
                 <aside class="catalog__filter">
                     <h2 class="catalog__inner-title fut-m">Фильтр</h2>
-                    <ul class="catalog__list">
-                        <li class="catalog__list-item">
-                            <div class="catalog__list-content">
-                                <h3 class="catalog__filter-title fut-m">Одежда</h3>
-                                <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
-                            </div>
-                            <form class="dropdown__list close__dropdown" action="">
-                                <div class="dropdown__list-item">
-                                    <input type="checkbox">
-                                    <p class="text m-0 fut-l">Костюм</p>
+                    <form method="get">
+                        <ul class="catalog__list">
+                            <li class="catalog__list-item">
+                                <div class="catalog__list-content">
+                                    <h3 class="catalog__filter-title fut-m">Одежда</h3>
+                                    <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                                <div class="dropdown__list-item">
-                                    <input type="checkbox">
-                                    <p class="text m-0 fut-l">Платье</p>
+                                <div class="dropdown__list close__dropdown">
+                                    <div class="dropdown__list-item">
+                                        <input name="isCostum" type="checkbox">
+                                        <p class="text m-0 fut-l">Костюм</p>
+                                    </div>
+                                    <div class="dropdown__list-item">
+                                        <input name="isDress" type="checkbox">
+                                        <p class="text m-0 fut-l">Платье</p>
+                                    </div>
+                                    <div class="dropdown__list-item m-0">
+                                        <input name="isComplect" type="checkbox">
+                                        <p class="text m-0 fut-l">Комплект</p>
+                                    </div>
                                 </div>
-                                <div class="dropdown__list-item m-0">
-                                    <input type="checkbox">
-                                    <p class="text m-0 fut-l">Комплект</p>
+                            </li>
+                            <hr>
+                            <li class="catalog__list-item">
+                                <div class="catalog__list-content">
+                                    <h3 class="catalog__filter-title fut-m">Цена</h3>
+                                    <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                            </form>
-                        </li>
-                        <hr>
-                        <li class="catalog__list-item">
-                            <div class="catalog__list-content">
-                                <h3 class="catalog__filter-title fut-m">Цена</h3>
-                                <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
-                            </div>
-                            <form class="dropdown__list price__dropdown" action="">
-                                <input id="from" class="window__input price__dropdown-input m-0" type="text" placeholder="от 39">
-                                <input id="to" class="window__input price__dropdown-input m-0" type="text" placeholder="до 249">
-                            </form>
-                        </li>
-                        <hr>
-                        <li class="catalog__list-item">
-                            <div class="catalog__list-content">
-                                <h3 class="catalog__filter-title fut-m">Размеры</h3>
-                                <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
-                            </div>
-                            <form class="dropdown__list size__dropdown" action="">
-                                <div class="dropdown__list-item">
-                                    <input type="checkbox">
-                                    <p class="text m-0 fut-l">92-98</p>
+                                <div class="dropdown__list price__dropdown">
+                                    <input name="priceFrom" id="from" class="window__input price__dropdown-input m-0" type="text" placeholder="от 39">
+                                    <input name="priceTo" id="to" class="window__input price__dropdown-input m-0" type="text" placeholder="до 249">
                                 </div>
-                                <div class="dropdown__list-item">
-                                    <input type="checkbox">
-                                    <p class="text m-0 fut-l">102-120</p>
+                            </li>
+                            <hr>
+                            <li class="catalog__list-item">
+                                <div class="catalog__list-content">
+                                    <h3 class="catalog__filter-title fut-m">Размеры</h3>
+                                    <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                                <div class="dropdown__list-item m-0">
-                                    <input type="checkbox">
-                                    <p class="text m-0 fut-l">122-134</p>
+                                <div class="dropdown__list size__dropdown">
+                                    <div class="dropdown__list-item">
+                                        <input name="smallSize" type="checkbox">
+                                        <p class="text m-0 fut-l">92-98</p>
+                                    </div>
+                                    <div class="dropdown__list-item">
+                                        <input name="middleSize" type="checkbox">
+                                        <p class="text m-0 fut-l">102-120</p>
+                                    </div>
+                                    <div class="dropdown__list-item m-0">
+                                        <input name="bigSize" type="checkbox">
+                                        <p class="text m-0 fut-l">122-134</p>
+                                    </div>
                                 </div>
-                            </form>
-                        </li>
-                        <hr>
-                        <li class="catalog__list-item">
-                            <div class="catalog__list-content">
-                                <h3 class="catalog__filter-title fut-m">Цвет</h3>
-                                <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
-                            </div>
-                            <form class="dropdown__list color__dropdown" action="">
-                                <input name="Color Picker" type="color" />
-                            </form>
-                        </li>
-                        <hr>
-                    </ul>
+                            </li>
+                            <hr>
+                            <li class="catalog__list-item">
+                                <div class="catalog__list-content">
+                                    <h3 class="catalog__filter-title fut-m">Материал</h3>
+                                    <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
+                                </div>
+                                <div class="dropdown__list color__dropdown">
+                                    <div class="dropdown__list-item">
+                                        <input name="isShelkMaterial" type="checkbox">
+                                        <p class="text m-0 fut-l">Шелк</p>
+                                    </div>
+                                    <div class="dropdown__list-item">
+                                        <input name="isMeshMaterial" type="checkbox">
+                                        <p class="text m-0 fut-l">Сетчатая ткань</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <hr>
+                        </ul>
+                        <input type="submit" value="Применить фильтры"/>
+                    </form>
                 </aside>
 
                 <div class="catalog__inner-promo">
