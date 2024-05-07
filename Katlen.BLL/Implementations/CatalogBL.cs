@@ -29,7 +29,7 @@ namespace Katlen.BLL.Implementations
             
             var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDAL, ProductDTO>());
             var mapper = new Mapper(config);
-            var products = mapper.Map<List<ProductDTO>>(pr.GetAll());
+            var products = mapper.Map<IEnumerable<ProductDTO>>(pr.GetAll());
 
             return products;
         }
