@@ -12,8 +12,8 @@ namespace Katlen.DAL.EF
     {
         public DbSet<UserDAL> Users { get; set; }
         public DbSet<ProductDAL> Products { get; set; }
-        public DbSet<OrderDAL> Orders { get; set; }
-        public DbSet<CommentDAL> Comments { get; set; }
+        //public DbSet<OrderDAL> Orders { get; set; }
+        //public DbSet<CommentDAL> Comments { get; set; }
         public KatlenContext(DbContextOptions<KatlenContext> options) : base(options) 
         {
         }

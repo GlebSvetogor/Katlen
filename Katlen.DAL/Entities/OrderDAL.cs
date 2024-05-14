@@ -15,6 +15,6 @@ namespace Katlen.DAL.Entities
         public string Phone { get; set; }
         public string Address { get; set; }
         public string Payment { get; set; }
-        public ICollection<ProductDAL> Products { get; set; }
+        //public ICollection<ProductDAL> Products { get; set; }
     }
 }

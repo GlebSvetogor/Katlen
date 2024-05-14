@@ -19,7 +19,7 @@ namespace Katlen.DAL.Entities
         public string ImgSource { get; set; }
         public int Price { get; set; }
         public int FullPrice { get; set; }
-        public ICollection<CommentDAL> Comments { get; set; }
+        //public ICollection<CommentDAL> Comments { get; set; }
 
     }
 }
