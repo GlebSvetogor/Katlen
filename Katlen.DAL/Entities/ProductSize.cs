@@ -8,8 +8,8 @@ namespace Katlen.DAL.Entities
 {
     public class ProductSize
     {
-        public Product ProductId { get; set; }
-        public Size SizeId { get; set; }
+        public Product Product { get; set; }
+        public Size Size { get; set; }
         public int IsAvailable { get; set; }
     }
 }

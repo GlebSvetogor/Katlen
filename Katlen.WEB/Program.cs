@@ -3,11 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Katlen.WEB.Models;
 using Microsoft.Extensions.Configuration;
-using Katlen.DAL.Interfaces;
 using Katlen.DAL.Entities;
-using Katlen.DAL.Implementations;
 using Katlen.BLL.Interfaces;
-using Katlen.BLL.Implementations;
 using Katlen.BLL.DTO;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,9 +16,9 @@ string connection = builder.Configuration.GetConnectionString("DefaultConnection
 
 builder.Services.AddDbContext<KatlenContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("Katlen.WEB")));
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICatalog, CatalogBL>();
-builder.Services.AddScoped<ICardProduct, CardProductBL>();
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//builder.Services.AddScoped<ICatalog, CatalogBL>();
+//builder.Services.AddScoped<ICardProduct, CardProductBL>();
 
 var app = builder.Build();
 

@@ -10,7 +10,7 @@ namespace Katlen.DAL.Entities
     {
         public int Id { get; set; }
         public string ImageSource { get; set; }
-        public Product ProductId { get; set; }
+        public Product Product { get; set; }
 
     }
 }

@@ -13,7 +13,5 @@ namespace Katlen.DAL.Entities
         public int Rate { get; set; }
         public string Model { get; set; }
         public string Material { get; set; }
-        public int PriceId { get; set; }
-
     }
 }

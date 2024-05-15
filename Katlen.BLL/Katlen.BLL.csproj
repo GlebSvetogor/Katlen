@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Katlen.DAL\Katlen.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Implementations\" />
+  </ItemGroup>
+
 </Project>
