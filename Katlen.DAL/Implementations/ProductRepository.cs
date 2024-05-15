@@ -17,19 +17,19 @@ namespace Katlen.DAL.Implementations
             this.db = db;
         }
 
-        public IEnumerable<ProductDAL> GetAll()
+        public IEnumerable<Product> GetAll()
         {
             return db.Products;
         }
 
-        public ProductDAL Get(int id)
+        public Product Get(int id)
         {
             return db.Products.Find(id);
         }
 
-        public IEnumerable<ProductDAL> FindAllByName(IEnumerable<string> names)
+        public IEnumerable<Product> FindAllByName(IEnumerable<string> names)
         {
-            List<ProductDAL> products = new List<ProductDAL>();
+            List<Product> products = new List<Product>();
             foreach (string name in names)
             {
                 var selectedProducts = from p in db.Products where p.Name.Contains(name) select p;
@@ -38,15 +38,15 @@ namespace Katlen.DAL.Implementations
             return products;
         }
 
-        public IEnumerable<ProductDAL> FindAllByPrice(double[] price)
+        public IEnumerable<Product> FindAllByPrice(double[] price)
         {
             var selectedProducts = from p in db.Products where p.Price > price[0] && p.Price < price[1] select p;
             return selectedProducts;
         }
 
-        public IEnumerable<ProductDAL> FindAllBySize(IEnumerable<string> sizes)
+        public IEnumerable<Product> FindAllBySize(IEnumerable<string> sizes)
         {
-            List<ProductDAL> products = new List<ProductDAL>();
+            List<Product> products = new List<Product>();
             foreach (string size in sizes)
             {
                 var selectedProducts = from p in db.Products where p.Sizes.Contains(size) select p;
@@ -55,9 +55,9 @@ namespace Katlen.DAL.Implementations
             return products;
         }
 
-        public IEnumerable<ProductDAL> FindAllByMaterial(IEnumerable<string> materials)
+        public IEnumerable<Product> FindAllByMaterial(IEnumerable<string> materials)
         {
-            List<ProductDAL> products = new List<ProductDAL>();
+            List<Product> products = new List<Product>();
             foreach (string material in materials)
             {
                 var selectedProducts = from p in db.Products where p.Material.Contains(material) select p;
@@ -66,13 +66,13 @@ namespace Katlen.DAL.Implementations
             return products;
         }
 
-        public IEnumerable<ProductDAL> SortByPrice()
+        public IEnumerable<Product> SortByPrice()
         {
             var sortedProducts = db.Products.OrderBy(p => p.Price);
             return sortedProducts;
         }
 
-        public IEnumerable<ProductDAL> SortBySize()
+        public IEnumerable<Product> SortBySize()
         {
             var sortedProducts = db.Products.OrderBy(p => p.Sizes);
             return sortedProducts;

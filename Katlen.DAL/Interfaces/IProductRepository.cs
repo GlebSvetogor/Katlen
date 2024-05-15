@@ -9,14 +9,14 @@ namespace Katlen.DAL.Interfaces
 {
     public interface IProductRepository : IDisposable
     {
-        public IEnumerable<ProductDAL> GetAll();
-        public ProductDAL Get(int id);
-        public IEnumerable<ProductDAL> FindAllByName(IEnumerable<string> names);
-        public IEnumerable<ProductDAL> FindAllByPrice(double[] price);
-        public IEnumerable<ProductDAL> FindAllBySize(IEnumerable<string> sizes);
-        public IEnumerable<ProductDAL> FindAllByMaterial(IEnumerable<string> materials);
-        public IEnumerable<ProductDAL> SortByPrice();
-        public IEnumerable<ProductDAL> SortBySize();
+        public IEnumerable<Product> GetAll();
+        public Product Get(int id);
+        public IEnumerable<Product> FindAllByName(IEnumerable<string> names);
+        public IEnumerable<Product> FindAllByPrice(double[] price);
+        public IEnumerable<Product> FindAllBySize(IEnumerable<string> sizes);
+        public IEnumerable<Product> FindAllByMaterial(IEnumerable<string> materials);
+        public IEnumerable<Product> SortByPrice();
+        public IEnumerable<Product> SortBySize();
         public void Save();
     }
 }

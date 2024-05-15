@@ -10,10 +10,11 @@ namespace Katlen.DAL.EF
 {
     public class KatlenContext : DbContext
     {
-        public DbSet<UserDAL> Users { get; set; }
-        public DbSet<ProductDAL> Products { get; set; }
-        //public DbSet<OrderDAL> Orders { get; set; }
-        //public DbSet<CommentDAL> Comments { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Price> Prices { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<User> Users { get; set; }
         public KatlenContext(DbContextOptions<KatlenContext> options) : base(options) 
         {
         }

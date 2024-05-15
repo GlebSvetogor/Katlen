@@ -27,7 +27,7 @@ namespace Katlen.BLL.Implementations
         public IEnumerable<ProductDTO> GetAllProducts()
         {
             
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDAL, ProductDTO>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>());
             var mapper = new Mapper(config);
             var products = mapper.Map<IEnumerable<ProductDTO>>(pr.GetAll());
 
@@ -36,7 +36,7 @@ namespace Katlen.BLL.Implementations
         public IEnumerable<ProductDTO> GetAllByName(IEnumerable<string> names)
         {
             // Создание конфигурации сопоставления
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDAL, ProductDTO>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>());
             // Настройка AutoMapper
             var mapper = new Mapper(config);
             // сопоставление
@@ -48,7 +48,7 @@ namespace Katlen.BLL.Implementations
         public IEnumerable<ProductDTO> GetAllByPrice(double[] price)
         {
             // Создание конфигурации сопоставления
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDAL, ProductDTO>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>());
             // Настройка AutoMapper
             var mapper = new Mapper(config);
             // сопоставление
@@ -60,7 +60,7 @@ namespace Katlen.BLL.Implementations
         public IEnumerable<ProductDTO> GetAllBySize(IEnumerable<string> sizes)
         {
             // Создание конфигурации сопоставления
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDAL, ProductDTO>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>());
             // Настройка AutoMapper
             var mapper = new Mapper(config);
             // сопоставление
@@ -72,7 +72,7 @@ namespace Katlen.BLL.Implementations
         public IEnumerable<ProductDTO> GetAllByMaterial(IEnumerable<string> materials)
         {
             // Создание конфигурации сопоставления
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDAL, ProductDTO>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>());
             // Настройка AutoMapper
             var mapper = new Mapper(config);
             // сопоставление
@@ -84,7 +84,7 @@ namespace Katlen.BLL.Implementations
         public IEnumerable<ProductDTO> SortByPrice()
         {
             // Создание конфигурации сопоставления
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDAL, ProductDTO>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>());
             // Настройка AutoMapper
             var mapper = new Mapper(config);
             // сопоставление
@@ -96,7 +96,7 @@ namespace Katlen.BLL.Implementations
         public IEnumerable<ProductDTO> SortBySize()
         {
             // Создание конфигурации сопоставления
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDAL, ProductDTO>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>());
             // Настройка AutoMapper
             var mapper = new Mapper(config);
             // сопоставление
