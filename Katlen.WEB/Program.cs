@@ -8,6 +8,7 @@ using Katlen.BLL.DTO;
 using Katlen.DAL.Implementations;
 using Katlen.BLL.Interfaces;
 using Katlen.BLL.Implementations;
+using Katlen.BLL.AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,9 +22,7 @@ builder.Services.AddDbContext<KatlenContext>(options => options.UseSqlServer(con
 
 builder.Services.AddScoped<IRepository, ProductRepository>();
 builder.Services.AddScoped(ICatalog, Catalog);
-//builder.Services.AddScoped<IProductRepository, ProductRepository>();
-//builder.Services.AddScoped<ICatalog, CatalogBL>();
-//builder.Services.AddScoped<ICardProduct, CardProductBL>();
+builder.Services.AddAutoMapper(typeof(AutoMapperBLL));
 
 var app = builder.Build();
 

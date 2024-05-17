@@ -10,5 +10,7 @@ namespace Katlen.DAL.Entities
     {
         public int Id { get; set; }
         public string SizeValue { get; set; }
+        public int IsAvailable { get; set; }
+        public List<Product> Products { get; set; } = new List<Product>();
     }
 }

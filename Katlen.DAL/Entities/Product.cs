@@ -13,5 +13,8 @@ namespace Katlen.DAL.Entities
         public int Rate { get; set; }
         public string Model { get; set; }
         public string Material { get; set; }
+        public Price Price { get; set; }
+        public List<Image> Images { get; set; } = new List<Image>();
+        public List<Size> Sizes { get; set; } = new List<Size>();
     }
 }

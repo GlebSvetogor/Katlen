@@ -9,9 +9,14 @@ namespace Katlen.DAL.Implementations
 {
     public class UnitOfWork : IDisposable
     {
-        private readonly KatlenContext dbContext = new KatlenContext();
+        private readonly KatlenContext dbContext;
         private ProductRepository productRepository;
         private PriceRepository priceRepository;
+
+        public UnitOfWork(KatlenContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
 
         public PriceRepository Prices
         {

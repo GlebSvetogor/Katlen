@@ -17,7 +17,7 @@ namespace Katlen.DAL.Implementations
         {
             this.dbContext = dbContext;
         }
-        public IEnumerable<Product> GetAll()
+        public IQueryable<Product> GetAll()
         {
             return dbContext.Products;
         }

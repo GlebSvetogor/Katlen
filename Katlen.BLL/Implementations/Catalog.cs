@@ -2,79 +2,91 @@
 using Azure;
 using Katlen.BLL.DTO;
 using Katlen.BLL.Interfaces;
+using Katlen.DAL.EF;
 using Katlen.DAL.Entities;
 using Katlen.DAL.Implementations;
 using Katlen.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Azure.Core.HttpHeader;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Katlen.BLL.Implementations
 {
     public class Catalog : ICatalog
     {
+        private readonly IMapper _mapper;
         UnitOfWork unitOfWork;
-        public Catalog(IRepository<Product> rp)
+        public Catalog(KatlenContext db, IMapper mapper)
         {
-            unitOfWork = new UnitOfWork();
-        }
-        public IEnumerable<ProductCardDTO> GetAllByAges(string[] ages)
-        {
-            List<ProductCardDTO> products = new List<ProductCardDTO>();
-            foreach (string age in ages)
-            {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductCardDTO>());
-                var mapper = new Mapper(config);
-                var list = mapper.Map<List<ProductCardDTO>>(unitOfWork.Products.GetAll().Where(b => b.Age == age));
-                products.AddRange(list);
-            }
-
-            return products;
+            unitOfWork = new UnitOfWork(db);
+            _mapper = mapper;
         }
 
-        public IEnumerable<ProductCardDTO> GetAllByNames(string[] names)
+        public IEnumerable<ProductDTO> GetAll()
         {
-            List<ProductCardDTO> products = new List<ProductCardDTO>();
-            foreach(string name in names)
-            {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductCardDTO>());
-                var mapper = new Mapper(config);
-                var list = mapper.Map<List<ProductCardDTO>>(unitOfWork.Products.GetAll().Where(b => b.Name == name));
-                products.AddRange(list);
-            }
+            List<ProductDTO> products = new List<ProductDTO>();
+            var list = unitOfWork.Products.GetAll()
+                .Include(p => p.Sizes)
+                .Include(p => p.Images);
 
-            return products;    
-        }
-
-        public IEnumerable<ProductCardDTO> GetAllByPrice(int from, int to)
-        {
-            List<ProductCardDTO> products = new List<ProductCardDTO>();
             
-            var list = unitOfWork.Prices.GetAll().Where(b => b.SalePrice >= from && b.SalePrice <= to);
-            foreach (var item in list)
+            foreach(var item in list)
             {
-                products.Add(unitOfWork.Products.GetById(item.Product));
+                List<string> imgSources = new List<string>();
+                List<string> sizes = new List<string>();
+                List<string> sizesAreAvailable = new List<string>();
+                ProductDTO product = _mapper.Map<ProductDTO>(item);
+                imgSources = item.Images.Select(image => image.ImageSource).ToList();
+                sizes = item.Sizes.Select(size => size.SizeValue).ToList();
+                sizesAreAvailable = item.Sizes.Where(size => (size.IsAvailable == 1) ? size.SizeValue : size.SizeValue).ToList();
             }
+            
 
-            return products;
+
         }
-
-        public IEnumerable<ProductCardDTO> GetAllByMaterials(string[] materials)
+        public IEnumerable<ProductDTO> GetAllByAges(string[] ages)
         {
-            throw new NotImplementedException();
+           
         }
 
-        public IEnumerable<ProductCardDTO> GetAllBySizes(string[] sizes)
+        public IEnumerable<ProductDTO> GetAllByNames(string[] names)
         {
-            throw new NotImplementedException();
+            
+
         }
 
-        public IEnumerable<ProductCardDTO> GetAllBySizons(string[] sizons)
+        public IEnumerable<ProductDTO> GetAllByPrice(int from, int to)
         {
-            throw new NotImplementedException();
+            
         }
+
+        public IEnumerable<ProductDTO> GetAllByMaterials(string[] materials)
+        {
+
+        }
+
+        public IEnumerable<ProductDTO> GetAllBySizes(string[] sizes)
+        {
+            
+        }
+
+        public IEnumerable<ProductDTO> GetAllBySizons(string[] sizons)
+        {
+            
+        }
+
+        public void GetSizesOfProduct(int id)
+        {
+            
+        }
+
+        public void GetImagesSourcesOfProduct()
+
+        
     }
 }
