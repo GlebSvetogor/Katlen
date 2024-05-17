@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Katlen.BLL.DTO;
+﻿using Katlen.BLL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +9,12 @@ namespace Katlen.BLL.Interfaces
 {
     public interface ICatalog
     {
-        public IEnumerable<ProductDTO> GetAllByName(IEnumerable<string> names);
-        public IEnumerable<ProductDTO> GetAllByPrice(double[] price);
-        public IEnumerable<ProductDTO> GetAllBySize(IEnumerable<string> sizes);
-        public IEnumerable<ProductDTO> GetAllByMaterial(IEnumerable<string> materials);
-        public IEnumerable<ProductDTO> SortByPrice();
-        public IEnumerable<ProductDTO> SortBySize();
-        public IEnumerable<ProductDTO> GetAllProducts();
-        
+        public IEnumerable<ProductCardDTO> GetAllByNames(string[] names);
+        public IEnumerable<ProductCardDTO> GetAllByPrice(int from, int to);
+        public IEnumerable<ProductCardDTO> GetAllBySizes(string[] sizes);
+        public IEnumerable<ProductCardDTO> GetAllByMaterials(string[] materials);
+        public IEnumerable<ProductCardDTO> GetAllBySizons(string[] sizons);
+        public IEnumerable<ProductCardDTO> GetAllByAges(string[] ages);
+
     }
 }

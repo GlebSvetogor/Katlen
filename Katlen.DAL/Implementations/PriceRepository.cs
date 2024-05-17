@@ -10,36 +10,36 @@ using System.Threading.Tasks;
 
 namespace Katlen.DAL.Implementations
 {
-    public class ProductRepository : IRepository<Product>
+    public class PriceRepository : IRepository<Price>
     {
         private readonly KatlenContext dbContext;
-        public ProductRepository(KatlenContext dbContext)
+        public PriceRepository(KatlenContext dbContext)
         {
             this.dbContext = dbContext;
         }
-        public IEnumerable<Product> GetAll()
+        public IEnumerable<Price> GetAll()
         {
-            return dbContext.Products;
+            return dbContext.Prices;
         }
 
-        public Product GetById(int id)
+        public Price GetById(int id)
         {
-            return dbContext.Products.Find(id);
+            return dbContext.Prices.Find(id);
         }
-        public void Create(Product item)
+        public void Create(Price item)
         {
-            dbContext.Products.Add(item);
+            dbContext.Prices.Add(item);
         }
 
-        public void Update(Product item)
+        public void Update(Price item)
         {
             dbContext.Entry(item).State = EntityState.Modified;
         }
         public void Delete(int id)
         {
-            Product product = dbContext.Products.Find(id);
-            if (product != null)
-                dbContext.Products.Remove(product);
+            Price price = dbContext.Prices.Find(id);
+            if (price != null)
+                dbContext.Prices.Remove(price);
         }
     }
 }

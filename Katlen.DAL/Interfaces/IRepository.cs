@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Katlen.DAL.Interfaces
 {
-    internal interface IRepository<T> : IDisposable
+    public interface IRepository<T>
         where T : class
     {
         IEnumerable<T> GetAll(); // получение всех объектов
@@ -14,6 +14,5 @@ namespace Katlen.DAL.Interfaces
         void Create(T item); // создание объекта
         void Update(T item); // обновление объекта
         void Delete(int id); // удаление объекта по id
-        void Save();  // сохранение изменений
     }
 }

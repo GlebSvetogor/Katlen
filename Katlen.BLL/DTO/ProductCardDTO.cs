@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Katlen.BLL.DTO
 {
-    internal class ProductDTO
+    public class ProductCardDTO
     {
     }
 }
