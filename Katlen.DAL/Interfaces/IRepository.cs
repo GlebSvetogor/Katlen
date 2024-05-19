@@ -9,7 +9,7 @@ namespace Katlen.DAL.Interfaces
     public interface IRepository<T>
         where T : class
     {
-        IEnumerable<T> GetAll(); // получение всех объектов
+        IQueryable<T> GetAll(); // получение всех объектов
         T GetById(int id); // получение одного объекта по id
         void Create(T item); // создание объекта
         void Update(T item); // обновление объекта

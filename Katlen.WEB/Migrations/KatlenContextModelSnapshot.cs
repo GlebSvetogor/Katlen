@@ -62,7 +62,8 @@ namespace Katlen.WEB.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductId")
+                        .IsUnique();
 
                     b.ToTable("Prices");
                 });
@@ -93,6 +94,24 @@ namespace Katlen.WEB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Katlen.DAL.Entities.ProductSize", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsSizeAvailable")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "SizeId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("ProductSizes");
                 });
 
             modelBuilder.Entity("Katlen.DAL.Entities.Size", b =>
@@ -144,7 +163,7 @@ namespace Katlen.WEB.Migrations
             modelBuilder.Entity("Katlen.DAL.Entities.Image", b =>
                 {
                     b.HasOne("Katlen.DAL.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("Images")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -155,12 +174,46 @@ namespace Katlen.WEB.Migrations
             modelBuilder.Entity("Katlen.DAL.Entities.Price", b =>
                 {
                     b.HasOne("Katlen.DAL.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
+                        .WithOne("Price")
+                        .HasForeignKey("Katlen.DAL.Entities.Price", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Katlen.DAL.Entities.ProductSize", b =>
+                {
+                    b.HasOne("Katlen.DAL.Entities.Product", "Product")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Katlen.DAL.Entities.Size", "Size")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("Katlen.DAL.Entities.Product", b =>
+                {
+                    b.Navigation("Images");
+
+                    b.Navigation("Price")
+                        .IsRequired();
+
+                    b.Navigation("ProductSizes");
+                });
+
+            modelBuilder.Entity("Katlen.DAL.Entities.Size", b =>
+                {
+                    b.Navigation("ProductSizes");
                 });
 #pragma warning restore 612, 618
         }

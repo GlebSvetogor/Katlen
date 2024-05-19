@@ -9,6 +9,8 @@ using Katlen.DAL.Implementations;
 using Katlen.BLL.Interfaces;
 using Katlen.BLL.Implementations;
 using Katlen.BLL.AutoMapper;
+using Katlen.WEB.AutoMapper;
+using Katlen.DAL.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +20,10 @@ builder.Services.AddControllersWithViews();
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<KatlenContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("Katlen.WEB")));
-
-
-builder.Services.AddScoped<IRepository, ProductRepository>();
-builder.Services.AddScoped(ICatalog, Catalog);
+builder.Services.AddScoped<IRepository<Product>, ProductRepository>();
+builder.Services.AddScoped<ICatalog, Catalog>();
 builder.Services.AddAutoMapper(typeof(AutoMapperBLL));
+builder.Services.AddAutoMapper(typeof(AutoMapperWEB));
 
 var app = builder.Build();
 

@@ -15,6 +15,6 @@ namespace Katlen.DAL.Entities
         public string Material { get; set; }
         public Price Price { get; set; }
         public List<Image> Images { get; set; } = new List<Image>();
-        public List<Size> Sizes { get; set; } = new List<Size>();
+        public virtual ICollection<ProductSize> ProductSizes { get; set; } 
     }
 }

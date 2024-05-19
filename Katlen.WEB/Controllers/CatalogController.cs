@@ -2,143 +2,58 @@
 using Katlen.BLL.DTO;
 using Katlen.BLL.Interfaces;
 using Katlen.DAL.EF;
+using Katlen.DAL.Entities;
 using Katlen.WEB.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Linq;
 
 namespace Katlen.WEB.Controllers
 {
     public class CatalogController : Controller
     {
-        // GET: CatalogController
+        private readonly IMapper _mapper;
         private readonly ICatalog ct;
-        private readonly KatlenContext db;
-        private readonly int PageSize = 9;
+        private readonly int pageSize = 9;
 
-        public CatalogController(ICatalog ct, KatlenContext db)
+        public CatalogController(ICatalog ct, IMapper mapper)
         {
-            this.ct = ct;   
-            this.db = db;
+            this.ct = ct;
+            _mapper = mapper;
         }
 
-        //public async Task<IActionResult> Index(int page = 1)
-        //{
-        //    // Создание конфигурации сопоставления
-        //    var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDTO, ProductViewModel>());
-        //    // Настройка AutoMapper
-        //    var mapper = new Mapper(config);
-        //    // сопоставление
-        //    var products = mapper.Map<IEnumerable<ProductViewModel>>(ct.GetAllProducts());
-
-        //    CountProductSale(products);
-
-        //    var viewModel = GetCatalogViewModel(products, page);
-
-        //    return View(viewModel);
-        //}
-
-        [HttpGet]
-        public IActionResult Index(bool isCostum = false, bool isDress = false, bool isComplect = false, string priceFrom = null, string priceTo = null, bool smallSize = false, bool middleSize = false, bool bigSize = false, bool isShelkMaterial = false,bool isTextileMaterial = false, bool isMeshMaterial = false, int page = 1)
+        public IActionResult Index(int page = 1)
         {
-            List<bool> closeFiltr = new() { isCostum, isDress, isComplect };
-            List<string> priceFiltr = new() { priceFrom, priceTo };
-            List<bool> sizeFiltr = new() { smallSize, middleSize, bigSize};
-            List<bool> materialFiltr = new() { isShelkMaterial, isTextileMaterial, isMeshMaterial};
-            List<ProductViewModel> products = new();
+            List<ProductCardViewModel> productsCards = new List<ProductCardViewModel>();
+            var products = ct.GetAll();
 
-            if(closeFiltr.Any(item => item == true))
+            foreach (var product in products)
             {
-                List<string> closeKeyNames = new List<string>();
-                if(isCostum) { closeKeyNames.Add("Костюм"); }
-                if(isDress) { closeKeyNames.Add("Платье"); }
-                if(isComplect) { closeKeyNames.Add("Комплект"); }
-                // Создание конфигурации сопоставления
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDTO, ProductViewModel>());
-                // Настройка AutoMapper
-                var mapper = new Mapper(config);
-                // сопоставление
-                var closeProducts = mapper.Map<IEnumerable<ProductViewModel>>(ct.GetAllByName(closeKeyNames));
+                ProductCardViewModel productCard = _mapper.Map<ProductCardViewModel>(product);
+                productCard.Image = product.Images[0];
+                productCard.SalePercent = CountProductSale(productCard.SalePrice, productCard.FullPrice);
 
-                if(products.Count > 0) 
-                {
-                    foreach(var product in products)
-                    {
-                        if (!closeProducts.Contains(product))
-                        {
-                            products.Remove(product);
-                        }
-                    }
-                }
-                else { products.AddRange(closeProducts); }
+                productsCards.Add(productCard);
             }
 
-            //if (priceFiltr.Any(item => item != null))
-            //{
-            //    List<string> prices = new List<string>();
-            //    if (priceFrom != null) { prices.Add(priceFrom); }
-            //    if (priceTo != null) { prices.Add(priceTo); }
-            //    // Создание конфигурации сопоставления
-            //    var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDTO, ProductViewModel>());
-            //    // Настройка AutoMapper
-            //    var mapper = new Mapper(config);
-            //    // сопоставление
-            //    var closeProducts = mapper.Map<IEnumerable<ProductViewModel>>(ct.GetAllByPrice(prices));
+            var count = productsCards.Count();
+            var items = productsCards.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            //    if (products.Count > 0)
-            //    {
-            //        foreach (var product in products)
-            //        {
-            //            if (!closeProducts.Contains(product))
-            //            {
-            //                products.Remove(product);
-            //            }
-            //        }
-            //    }
-            //    else { products.AddRange(closeProducts); }
-            //}
-
-            if (products.IsNullOrEmpty())
+            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+            IndexViewModel viewModel = new IndexViewModel
             {
-                // Создание конфигурации сопоставления
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductDTO, ProductViewModel>());
-                // Настройка AutoMapper
-                var mapper = new Mapper(config);
-                // сопоставление
-                var allProducts = mapper.Map<IEnumerable<ProductViewModel>>(ct.GetAllProducts());
-
-                products.AddRange(allProducts);
-            }
-
-            CountProductSale(products);
-
-            var viewModel = GetCatalogViewModel(products, page);
-
+                PageViewModel = pageViewModel,
+                ProductCards = items
+            };
             return View(viewModel);
         }
 
-        public CatalogViewModel GetCatalogViewModel(IEnumerable<ProductViewModel> products, int page)
+        public int CountProductSale(int salePrice, int fullPrice)
         {
-            var count = products.Count();
-            var items = products.Skip((page - 1) * PageSize).Take(PageSize).ToList();
-
-            PageViewModel pageViewModel = new PageViewModel(count, page, PageSize);
-            CatalogViewModel viewModel = new CatalogViewModel
-            {
-                PageViewModel = pageViewModel,
-                Products = items
-            };
-
-            return viewModel;
-        }
-
-        public void CountProductSale(IEnumerable<ProductViewModel> products)
-        {
-            foreach (var product in products)
-            {
-                product.SalePercent = (int)(100 - (product.Price * 100 / product.FullPrice));
-            }
+            int salePercent = (int)(100 - (salePrice * 100 / fullPrice));
+            return salePercent;
         }
 
     }

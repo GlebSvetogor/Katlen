@@ -14,9 +14,9 @@ namespace Katlen.BLL.AutoMapper
         public AutoMapperBLL()
         {
             CreateMap<Product, ProductDTO>();
-            CreateMap<Image, ProductDTO>();
-            CreateMap<Price, ProductDTO>();
-            CreateMap<Size, ProductDTO>();
+            //CreateMap<Image, ProductDTO>();
+            //CreateMap<Price, ProductDTO>();
+            //CreateMap<Size, ProductDTO>();
         }
     }
 }

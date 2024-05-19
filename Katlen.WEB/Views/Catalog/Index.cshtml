@@ -1,4 +1,4 @@
-﻿@model Katlen.WEB.ViewModels.CatalogViewModel;
+﻿@model Katlen.WEB.ViewModels.IndexViewModel;
 
 <hr>
 
@@ -123,7 +123,7 @@
 
                     <div class="products catalog__products">
                         
-                        @foreach (var item in @Model.Products)
+                        @foreach (var item in @Model.ProductCards)
                         {
 
                             <div class="products__item catalog__products-item">
@@ -133,7 +133,7 @@
                                         @item.SalePercent%
                                     </div>
                                 }
-                                <img class="products__item-img catalog__item-img" src="@item.ImgSource" alt="@item.Name">
+                                <img class="products__item-img catalog__item-img" src="@item.Image" alt="@item.Name">
                                 <div class="products__item-descr">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="104" height="20" viewBox="0 0 104 20" fill="none">
                                         @{
@@ -174,11 +174,11 @@
                                     </h3>
                                     
                                     <ul class="products__item-list">
-                                        <li class="products__item-content">
+                                        @* <li class="products__item-content">
                                             <span class="products__item-tall">Рост (см)</span>
                                             <hr>
                                             <span class="products__item-value fut-m ">@item.Tall</span>
-                                        </li>
+                                        </li> *@
                                         <li class="products__item-content products__without-line">
                                             <span class="products__item-tissue">Ткань</span>
                                             <span class="products__item-value fut-m">@item.Material</span>
@@ -187,11 +187,11 @@
                                             <span class="products__item-price fut-b">Цена</span>
                                             <hr>
                                             <div class="products__sale">
-                                                <span class="products__sale-value fut-b">@item.Price ₴</span>
+                                                <span class="products__sale-value fut-b">@item.FullPrice ₴</span>
                                                 @if (item.SalePercent != 0)
                                                 {
                                                     <span class="products__full-price fut-b">
-                                                        @item.FullPrice ₴
+                                                        @item.SalePrice ₴
                                                         <svg class="cross-line" xmlns="http://www.w3.org/2000/svg" width="62" height="18" viewBox="0 0 62 18" fill="none">
                                                             <path d="M61 1L1 17" stroke="#FF003D" />
                                                         </svg>
