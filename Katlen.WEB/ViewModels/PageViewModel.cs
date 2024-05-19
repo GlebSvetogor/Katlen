@@ -10,7 +10,7 @@
         {
             PageNumber = pageNumber;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
-            InitPagesList(pageNumber);
+            InitPagesList();
         }
 
         public bool HasPreviousPage
@@ -29,7 +29,23 @@
             }
         }
 
-        public void InitPagesList(int pageNumber)
+        public void InitPagesList()
+        {
+            if(TotalPages < 5)
+            {
+                Pages = new();
+                for(int i = 1; i <= TotalPages; i++)
+                {
+                    Pages.Add(i);
+                }
+            }
+            else
+            {
+                InitPagesNumbers(PageNumber);
+            }
+        }
+
+        public void InitPagesNumbers(int pageNumber)
         {
             if (pageNumber == 1)
             {
