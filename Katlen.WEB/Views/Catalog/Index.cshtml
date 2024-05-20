@@ -133,7 +133,8 @@
                                         @item.SalePercent%
                                     </div>
                                 }
-                                <img class="products__item-img catalog__item-img" src="@item.Image" alt="@item.Name">
+
+                                <img class="products__item-img catalog__item-img" src="@Url.Content($"{item.Image}")" alt="@item.Name">
                                 <div class="products__item-descr">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="104" height="20" viewBox="0 0 104 20" fill="none">
                                         @{
