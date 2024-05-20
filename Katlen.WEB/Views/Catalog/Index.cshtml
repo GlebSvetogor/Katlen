@@ -15,14 +15,14 @@
                 <div class="catalog__menu-inner">
                     <div class="catalog__menu-item catalog__menu-item--quality">
                         <p class="catalog__text fut-l m-0">Количество товаров:</p>
-                        <p id="general-quality" class="catalog__text fut-b m-0">120</p>
+                        <p id="general-quality" class="catalog__text fut-b m-0">@Model.ProductsCardsQuality</p>
                     </div>
 
                     <div class="catalog__menu-item catalog__menu-item--page-quality">
                         <p class="catalog__text fut-l m-0">Товаров на странице:</p>
                         <p class="catalog__text catalog__text--page fut-b m-0">
-                            <span id="page-quality">25</span>
-                            <img class="dropdown-arrow" src="images/dropDown_BlackArrow-icon.svg" alt="dropDown arrow">
+                            <span id="page-quality">@Model.PageProductsCards.Count()</span>
+                            <img class="dropdown-arrow" src="/images/dropDown_BlackArrow-icon.svg" alt="dropDown arrow">
                         </p>
                     </div>
 
@@ -34,7 +34,7 @@
                                 <option class="sort__option" value="second">По размерам</option>
                                 <option class="sort__option" value="third">По рейтингу</option>
                             </select>
-                            <img class="dropdown-arrow dropdown-arrow--sort fut-b" src="images/dropDown_BlackArrow-icon.svg" alt="dropdown arrow">
+                            <img class="dropdown-arrow dropdown-arrow--sort fut-b" src="/images/dropDown_BlackArrow-icon.svg" alt="dropdown arrow">
                         </div>
                     </div>
                 </div><!-- ./ catalog__menu-inner -->
@@ -134,7 +134,7 @@
                                     </div>
                                 }
 
-                                <img class="products__item-img catalog__item-img" src="@Url.Content($"{item.Image}")" alt="@item.Name">
+                                <img class="products__item-img catalog__item-img" src="@item.Image" alt="@item.Name">
                                 <div class="products__item-descr">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="104" height="20" viewBox="0 0 104 20" fill="none">
                                         @{
@@ -210,7 +210,7 @@
                             {
                                 <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber - 1)">
                                     <li class="catalog__pages-item catalog__pages-arrow">
-                                        <img src="images/pageArrow-icon.svg" alt="previous page">
+                                        <img src="/images/pageArrow-icon.svg" alt="previous page">
                                     </li>
                                 </a>
                             }
@@ -218,7 +218,7 @@
                             {
                                 <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber)">
                                     <li class="catalog__pages-item catalog__pages-arrow">
-                                        <img src="images/pageArrow-icon.svg" alt="previous page">
+                                        <img src="/images/pageArrow-icon.svg" alt="previous page">
                                     </li>
                                 </a>
                             }
@@ -243,7 +243,7 @@
                             {
                                 <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber + 1)">
                                 <li class="catalog__pages-item catalog__pages-arrow">
-                                        <img class="catalog__pages-arrow--rotate" src="images/pageArrow-icon.svg" alt="next page">
+                                        <img class="catalog__pages-arrow--rotate" src="/images/pageArrow-icon.svg" alt="next page">
                                     </li>
                                 </a>
                             }
@@ -251,7 +251,7 @@
                             {
                                 <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber)">
                                     <li class="catalog__pages-item catalog__pages-arrow">
-                                        <img class="catalog__pages-arrow--rotate" src="images/pageArrow-icon.svg" alt="next page">
+                                        <img class="catalog__pages-arrow--rotate" src="/images/pageArrow-icon.svg" alt="next page">
                                     </li>
                                 </a>
                             }

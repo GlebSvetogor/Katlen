@@ -21,7 +21,7 @@ namespace Katlen.WEB.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ICatalog ct;
-        private readonly int pageSize = 1;
+        private readonly int pageSize = 9;
 
         public CatalogController(ICatalog ct, IMapper mapper)
         {
@@ -51,7 +51,7 @@ namespace Katlen.WEB.Controllers
             {
                 PageViewModel = pageViewModel,
                 PageProductsCards = items,
-                ProductsCards = productsCards
+                ProductsCardsQuality = productsCards.Count
             };
 
             HttpContext.Session.Set<List<ProductCardViewModel>>("productsCards", productsCards);
@@ -72,7 +72,7 @@ namespace Katlen.WEB.Controllers
             {
                 PageViewModel = pageViewModel,
                 PageProductsCards = items,
-                ProductsCards = productsCards
+                ProductsCardsQuality = productsCards.Count
             };
 
             return View("Index", viewModel);
