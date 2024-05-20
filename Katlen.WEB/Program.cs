@@ -25,6 +25,14 @@ builder.Services.AddScoped<ICatalog, Catalog>();
 builder.Services.AddAutoMapper(typeof(AutoMapperBLL));
 builder.Services.AddAutoMapper(typeof(AutoMapperWEB));
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -42,6 +50,9 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSession();
+
 
 app.MapControllerRoute(
     name: "default",

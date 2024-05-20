@@ -123,7 +123,7 @@
 
                     <div class="products catalog__products">
                         
-                        @foreach (var item in @Model.ProductCards)
+                        @foreach (var item in @Model.PageProductsCards)
                         {
 
                             <div class="products__item catalog__products-item">
@@ -205,9 +205,10 @@
 
                     <div class="catalog__pages">
                         <ul class="catalog__pages-list">
+
                             @if (Model.PageViewModel.HasPreviousPage)
                             {
-                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber - 1)">
+                                <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber - 1)">
                                     <li class="catalog__pages-item catalog__pages-arrow">
                                         <img src="images/pageArrow-icon.svg" alt="previous page">
                                     </li>
@@ -215,7 +216,7 @@
                             }
                             else
                             {
-                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber)">
+                                <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber)">
                                     <li class="catalog__pages-item catalog__pages-arrow">
                                         <img src="images/pageArrow-icon.svg" alt="previous page">
                                     </li>
@@ -226,13 +227,13 @@
                             {
                                 if(Model.PageViewModel.PageNumber == item)
                                 {
-                                    <a asp-action="Index" asp-route-page="@item">
+                                    <a asp-action="IndexDefault" asp-route-page="@item">
                                         <li class="catalog__pages-item catalog__pages-item--active">@item</li>
                                     </a>
                                 }
                                 else
                                 {
-                                    <a asp-action="Index" asp-route-page="@item">
+                                    <a asp-action="IndexDefault" asp-route-page="@item">
                                         <li class="catalog__pages-item">@item</li>
                                     </a>
                                 }
@@ -240,15 +241,15 @@
 
                             @if (Model.PageViewModel.HasNextPage)
                             {
-                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber + 1)">
-                                    <li class="catalog__pages-item catalog__pages-arrow">
+                                <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber + 1)">
+                                <li class="catalog__pages-item catalog__pages-arrow">
                                         <img class="catalog__pages-arrow--rotate" src="images/pageArrow-icon.svg" alt="next page">
                                     </li>
                                 </a>
                             }
                             else
                             {
-                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber)">
+                                <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber)">
                                     <li class="catalog__pages-item catalog__pages-arrow">
                                         <img class="catalog__pages-arrow--rotate" src="images/pageArrow-icon.svg" alt="next page">
                                     </li>

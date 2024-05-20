@@ -68,18 +68,18 @@ namespace Katlen.BLL.Implementations
         }
         //public IEnumerable<ProductDTO> GetAllByAges(string[] ages)
         //{
-            
-        //}
-
-        //public IEnumerable<ProductDTO> GetAllByNames(string[] names)
-        //{
-            
 
         //}
+
+        public IEnumerable<ProductDTO> GetAllByNames(string[] names)
+        {
+            return null;
+
+        }
 
         //public IEnumerable<ProductDTO> GetAllByPrice(int from, int to)
         //{
-            
+
         //}
 
         //public IEnumerable<ProductDTO> GetAllByMaterials(string[] materials)
@@ -89,20 +89,20 @@ namespace Katlen.BLL.Implementations
 
         //public IEnumerable<ProductDTO> GetAllBySizes(string[] sizes)
         //{
-            
+
         //}
 
         //public IEnumerable<ProductDTO> GetAllBySizons(string[] sizons)
         //{
-            
+
         //}
 
         //public void GetSizesOfProduct(int id)
         //{
-            
+
         //}
 
 
-        
+
     }
 }

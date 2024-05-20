@@ -10,7 +10,7 @@ namespace Katlen.BLL.Interfaces
     public interface ICatalog
     {
         public IEnumerable<ProductDTO> GetAll();
-        //public IEnumerable<ProductDTO> GetAllByNames(string[] names);
+        public IEnumerable<ProductDTO> GetAllByNames(string[] names);
         //public IEnumerable<ProductDTO> GetAllByPrice(int from, int to);
         //public IEnumerable<ProductDTO> GetAllBySizes(string[] sizes);
         //public IEnumerable<ProductDTO> GetAllByMaterials(string[] materials);
