@@ -42,24 +42,24 @@
             <div class="catalog__inner">
                 <aside class="catalog__filter">
                     <h2 class="catalog__inner-title fut-m">Фильтр</h2>
-                    <form method="get">
+                    <form method="get" action="/Catalog/Filtr">
                         <ul class="catalog__list">
                             <li class="catalog__list-item">
                                 <div class="catalog__list-content">
                                     <h3 class="catalog__filter-title fut-m">Одежда</h3>
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                                <div class="dropdown__list close__dropdown">
+                                <div class="dropdown__list close__dropdown dropdown__list--active">
                                     <div class="dropdown__list-item">
-                                        <input name="isCostum" type="checkbox">
-                                        <p class="text m-0 fut-l">Костюм</p>
+                                        <input type="checkbox" name="names" value="Костюм">
+                                        <p class="text m-0 fut-l">Костюм</p>    
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input name="isDress" type="checkbox">
+                                        <input type="checkbox" name="names" value="Платье">
                                         <p class="text m-0 fut-l">Платье</p>
                                     </div>
-                                    <div class="dropdown__list-item m-0">
-                                        <input name="isComplect" type="checkbox">
+                                    <div class="dropdown__list-item">
+                                        <input type="checkbox" name="names" value="Комплект">
                                         <p class="text m-0 fut-l">Комплект</p>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                     <h3 class="catalog__filter-title fut-m">Цена</h3>
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                                <div class="dropdown__list price__dropdown">
+                                <div class="dropdown__list price__dropdown dropdown__list--active">
                                     <input name="priceFrom" id="from" class="window__input price__dropdown-input m-0" type="text" placeholder="от 39">
                                     <input name="priceTo" id="to" class="window__input price__dropdown-input m-0" type="text" placeholder="до 249">
                                 </div>
@@ -81,18 +81,30 @@
                                     <h3 class="catalog__filter-title fut-m">Размеры</h3>
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                                <div class="dropdown__list size__dropdown">
-                                    <div class="dropdown__list-item">
-                                        <input name="smallSize" type="checkbox">
-                                        <p class="text m-0 fut-l">92-98</p>
-                                    </div>
-                                    <div class="dropdown__list-item">
-                                        <input name="middleSize" type="checkbox">
-                                        <p class="text m-0 fut-l">102-120</p>
+                                <div class="dropdown__list size__dropdown dropdown__list--active">
+                                    <div class="dropdown__list-item m-0">
+                                        <input type="checkbox" name="sizes" value="XS">
+                                        <p class="text m-0 fut-l">XS</p>
                                     </div>
                                     <div class="dropdown__list-item m-0">
-                                        <input name="bigSize" type="checkbox">
-                                        <p class="text m-0 fut-l">122-134</p>
+                                        <input type="checkbox" name="sizes" value="S">
+                                        <p class="text m-0 fut-l">S</p>
+                                    </div>
+                                    <div class="dropdown__list-item m-0">
+                                        <input type="checkbox" name="sizes" value="M">
+                                        <p class="text m-0 fut-l">M</p>
+                                    </div>
+                                    <div class="dropdown__list-item m-0">
+                                        <input type="checkbox" name="sizes" value="L">
+                                        <p class="text m-0 fut-l">L</p>
+                                    </div>
+                                    <div class="dropdown__list-item m-0">
+                                        <input type="checkbox" name="sizes" value="XL">
+                                        <p class="text m-0 fut-l">XL</p>
+                                    </div>
+                                    <div class="dropdown__list-item m-0">
+                                        <input type="checkbox" name="sizes" value="XXL">
+                                        <p class="text m-0 fut-l">XXL</p>
                                     </div>
                                 </div>
                             </li>
@@ -102,20 +114,24 @@
                                     <h3 class="catalog__filter-title fut-m">Материал</h3>
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
-                                <div class="dropdown__list color__dropdown">
+                                <div class="dropdown__list color__dropdown dropdown__list--active">
                                     <div class="dropdown__list-item">
-                                        <input name="isShelkMaterial" type="checkbox">
+                                        <input type="checkbox" name="materials" value="Шелк">
                                         <p class="text m-0 fut-l">Шелк</p>
                                     </div>
                                     <div class="dropdown__list-item m-0">
-                                        <input name="isMeshMaterial" type="checkbox">
-                                        <p class="text m-0 fut-l">Сетчатая ткань</p>
+                                        <input type="checkbox" name="materials" value="Ткань">
+                                        <p class="text m-0 fut-l">Ткань</p>
+                                    </div>
+                                    <div class="dropdown__list-item m-0">
+                                        <input type="checkbox" name="materials" value="Синтетика">
+                                        <p class="text m-0 fut-l">Синтетика</p>
                                     </div>
                                 </div>
                             </li>
                             <hr>
                         </ul>
-                        <input type="submit" value="Применить фильтры"/>
+                        <input class="but-link fut-b" type="submit" value="Применить фильтры"/>
                     </form>
                 </aside>
 
@@ -183,11 +199,11 @@
                                             <span class="products__item-price fut-b">Цена</span>
                                             <hr>
                                             <div class="products__sale">
-                                                <span class="products__sale-value fut-b">@item.FullPrice ₴</span>
+                                                <span class="products__sale-value fut-b">@item.SalePrice ₴</span>
                                                 @if (item.SalePercent != 0)
                                                 {
                                                     <span class="products__full-price fut-b">
-                                                        @item.SalePrice ₴
+                                                        @item.FullPrice ₴
                                                         <svg class="cross-line" xmlns="http://www.w3.org/2000/svg" width="62" height="18" viewBox="0 0 62 18" fill="none">
                                                             <path d="M61 1L1 17" stroke="#FF003D" />
                                                         </svg>

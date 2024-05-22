@@ -36,51 +36,49 @@ namespace Katlen.BLL.Implementations
                 .Include(p => p.ProductSizes)
                     .ThenInclude(c => c.Size);
                     
-
-            foreach(var item in list)
-            {
-                List<string> imgSources = new List<string>();
-                List<string> sizes = new List<string>();
-                List<string> sizesAreAvailable = new List<string>();
-                imgSources = item.Images.Select(image => image.ImageSource).ToList();
-
-                foreach(var productSize in item.ProductSizes) 
-                {
-                    sizes.Add(productSize.Size.SizeValue);
-                    if(productSize.IsSizeAvailable == 1)
-                    {
-                        sizesAreAvailable.Add(productSize.Size.SizeValue);
-                    }
-                }
-
-                ProductDTO product = _mapper.Map<ProductDTO>(item);
-                product.Images = imgSources;
-                product.Sizes = sizes;
-                product.SizesAreAvailable = sizesAreAvailable;
-                product.SalePrice = item.Price.SalePrice;
-                product.FullPrice = item.Price.FullPrice;   
-
-                products.Add(product);
-            }
+            BindTables(list, products);
 
             return products;
 
         }
+
+        public List<ProductDTO> GetAllByNames(string[] names)
+        {
+            List<ProductDTO> products = new List<ProductDTO>();
+            
+            var list = unitOfWork.Products.GetAll()
+                .Where(item => names.Any(name => item.Name.Contains(name)))
+                .Include(p => p.Images)
+                .Include(p => p.Price)
+                .Include(p => p.ProductSizes)
+                .ThenInclude(c => c.Size)
+                .ToList();
+
+            BindTables(list, products);
+
+            return products;
+
+        }
+
         //public IEnumerable<ProductDTO> GetAllByAges(string[] ages)
         //{
 
         //}
 
-        public IEnumerable<ProductDTO> GetAllByNames(string[] names)
+        public List<ProductDTO> GetAllByPrice(int from, int to)
         {
-            return null;
+            List<ProductDTO> products = new List<ProductDTO>();
 
+            var list = unitOfWork.Products.GetAll().Where(item => item.Price.SalePrice >= from && item.Price.SalePrice <= to)
+                .Include(p => p.Images)
+                .Include(p => p.Price)
+                .Include(p => p.ProductSizes)
+                    .ThenInclude(c => c.Size);
+
+            BindTables(list, products);
+
+            return products;
         }
-
-        //public IEnumerable<ProductDTO> GetAllByPrice(int from, int to)
-        //{
-
-        //}
 
         //public IEnumerable<ProductDTO> GetAllByMaterials(string[] materials)
         //{
@@ -102,7 +100,34 @@ namespace Katlen.BLL.Implementations
 
         //}
 
+        public void BindTables(IEnumerable<Product> list, List<ProductDTO> products)
+        {
+            foreach (var item in list)
+            {
+                List<string> imgSources = new List<string>();
+                List<string> sizes = new List<string>();
+                List<string> sizesAreAvailable = new List<string>();
+                imgSources = item.Images.Select(image => image.ImageSource).ToList();
 
+                foreach (var productSize in item.ProductSizes)
+                {
+                    sizes.Add(productSize.Size.SizeValue);
+                    if (productSize.IsSizeAvailable == 1)
+                    {
+                        sizesAreAvailable.Add(productSize.Size.SizeValue);
+                    }
+                }
+
+                ProductDTO product = _mapper.Map<ProductDTO>(item);
+                product.Images = imgSources;
+                product.Sizes = sizes;
+                product.SizesAreAvailable = sizesAreAvailable;
+                product.SalePrice = item.Price.SalePrice;
+                product.FullPrice = item.Price.FullPrice;
+
+                products.Add(product);
+            }
+        }
 
     }
 }

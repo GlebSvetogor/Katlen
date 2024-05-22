@@ -11,5 +11,7 @@ namespace Katlen.WEB.AutoMapper
         {
             CreateMap<ProductDTO, ProductCardViewModel>();
         }
+
+        
     }
 }
