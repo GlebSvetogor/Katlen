@@ -65,35 +65,35 @@ namespace Katlen.WEB.Controllers
                 else
                 {
                     var filtrProducts = ct.GetAllByPrice(priceFrom, priceTo);
-                    products.RemoveAll(product => !filtrProducts.Contains(product));
+                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id)); 
                 }
             }
 
-            //if(sizes != null)
-            //{
-            //    if (products.IsNullOrEmpty())
-            //    {
-            //        products = ct.GetAllBySizes(sizes);
-            //    }
-            //    else
-            //    {
-            //        var filtrProducts = ct.GetAllBySizes(sizes);
-            //        products.RemoveAll(product => !filtrProducts.Contains(product));
-            //    }
-            //}
+            if (sizes != null)
+            {
+                if (products.IsNullOrEmpty())
+                {
+                    products = ct.GetAllBySizes(sizes);
+                }
+                else
+                {
+                    var filtrProducts = ct.GetAllBySizes(sizes);
+                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
+                }
+            }
 
-            //if(materials != null)
-            //{
-            //    if (products.IsNullOrEmpty())
-            //    {
-            //        products = ct.GetAllByMaterials(materials);
-            //    }
-            //    else
-            //    {
-            //        var filtrProducts = ct.GetAllByMaterials(materials);
-            //        products.RemoveAll(product => !filtrProducts.Contains(product));
-            //    }
-            //}
+            if (materials != null)
+            {
+                if (products.IsNullOrEmpty())
+                {
+                    products = ct.GetAllByMaterials(materials);
+                }
+                else
+                {
+                    var filtrProducts = ct.GetAllByMaterials(materials);
+                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
+                }
+            }
 
             MapFromProductsDTOToProductsCards(productsCards, products);
 

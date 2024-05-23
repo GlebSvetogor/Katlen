@@ -59,12 +59,6 @@ namespace Katlen.BLL.Implementations
             return products;
 
         }
-
-        //public IEnumerable<ProductDTO> GetAllByAges(string[] ages)
-        //{
-
-        //}
-
         public List<ProductDTO> GetAllByPrice(int from, int to)
         {
             List<ProductDTO> products = new List<ProductDTO>();
@@ -79,26 +73,51 @@ namespace Katlen.BLL.Implementations
 
             return products;
         }
+        public List<ProductDTO> GetAllBySizes(string[] sizes)
+        {
+            List<ProductDTO> products = new List<ProductDTO>();
 
-        //public IEnumerable<ProductDTO> GetAllByMaterials(string[] materials)
+            var sizesIdentifiers = unitOfWork.Sizes.GetAll().Where(size => sizes.Any(sizeValue => size.SizeValue == sizeValue)).Select(size => size.Id);
+            var productsIdentifiers = unitOfWork.ProductSizes.GetAll().Where(productSize => sizesIdentifiers.Any(sizeId => sizeId == productSize.SizeId)).Select(productSize => productSize.ProductId);
+            var list = unitOfWork.Products.GetAll().Where(product => productsIdentifiers.Any(productId => product.Id == productId))
+                .Include(p => p.Images)
+                .Include(p => p.Price)
+                .Include(p => p.ProductSizes)
+                    .ThenInclude(c => c.Size);
+
+            BindTables(list, products);
+
+            return products;
+        }
+        public List<ProductDTO> GetAllByMaterials(string[] materials)
+        {
+            List<ProductDTO> products = new List<ProductDTO>();
+
+            var list = unitOfWork.Products.GetAll()
+                .Where(product => materials.Any(material => product.Material == material))
+                .Include(p => p.Images)
+                .Include(p => p.Price)
+                .Include(p => p.ProductSizes)
+                .ThenInclude(c => c.Size)
+                .ToList();
+
+            BindTables(list, products);
+
+            return products;
+        }
+        //public IEnumerable<ProductDTO> GetAllByAges(string[] ages)
         //{
 
         //}
 
-        //public IEnumerable<ProductDTO> GetAllBySizes(string[] sizes)
-        //{
 
-        //}
+
 
         //public IEnumerable<ProductDTO> GetAllBySizons(string[] sizons)
         //{
 
         //}
 
-        //public void GetSizesOfProduct(int id)
-        //{
-
-        //}
 
         public void BindTables(IEnumerable<Product> list, List<ProductDTO> products)
         {

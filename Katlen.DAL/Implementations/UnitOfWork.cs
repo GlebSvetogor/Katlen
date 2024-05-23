@@ -12,6 +12,8 @@ namespace Katlen.DAL.Implementations
         private readonly KatlenContext dbContext;
         private ProductRepository productRepository;
         private PriceRepository priceRepository;
+        private SizeRepository sizeRepository;
+        private ProductSizeRepository productSizeRepository;
 
         public UnitOfWork(KatlenContext dbContext)
         {
@@ -35,6 +37,26 @@ namespace Katlen.DAL.Implementations
                 if (productRepository == null)
                     productRepository = new ProductRepository(dbContext);
                 return productRepository;
+            }
+        }
+
+        public SizeRepository Sizes
+        {
+            get
+            {
+                if (sizeRepository == null)
+                    sizeRepository = new SizeRepository(dbContext);
+                return sizeRepository;
+            }
+        }
+
+        public ProductSizeRepository ProductSizes
+        {
+            get
+            {
+                if (productSizeRepository == null)
+                    productSizeRepository = new ProductSizeRepository(dbContext);
+                return productSizeRepository;
             }
         }
 
