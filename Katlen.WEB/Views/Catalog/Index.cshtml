@@ -51,15 +51,15 @@
                                 </div>
                                 <div class="dropdown__list close__dropdown dropdown__list--active">
                                     <div class="dropdown__list-item">
-                                        <input type="checkbox" name="names" value="Костюм" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Одежда") && Model.Filtrs["Одежда"].Contains("Костюм") ? "checked" : "")>
+                                        <input class="catalog__filtr-input" type="checkbox" name="names" value="Костюм" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Одежда") && Model.Filtrs["Одежда"].Contains("Костюм") ? "checked" : "")>
                                         <p class="text m-0 fut-l">Костюм</p>    
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input type="checkbox" name="names" value="Платье">
+                                        <input class="catalog__filtr-input" type="checkbox" name="names" value="Платье">
                                         <p class="text m-0 fut-l">Платье</p>
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input type="checkbox" name="names" value="Комплект">
+                                        <input class="catalog__filtr-input" type="checkbox" name="names" value="Комплект">
                                         <p class="text m-0 fut-l">Комплект</p>
                                     </div>
                                 </div>
@@ -82,28 +82,28 @@
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
                                 <div class="dropdown__list size__dropdown dropdown__list--active">
-                                    <div class="dropdown__list-item m-0">
-                                        <input type="checkbox" name="sizes" value="XS">
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XS">
                                         <p class="text m-0 fut-l">XS</p>
                                     </div>
-                                    <div class="dropdown__list-item m-0">
-                                        <input type="checkbox" name="sizes" value="S">
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="S">
                                         <p class="text m-0 fut-l">S</p>
                                     </div>
-                                    <div class="dropdown__list-item m-0">
-                                        <input type="checkbox" name="sizes" value="M">
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="M">
                                         <p class="text m-0 fut-l">M</p>
                                     </div>
-                                    <div class="dropdown__list-item m-0">
-                                        <input type="checkbox" name="sizes" value="L">
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="L">
                                         <p class="text m-0 fut-l">L</p>
                                     </div>
-                                    <div class="dropdown__list-item m-0">
-                                        <input type="checkbox" name="sizes" value="XL">
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XL">
                                         <p class="text m-0 fut-l">XL</p>
                                     </div>
-                                    <div class="dropdown__list-item m-0">
-                                        <input type="checkbox" name="sizes" value="XXL">
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XXL">
                                         <p class="text m-0 fut-l">XXL</p>
                                     </div>
                                 </div>
@@ -115,16 +115,16 @@
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
                                 <div class="dropdown__list color__dropdown dropdown__list--active">
-                                    <div class="dropdown__list-item m-0">
-                                        <input type="checkbox" name="materials" value="Шелк">
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="materials" value="Шелк">
                                         <p class="text m-0 fut-l">Шелк</p>
                                     </div>
-                                    <div class="dropdown__list-item m-0">
-                                        <input type="checkbox" name="materials" value="Ткань">
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="materials" value="Ткань">
                                         <p class="text m-0 fut-l">Ткань</p>
                                     </div>
-                                    <div class="dropdown__list-item m-0">
-                                        <input type="checkbox" name="materials" value="Синтетика">
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="materials" value="Синтетика">
                                         <p class="text m-0 fut-l">Синтетика</p>
                                     </div>
                                 </div>

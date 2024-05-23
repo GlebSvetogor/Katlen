@@ -22,7 +22,7 @@ namespace Katlen.WEB.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ICatalog ct;
-        private readonly int pageSize = 2;
+        private readonly int pageSize = 3;
 
         public CatalogController(ICatalog ct, IMapper mapper)
         {
@@ -113,8 +113,6 @@ namespace Katlen.WEB.Controllers
 
         public IActionResult IndexDefault(int page)
         {
-            List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
-
             IndexViewModel viewModel = GetIndexViewModel(page);
 
             return View("Index", viewModel);
@@ -134,7 +132,7 @@ namespace Katlen.WEB.Controllers
                 PageProductsCards = items,
                 ProductsCardsQuality = productsCards.Count,
                 Filtrs = HttpContext.Session.Get<Dictionary<string, string[]>>("filtrs")
-        };
+            };
 
             return viewModel;
         }

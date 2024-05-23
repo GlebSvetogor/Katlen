@@ -1447,8 +1447,15 @@ input[type="checkbox"]{
 .dropdown__list-item{
     display:flex;
     gap:8px;
-    margin-bottom: 20px;
+    margin: 0 0 10px 10px;
     font-size: 18px;
+    align-items: center;
+}
+
+.catalog__filtr-input{
+    width: 18px;
+    height: 18px;
+    margin: 0;
 }
 
 .close__dropdown{
@@ -1543,6 +1550,7 @@ input[type="checkbox"]{
 .catalog__pages-arrow--rotate{
     transform:rotate(180deg);
 }
+
 
 /* Card (cardProduct.html) */
 
