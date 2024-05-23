@@ -37,9 +37,9 @@ namespace Katlen.WEB.Controllers
 
             MapFromProductsDTOToProductsCards(productsCards, products);
 
-            IndexViewModel viewModel = GetIndexViewModel(productsCards);
-
             HttpContext.Session.Set<List<ProductCardViewModel>>("productsCards", productsCards);
+
+            IndexViewModel viewModel = GetIndexViewModel();
 
             return View(viewModel);
         }
@@ -50,10 +50,12 @@ namespace Katlen.WEB.Controllers
 
             List<ProductCardViewModel> productsCards = new List<ProductCardViewModel>();
             List<ProductDTO> products = new List<ProductDTO>();
+            Dictionary<string, string[]> filtrs = new Dictionary<string, string[]>();
 
-            if(names != null)
+            if (names != null)
             {
                 products = ct.GetAllByNames(names);
+                filtrs.Add("Одежда", names);
             }
 
             if(priceFrom != priceTo)
@@ -67,6 +69,7 @@ namespace Katlen.WEB.Controllers
                     var filtrProducts = ct.GetAllByPrice(priceFrom, priceTo);
                     products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id)); 
                 }
+                filtrs.Add("Цена", new string[] {priceFrom.ToString(), priceTo.ToString()});
             }
 
             if (sizes != null)
@@ -80,6 +83,8 @@ namespace Katlen.WEB.Controllers
                     var filtrProducts = ct.GetAllBySizes(sizes);
                     products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
                 }
+                filtrs.Add("Размеры", sizes);
+
             }
 
             if (materials != null)
@@ -93,13 +98,15 @@ namespace Katlen.WEB.Controllers
                     var filtrProducts = ct.GetAllByMaterials(materials);
                     products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
                 }
+                filtrs.Add("Материалы", materials);
             }
 
             MapFromProductsDTOToProductsCards(productsCards, products);
 
-            IndexViewModel viewModel = GetIndexViewModel(productsCards);
-
             HttpContext.Session.Set<List<ProductCardViewModel>>("productsCards", productsCards);
+            HttpContext.Session.Set<Dictionary<string, string[]>>("filtrs", filtrs);
+
+            IndexViewModel viewModel = GetIndexViewModel();
 
             return View("Index", viewModel);
         }
@@ -108,11 +115,35 @@ namespace Katlen.WEB.Controllers
         {
             List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
 
-            IndexViewModel viewModel = GetIndexViewModel(productsCards, page);
+            IndexViewModel viewModel = GetIndexViewModel(page);
 
             return View("Index", viewModel);
         }
 
+
+        public IndexViewModel GetIndexViewModel(int page = 1)
+        {
+            List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
+            var count = productsCards.Count();
+            var items = productsCards.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+            IndexViewModel viewModel = new IndexViewModel
+            {
+                PageViewModel = pageViewModel,
+                PageProductsCards = items,
+                ProductsCardsQuality = productsCards.Count,
+                Filtrs = HttpContext.Session.Get<Dictionary<string, string[]>>("filtrs")
+        };
+
+            return viewModel;
+        }
+
+        public int CountProductSale(int salePrice, int fullPrice)
+        {
+            int salePercent = (int)(100 - (salePrice * 100 / fullPrice));
+            return salePercent;
+        }
         public void MapFromProductsDTOToProductsCards(List<ProductCardViewModel> productsCards, IEnumerable<ProductDTO> products)
         {
             foreach (var product in products)
@@ -123,28 +154,6 @@ namespace Katlen.WEB.Controllers
 
                 productsCards.Add(productCard);
             }
-        }
-
-        public IndexViewModel GetIndexViewModel(List<ProductCardViewModel> productsCards, int page = 1)
-        {
-            var count = productsCards.Count();
-            var items = productsCards.Skip((page - 1) * pageSize).Take(pageSize).ToList();
-
-            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
-            IndexViewModel viewModel = new IndexViewModel
-            {
-                PageViewModel = pageViewModel,
-                PageProductsCards = items,
-                ProductsCardsQuality = productsCards.Count
-            };
-
-            return viewModel;
-        }
-
-        public int CountProductSale(int salePrice, int fullPrice)
-        {
-            int salePercent = (int)(100 - (salePrice * 100 / fullPrice));
-            return salePercent;
         }
     }
 

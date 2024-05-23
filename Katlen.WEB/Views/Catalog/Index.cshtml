@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="dropdown__list close__dropdown dropdown__list--active">
                                     <div class="dropdown__list-item">
-                                        <input type="checkbox" name="names" value="Костюм">
+                                        <input type="checkbox" name="names" value="Костюм" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Одежда") && Model.Filtrs["Одежда"].Contains("Костюм") ? "checked" : "")>
                                         <p class="text m-0 fut-l">Костюм</p>    
                                     </div>
                                     <div class="dropdown__list-item">

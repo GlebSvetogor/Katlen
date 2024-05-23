@@ -7,6 +7,7 @@ namespace Katlen.WEB.ViewModels
         public IEnumerable<ProductCardViewModel> PageProductsCards { get; set; }
         public int ProductsCardsQuality {  get; set; }
         public PageViewModel PageViewModel { get; set; }
+        public Dictionary<string, string[]> Filtrs { get; set; }
         
     }
 }
