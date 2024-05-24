@@ -4,7 +4,7 @@
 
 <main>
     <section class="catalog">
-        <div class="container">
+        <div class="container-middle">
             <p class="text catalog__text">
                 <a asp-controller="Home" asp-action="Index" class="catalog__link">Главная</a>
                 <span> / </span>
@@ -18,12 +18,9 @@
                         <p id="general-quality" class="catalog__text fut-b m-0">@Model.ProductsCardsQuality</p>
                     </div>
 
-                    <div class="catalog__menu-item catalog__menu-item--page-quality">
+                    <div class="catalog__menu-item catalog__menu-item--quality">
                         <p class="catalog__text fut-l m-0">Товаров на странице:</p>
-                        <p class="catalog__text catalog__text--page fut-b m-0">
-                            <span id="page-quality">@Model.PageProductsCards.Count()</span>
-                            <img class="dropdown-arrow" src="/images/dropDown_BlackArrow-icon.svg" alt="dropDown arrow">
-                        </p>
+                        <p id="general-quality" class="catalog__text fut-b m-0">@Model.PageProductsCards.Count()</p>
                     </div>
 
                     <div class="catalog__menu-item catalog__menu-item--sort">
@@ -37,11 +34,25 @@
                             <img class="dropdown-arrow dropdown-arrow--sort fut-b" src="/images/dropDown_BlackArrow-icon.svg" alt="dropdown arrow">
                         </div>
                     </div>
+
+                    <div class="catalog__menu-item catalog__menu-item--sort">
+                        <p class="catalog__text fut-l m-0">Сезон:</p>
+                        <div class="sort">
+                            <select class="sort__choice fut-b" name="choice">
+                                <option class="sort__option" value="first">Лето</option>
+                                <option class="sort__option" value="second">Осень</option>
+                                <option class="sort__option" value="third">Зима</option>
+                                <option class="sort__option" value="forth">Весна</option>
+                                <option class="sort__option" value="fifth" selected>Все сезоны</option>
+                            </select>
+                            <img class="dropdown-arrow dropdown-arrow--sort fut-b" src="/images/dropDown_BlackArrow-icon.svg" alt="dropdown arrow">
+                        </div>
+                    </div>
                 </div><!-- ./ catalog__menu-inner -->
             </div>
             <div class="catalog__inner">
                 <aside class="catalog__filter">
-                    <h2 class="catalog__inner-title fut-m">Фильтр</h2>
+                    <h2 class="catalog__inner-title fut-m">Фильтры</h2>
                     <form method="get" action="/Catalog/Filtr">
                         <ul class="catalog__list">
                             <li class="catalog__list-item">

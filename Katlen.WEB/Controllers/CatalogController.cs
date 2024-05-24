@@ -22,7 +22,7 @@ namespace Katlen.WEB.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ICatalog ct;
-        private readonly int pageSize = 3;
+        private readonly int pageSize = 12;
 
         public CatalogController(ICatalog ct, IMapper mapper)
         {
