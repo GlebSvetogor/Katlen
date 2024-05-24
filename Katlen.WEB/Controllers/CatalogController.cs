@@ -15,19 +15,21 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
 using System.IO;
 using Microsoft.AspNetCore.Mvc.Routing;
+using Katlen.WEB.AutoMapper;
+using Katlen.WEB.Extensions;
 
 namespace Katlen.WEB.Controllers
 {
     public class CatalogController : Controller
     {
-        private readonly IMapper _mapper;
+        private readonly AutoMapperWEB autoMapper;
         private readonly ICatalog ct;
-        private readonly int pageSize = 12;
+        private readonly int pageSize = 4;
 
         public CatalogController(ICatalog ct, IMapper mapper)
         {
             this.ct = ct;
-            _mapper = mapper;
+            autoMapper = new AutoMapperWEB(mapper);
         }
 
         public IActionResult Index()
@@ -35,19 +37,17 @@ namespace Katlen.WEB.Controllers
             List<ProductCardViewModel> productsCards = new List<ProductCardViewModel>();
             var products = ct.GetAll();
 
-            MapFromProductsDTOToProductsCards(productsCards, products);
+            autoMapper.MapProductsToProductCards(productsCards, products);
 
             HttpContext.Session.Set<List<ProductCardViewModel>>("productsCards", productsCards);
 
             IndexViewModel viewModel = GetIndexViewModel();
-
             return View(viewModel);
         }
 
         [HttpGet]
         public IActionResult Filtr(string[] names=null, int priceFrom=0, int priceTo=0, string[] sizes = null, string[] materials=null)
         {
-
             List<ProductCardViewModel> productsCards = new List<ProductCardViewModel>();
             List<ProductDTO> products = new List<ProductDTO>();
             Dictionary<string, string[]> filtrs = new Dictionary<string, string[]>();
@@ -101,10 +101,10 @@ namespace Katlen.WEB.Controllers
                 filtrs.Add("Материалы", materials);
             }
 
-            MapFromProductsDTOToProductsCards(productsCards, products);
+            autoMapper.MapProductsToProductCards(productsCards, products);
 
-            HttpContext.Session.Set<List<ProductCardViewModel>>("productsCards", productsCards);
-            HttpContext.Session.Set<Dictionary<string, string[]>>("filtrs", filtrs);
+            HttpContext.Session.Set("productsCards", productsCards);
+            HttpContext.Session.Set("filtrs", filtrs);
 
             IndexViewModel viewModel = GetIndexViewModel();
 
@@ -114,11 +114,22 @@ namespace Katlen.WEB.Controllers
         public IActionResult IndexDefault(int page)
         {
             IndexViewModel viewModel = GetIndexViewModel(page);
-
             return View("Index", viewModel);
         }
 
+        [HttpGet]
+        public IActionResult GetSelectedValue(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return BadRequest("Value is required");
+            }
 
+
+            var result = new { Message = $"Вы выбрали значение {value}" };
+
+            return Json(result);
+        }
         public IndexViewModel GetIndexViewModel(int page = 1)
         {
             List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
@@ -136,52 +147,8 @@ namespace Katlen.WEB.Controllers
 
             return viewModel;
         }
-
-        public int CountProductSale(int salePrice, int fullPrice)
-        {
-            int salePercent = (int)(100 - (salePrice * 100 / fullPrice));
-            return salePercent;
-        }
-        public void MapFromProductsDTOToProductsCards(List<ProductCardViewModel> productsCards, IEnumerable<ProductDTO> products)
-        {
-            foreach (var product in products)
-            {
-                ProductCardViewModel productCard = _mapper.Map<ProductCardViewModel>(product);
-                productCard.Image = product.Images[0];
-                productCard.SalePercent = CountProductSale(productCard.SalePrice, productCard.FullPrice);
-
-                productsCards.Add(productCard);
-            }
-        }
-
-        [HttpPost]
-        public IActionResult GetSelectedValue([FromBody] SelectedValueModel model)
-        {
-            // Логика обработки выбранного значения
-            // Например, получение данных из базы данных в зависимости от выбранного значения
-
-            var result = new { Message = $"Вы выбрали значение {model.Value}" };
-
-            return Json(result);
-        }
     }
 
-    public class SelectedValueModel
-    {
-        public string Value { get; set; }
-    }
 
-    public static class SessionExtensions
-    {
-        public static void Set<T>(this ISession session, string key, T value)
-        {
-            session.SetString(key, System.Text.Json.JsonSerializer.Serialize(value));
-        }
-
-        public static T? Get<T>(this ISession session, string key)
-        {
-            var value = session.GetString(key);
-            return value == null ? default : System.Text.Json.JsonSerializer.Deserialize<T>(value);
-        }
-    }
+    
 }
