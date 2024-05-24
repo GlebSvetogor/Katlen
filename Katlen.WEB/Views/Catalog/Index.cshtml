@@ -26,10 +26,10 @@
                     <div class="catalog__menu-item catalog__menu-item--sort">
                         <p class="catalog__text fut-l m-0">Сортировка:</p>
                         <div class="sort">
-                            <select class="sort__choice fut-b" name="choice">
-                                <option class="sort__option" value="first">В перемешку</option>
-                                <option class="sort__option" value="second">По цене</option>
-                                <option class="sort__option" value="third">По размерам</option>
+                            <select id="mySelect" onchange="sendSelectedValue()" class="sort__choice fut-b" name="choice">
+                                <option class="sort__option" value="В перемешку">В перемешку</option>
+                                <option class="sort__option" value="По цене">По цене</option>
+                                <option class="sort__option" value="По размерам">По размерам</option>
                             </select>
                             <img class="dropdown-arrow dropdown-arrow--sort fut-b" src="/images/dropDown_BlackArrow-icon.svg" alt="dropdown arrow">
                         </div>
@@ -315,5 +315,26 @@
             </div><!-- /. wholesale__wrapper -->
         </div><!-- /. container -->
     </section><!-- /. wholesale -->
+
+    <script>
+        function sendSelectedValue() {
+            var selectElement = document.getElementById("mySelect");
+            var selectedValue = selectElement.value;
+
+            fetch('/Catalog/GetSelectedValue', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value: selectedValue })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    // Здесь можно обновить DOM в соответствии с данными, возвращенными с сервера
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
 
 </main>

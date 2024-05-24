@@ -153,6 +153,22 @@ namespace Katlen.WEB.Controllers
                 productsCards.Add(productCard);
             }
         }
+
+        [HttpPost]
+        public IActionResult GetSelectedValue([FromBody] SelectedValueModel model)
+        {
+            // Логика обработки выбранного значения
+            // Например, получение данных из базы данных в зависимости от выбранного значения
+
+            var result = new { Message = $"Вы выбрали значение {model.Value}" };
+
+            return Json(result);
+        }
+    }
+
+    public class SelectedValueModel
+    {
+        public string Value { get; set; }
     }
 
     public static class SessionExtensions
