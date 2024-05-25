@@ -123,31 +123,76 @@ namespace Katlen.WEB.Controllers
         {
             List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
             IEnumerable<ProductCardViewModel> sortedList = new List<ProductCardViewModel>();
-
-            if (productsCards != null)
+            
+            switch (value)
             {
-                switch (value)
-                {
-                    case "priceSort":
-                        sortedList = from pc in productsCards
-                                     orderby pc.SalePrice
-                                     select pc;
-                        break;
-                    case "sizeSort":
-                        sortedList = from pc in productsCards 
-                                     orderby pc.MinimumAvailableSize
-                                     where pc.MinimumAvailableSize != -1
-                                     select pc;
-                        break;
-                    case "mixedSort":
-                        Random rng = new Random();
-                        sortedList = productsCards.OrderBy(pr => rng.Next()).ToList();
-                        break;
-                    default:
-                        return BadRequest("Value is required");
-                }
+                case "priceSort":
+                    sortedList = from pc in productsCards
+                                    orderby pc.SalePrice
+                                    select pc;
+                    break;
+                case "sizeSort":
+                    sortedList = from pc in productsCards 
+                                    orderby pc.MinimumAvailableSize
+                                    where pc.MinimumAvailableSize != -1
+                                    select pc;
+                    break;
+                case "mixedSort":
+                    Random rng = new Random();
+                    sortedList = productsCards.OrderBy(pr => rng.Next());
+                    break;
+                default:
+                    return BadRequest("Value is required");
+            }
 
-                HttpContext.Session.Set("productsCards", sortedList.ToList());
+            HttpContext.Session.Set("productsCards", sortedList.ToList());
+
+            IndexViewModel viewModel = GetIndexViewModel();
+            return View("Index", viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult GetSeasonSelectedValue(string value)
+        {
+            List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
+            IEnumerable<ProductCardViewModel> sortedList = new List<ProductCardViewModel>();
+
+            if(value == "allSeasons") return RedirectToAction("Index");
+
+            sortedList = from pc in productsCards
+                            where pc.Seasons.Contains(value)
+                            select pc;
+
+            HttpContext.Session.Set("productsCards", sortedList.ToList());
+
+            IndexViewModel viewModel = GetIndexViewModel();
+            return View("Index", viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult GetOptionSelectedValue(string value)
+        {
+            List<ProductCardViewModel> productsCards = new List<ProductCardViewModel>();
+            var products = ct.GetAll();
+            autoMapper.MapProductsToProductCards(productsCards, products);
+
+            switch (value)
+            {
+                case "allProducts":
+                    HttpContext.Session.Set("productsCards", productsCards);
+                    break;
+                case "newProducts":
+                    productsCards = productsCards.AsEnumerable().Reverse().ToList();
+                    HttpContext.Session.Set("productsCards", productsCards);
+                    break;
+                case "bestProducts":
+                    var sortedList = from pc in productsCards
+                                    orderby pc.Rate
+                                    select pc;
+                    HttpContext.Session.Set("productsCards", sortedList.AsEnumerable().Reverse().ToList());
+                    break;
+                default:
+                    return BadRequest("Value is required");
             }
 
             IndexViewModel viewModel = GetIndexViewModel();

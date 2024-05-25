@@ -13,7 +13,7 @@ namespace Katlen.WEB.ViewModels
         public int FullPrice { get; set; }
         public int SalePercent { get; set; }
         public int MinimumAvailableSize { get; set; }
-
+        public List<string> Seasons { get; set; }
 
 
     }

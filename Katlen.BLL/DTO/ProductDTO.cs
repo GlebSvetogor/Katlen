@@ -20,6 +20,7 @@ namespace Katlen.BLL.DTO
         public List<string> Sizes { get; set; } 
         public List<string> SizesAreAvailable { get; set; } 
         public int MinimumAvailableSize { get; set; }
+        public List<string> Seasons { get; set; }
 
     }
 }

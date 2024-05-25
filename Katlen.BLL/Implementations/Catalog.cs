@@ -33,6 +33,8 @@ namespace Katlen.BLL.Implementations
             var list = unitOfWork.Products.GetAll()
                 .Include(p => p.Images)
                 .Include(p => p.Price)
+                .Include(p => p.ProductSeason)
+                    .ThenInclude(c => c.Season)
                 .Include(p => p.ProductSizes)
                     .ThenInclude(c => c.Size);
                     
@@ -50,8 +52,10 @@ namespace Katlen.BLL.Implementations
                 .Where(item => names.Any(name => item.Name.Contains(name)))
                 .Include(p => p.Images)
                 .Include(p => p.Price)
+                .Include(p => p.ProductSeason)
+                    .ThenInclude(c => c.Season)
                 .Include(p => p.ProductSizes)
-                .ThenInclude(c => c.Size)
+                    .ThenInclude(c => c.Size)
                 .ToList();
 
             BindTables(list, products);
@@ -66,6 +70,8 @@ namespace Katlen.BLL.Implementations
             var list = unitOfWork.Products.GetAll().Where(item => item.Price.SalePrice >= from && item.Price.SalePrice <= to)
                 .Include(p => p.Images)
                 .Include(p => p.Price)
+                .Include(p => p.ProductSeason)
+                    .ThenInclude(c => c.Season)
                 .Include(p => p.ProductSizes)
                     .ThenInclude(c => c.Size);
 
@@ -82,6 +88,8 @@ namespace Katlen.BLL.Implementations
             var list = unitOfWork.Products.GetAll().Where(product => productsIdentifiers.Any(productId => product.Id == productId))
                 .Include(p => p.Images)
                 .Include(p => p.Price)
+                .Include(p => p.ProductSeason)
+                    .ThenInclude(c => c.Season)
                 .Include(p => p.ProductSizes)
                     .ThenInclude(c => c.Size);
 
@@ -97,6 +105,8 @@ namespace Katlen.BLL.Implementations
                 .Where(product => materials.Any(material => product.Material == material))
                 .Include(p => p.Images)
                 .Include(p => p.Price)
+                .Include(p => p.ProductSeason)
+                    .ThenInclude(c => c.Season)
                 .Include(p => p.ProductSizes)
                 .ThenInclude(c => c.Size)
                 .ToList();
@@ -127,6 +137,8 @@ namespace Katlen.BLL.Implementations
                 List<string> sizes = new List<string>();
                 List<string> sizesAreAvailable = new List<string>();
                 List<int> sizesIds = new List<int>();
+                List<string> seasons = new List<string>();
+
                 imgSources = item.Images.Select(image => image.ImageSource).ToList();
 
                 foreach (var productSize in item.ProductSizes)
@@ -139,6 +151,11 @@ namespace Katlen.BLL.Implementations
                     }
                 }
 
+                foreach (var productSeason in item.ProductSeason)
+                {
+                    seasons.Add(productSeason.Season.Name);
+                }
+
                 sizesIds.Sort();
                 ProductDTO product = _mapper.Map<ProductDTO>(item);
                 product.Images = imgSources;
@@ -147,6 +164,7 @@ namespace Katlen.BLL.Implementations
                 product.SalePrice = item.Price.SalePrice;
                 product.FullPrice = item.Price.FullPrice;
                 product.MinimumAvailableSize = sizesIds.Count > 0 ? sizesIds[0] : -1;
+                product.Seasons = seasons;
 
                 products.Add(product);
             }

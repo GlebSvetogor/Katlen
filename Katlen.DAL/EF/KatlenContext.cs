@@ -14,15 +14,20 @@ namespace Katlen.DAL.EF
         public DbSet<Price> Prices { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Size> Sizes { get; set; }
+        public DbSet<Season> Seasons { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
+        public DbSet<ProductSeason> ProductSeasons { get; set; }
+
         public KatlenContext(DbContextOptions<KatlenContext> options) : base(options) 
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProductSize>()
-                .HasKey(ps => new { ps.ProductId, ps.SizeId });
+                .HasKey(productSize => new { productSize.ProductId, productSize.SizeId });
+            modelBuilder.Entity<ProductSeason>()
+                .HasKey(productSeason => new { productSeason.ProductId, productSeason.SeasonId });
         }
     }
 }

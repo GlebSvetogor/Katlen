@@ -3,6 +3,7 @@ using Katlen.DAL.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Katlen.WEB.Migrations
 {
     [DbContext(typeof(KatlenContext))]
-    partial class KatlenContextModelSnapshot : ModelSnapshot
+    [Migration("20240525223614_Add seasons model with many-to-many relation")]
+    partial class Addseasonsmodelwithmanytomanyrelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
