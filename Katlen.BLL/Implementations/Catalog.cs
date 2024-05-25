@@ -126,6 +126,7 @@ namespace Katlen.BLL.Implementations
                 List<string> imgSources = new List<string>();
                 List<string> sizes = new List<string>();
                 List<string> sizesAreAvailable = new List<string>();
+                List<int> sizesIds = new List<int>();
                 imgSources = item.Images.Select(image => image.ImageSource).ToList();
 
                 foreach (var productSize in item.ProductSizes)
@@ -134,15 +135,18 @@ namespace Katlen.BLL.Implementations
                     if (productSize.IsSizeAvailable == 1)
                     {
                         sizesAreAvailable.Add(productSize.Size.SizeValue);
+                        sizesIds.Add(productSize.Size.Id);
                     }
                 }
 
+                sizesIds.Sort();
                 ProductDTO product = _mapper.Map<ProductDTO>(item);
                 product.Images = imgSources;
                 product.Sizes = sizes;
                 product.SizesAreAvailable = sizesAreAvailable;
                 product.SalePrice = item.Price.SalePrice;
                 product.FullPrice = item.Price.FullPrice;
+                product.MinimumAvailableSize = sizesIds.Count > 0 ? sizesIds[0] : -1;
 
                 products.Add(product);
             }

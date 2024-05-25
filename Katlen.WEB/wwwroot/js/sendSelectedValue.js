@@ -1,14 +1,20 @@
-function sendSelectedValue() {
-    var selectElement = document.getElementById("mySelect");
+function sendSortSelectedValue() {
+    var selectElement = document.getElementById("sortSelect");
     var selectedValue = selectElement.value;
 
-    fetch(`/Catalog/GetSelectedValue?value=${encodeURIComponent(selectedValue)}`, {
-        method: 'GET'
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            // Здесь можно обновить DOM в соответствии с данными, возвращенными с сервера
-        })
-        .catch(error => console.error('Error:', error));
+    window.location.href = `/Catalog/GetSortSelectedValue?value=${encodeURIComponent(selectedValue)}`;
+}
+
+function sendSizonSelectedValue() {
+    var selectElement = document.getElementById("sizonSelect");
+    var selectedValue = selectElement.value;
+
+    window.location.href = `/Catalog/GetSortSelectedValue?value=${encodeURIComponent(selectedValue)}`;
+}
+
+function sendOptionSelectedValue() {
+    var selectElement = document.getElementById("optionSelect");
+    var selectedValue = selectElement.value;
+
+    window.location.href = `/Catalog/GetSortSelectedValue?value=${encodeURIComponent(selectedValue)}`;
 }

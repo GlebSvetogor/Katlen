@@ -42,5 +42,6 @@ namespace Katlen.DAL.Implementations
         {
             throw new NotImplementedException();
         }
+
     }
 }

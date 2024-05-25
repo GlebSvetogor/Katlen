@@ -19,6 +19,7 @@ namespace Katlen.BLL.DTO
         public List<string> Images { get; set; } 
         public List<string> Sizes { get; set; } 
         public List<string> SizesAreAvailable { get; set; } 
+        public int MinimumAvailableSize { get; set; }
 
     }
 }

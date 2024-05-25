@@ -17,6 +17,7 @@ using System.IO;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Katlen.WEB.AutoMapper;
 using Katlen.WEB.Extensions;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Katlen.WEB.Controllers
 {
@@ -39,7 +40,7 @@ namespace Katlen.WEB.Controllers
 
             autoMapper.MapProductsToProductCards(productsCards, products);
 
-            HttpContext.Session.Set<List<ProductCardViewModel>>("productsCards", productsCards);
+            HttpContext.Session.Set("productsCards", productsCards);
 
             IndexViewModel viewModel = GetIndexViewModel();
             return View(viewModel);
@@ -118,17 +119,39 @@ namespace Katlen.WEB.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetSelectedValue(string value)
+        public IActionResult GetSortSelectedValue(string value)
         {
-            if (string.IsNullOrEmpty(value))
+            List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
+            IEnumerable<ProductCardViewModel> sortedList = new List<ProductCardViewModel>();
+
+            if (productsCards != null)
             {
-                return BadRequest("Value is required");
+                switch (value)
+                {
+                    case "priceSort":
+                        sortedList = from pc in productsCards
+                                     orderby pc.SalePrice
+                                     select pc;
+                        break;
+                    case "sizeSort":
+                        sortedList = from pc in productsCards 
+                                     orderby pc.MinimumAvailableSize
+                                     where pc.MinimumAvailableSize != -1
+                                     select pc;
+                        break;
+                    case "mixedSort":
+                        Random rng = new Random();
+                        sortedList = productsCards.OrderBy(pr => rng.Next()).ToList();
+                        break;
+                    default:
+                        return BadRequest("Value is required");
+                }
+
+                HttpContext.Session.Set("productsCards", sortedList.ToList());
             }
 
-
-            var result = new { Message = $"Вы выбрали значение {value}" };
-
-            return Json(result);
+            IndexViewModel viewModel = GetIndexViewModel();
+            return View("Index", viewModel);
         }
         public IndexViewModel GetIndexViewModel(int page = 1)
         {

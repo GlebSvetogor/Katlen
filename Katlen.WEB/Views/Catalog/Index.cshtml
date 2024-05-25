@@ -26,7 +26,7 @@
                     <div class="catalog__menu-item catalog__menu-item--sort">
                         <p class="catalog__text fut-l m-0">Сортировка:</p>
                         <div class="sort">
-                            <select id="mySelect" onchange="sendSelectedValue()" class="sort__choice fut-b" name="sortChoice">
+                            <select id="sortSelect" onchange="sendSortSelectedValue()" class="sort__choice fut-b" name="sortChoice">
                                 <option class="sort__option" value="mixedSort">В перемешку</option>
                                 <option class="sort__option" value="priceSort">По цене</option>
                                 <option class="sort__option" value="sizeSort">По размерам</option>
@@ -38,7 +38,7 @@
                     <div class="catalog__menu-item catalog__menu-item--sort">
                         <p class="catalog__text fut-l m-0">Сезон:</p>
                         <div class="sort">
-                            <select class="sort__choice fut-b" name="sizonsChoice">
+                            <select id="sizonSelect" onchange="sendSizonSelectedValue()" class="sort__choice fut-b" name="sizonsChoice">
                                 <option class="sort__option" value="allSizons" selected>Все сезоны</option>
                                 <option class="sort__option" value="summarySizon">Лето</option>
                                 <option class="sort__option" value="autumnSizon">Осень</option>
@@ -52,7 +52,7 @@
                     <div class="catalog__menu-item catalog__menu-item--sort">
                         <p class="catalog__text fut-l m-0">Опции:</p>
                         <div class="sort">
-                            <select class="sort__choice fut-b" name="optionChoice">
+                            <select id="optionSelect" onchange="sendOptionSelectedValue()" class="sort__choice fut-b" name="optionChoice">
                                 <option class="sort__option" value="allProducts" selected>Все товары</option>
                                 <option class="sort__option" value="newProducts">Новинки</option>
                                 <option class="sort__option" value="bestProducts">Хиты продаж</option>
