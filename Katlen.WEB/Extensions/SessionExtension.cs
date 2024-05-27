@@ -1,4 +1,6 @@
-﻿namespace Katlen.WEB.Extensions
+﻿using Katlen.WEB.ViewModels;
+
+namespace Katlen.WEB.Extensions
 {
     public static class SessionExtensions
     {
@@ -13,4 +15,5 @@
             return value == null ? default : System.Text.Json.JsonSerializer.Deserialize<T>(value);
         }
     }
+
 }

@@ -14,8 +14,11 @@ namespace Katlen.BLL.Interfaces
         public List<ProductDTO> GetAllByPrice(int from, int to);
         public List<ProductDTO> GetAllBySizes(string[] sizes);
         public List<ProductDTO> GetAllByMaterials(string[] materials);
-        //public IEnumerable<ProductDTO> GetAllBySizons(string[] sizons);
-        //public IEnumerable<ProductDTO> GetAllByAges(string[] ages);
+        public List<ProductDTO> GetAllBySeasons(string[] seasons);
+        public List<ProductDTO> GetAllByNew();
+        public List<ProductDTO> GetAllByRate();
+        public List<ProductDTO> GetAllByCategory(string category);
+        public List<ProductDTO> MakeFiltr(string[] names = null, int priceFrom = 0, int priceTo = 0, string[] sizes = null, string[] materials = null, string[] seasons = null);
 
     }
 }

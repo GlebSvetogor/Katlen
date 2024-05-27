@@ -1,4 +1,5 @@
 ﻿using Katlen.DAL.EF;
+using Katlen.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Katlen.DAL.Implementations
         private PriceRepository priceRepository;
         private SizeRepository sizeRepository;
         private ProductSizeRepository productSizeRepository;
+        private ProductSeasonRepository productSeasonRepository;
+        private SeasonRepository seasonRepository;
 
         public UnitOfWork(KatlenContext dbContext)
         {
@@ -59,6 +62,25 @@ namespace Katlen.DAL.Implementations
                 return productSizeRepository;
             }
         }
+        public ProductSeasonRepository ProductSeasons
+        {
+            get
+            {
+                if (productSeasonRepository == null)
+                    productSeasonRepository = new ProductSeasonRepository(dbContext);
+                return productSeasonRepository;
+            }
+        }
+        public SeasonRepository Seasons
+        {
+            get
+            {
+                if(seasonRepository == null)
+                    seasonRepository = new SeasonRepository(dbContext);
+                return seasonRepository;
+            }
+        }
+
 
         public void Save()
         {

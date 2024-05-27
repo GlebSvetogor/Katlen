@@ -7,9 +7,11 @@ using Katlen.DAL.Entities;
 using Katlen.DAL.Implementations;
 using Katlen.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using static Azure.Core.HttpHeader;
@@ -29,105 +31,159 @@ namespace Katlen.BLL.Implementations
 
         public IEnumerable<ProductDTO> GetAll()
         {
-            List<ProductDTO> products = new List<ProductDTO>();
-            var list = unitOfWork.Products.GetAll()
-                .Include(p => p.Images)
-                .Include(p => p.Price)
-                .Include(p => p.ProductSeason)
-                    .ThenInclude(c => c.Season)
-                .Include(p => p.ProductSizes)
-                    .ThenInclude(c => c.Size);
-                    
-            BindTables(list, products);
-
-            return products;
+            return GetProducts(p => true);
 
         }
 
         public List<ProductDTO> GetAllByNames(string[] names)
         {
+            return GetProducts(item => names.Any(name => item.Name.Contains(name)));
+
+        }
+        public List<ProductDTO> GetAllByPrice(int from, int to)
+        {
+            return GetProducts(item => item.Price.SalePrice >= from && item.Price.SalePrice <= to);
+        }
+        public List<ProductDTO> GetAllBySizes(string[] sizes)
+        {
+            var sizesIdentifiers = unitOfWork.Sizes.GetAll()
+                .Where(size => sizes.Any(sizeValue => size.SizeValue == sizeValue))
+                .Select(size => size.Id);
+
+            var productsIdentifiers = unitOfWork.ProductSizes.GetAll()
+                .Where(productSize => sizesIdentifiers.Contains(productSize.SizeId))
+                .Select(productSize => productSize.ProductId);
+
+            return GetProducts(p => productsIdentifiers.Contains(p.Id));
+        }
+        public List<ProductDTO> GetAllByMaterials(string[] materials)
+        {
+            return GetProducts(p => materials.Contains(p.Material));
+        }
+
+        public List<ProductDTO> GetAllBySeasons(string[] seasons)
+        {
+            if (seasons.Contains("allSeasons"))
+            {
+                return GetProducts(p => p.ProductSeason.Any());
+            }
+            else
+            {
+                var seasonsIdentifiers = unitOfWork.Seasons.GetAll()
+                    .Where(season => seasons.Contains(season.Name))
+                    .Select(season => season.Id);
+
+                var productsIdentifiers = unitOfWork.ProductSeasons.GetAll()
+                    .Where(productSeason => seasonsIdentifiers.Contains(productSeason.SeasonId))
+                    .Select(productSeason => productSeason.ProductId);
+
+                return GetProducts(p => productsIdentifiers.Contains(p.Id));
+            }
+        }
+        public List<ProductDTO> GetAllByNew()
+        {
+            return GetProducts(p => true).AsEnumerable().Reverse().ToList();
+        }
+
+        public List<ProductDTO> GetAllByRate()
+        {
+            return GetProducts(p => true).OrderByDescending(p => p.Rate).ToList();
+        }
+
+        public List<ProductDTO> GetAllByCategory(string value)
+        {
+            //return GetProducts(p => p.Category == value).OrderByDescending(p => p.Rate).ToList();
+            return null;
+        }
+
+        public List<ProductDTO> MakeFiltr(string[] names = null, int priceFrom = 0, int priceTo = 0, string[] sizes = null, string[] materials = null, string[] seasons = null)
+        {
             List<ProductDTO> products = new List<ProductDTO>();
-            
+
+            if (names != null)
+            {
+                if(products.Count() < 1)
+                {
+                    products = GetAllByNames(names);
+                }
+                else
+                {
+                    var filtrProducts = GetAllByNames(names);
+                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
+                }
+            }
+
+            if (priceFrom != priceTo)
+            {
+                if(products.Count() < 1)
+                {
+                    products = GetAllByPrice(priceFrom, priceTo);
+                }
+                else
+                {
+                    var filtrProducts = GetAllByPrice(priceFrom, priceTo);
+                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
+                }
+            }
+
+            if (sizes != null)
+            {
+                if(products.Count() < 1)
+                {
+                    products = GetAllBySizes(sizes);
+                }
+                else
+                {
+                    var filtrProducts = GetAllBySizes(sizes);
+                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
+                }
+            }
+
+            if (materials != null)
+            {
+                if(products.Count() < 1)
+                {
+                    products = GetAllByMaterials(materials);
+                }
+                else
+                {
+                    var filtrProducts = GetAllByMaterials(materials);
+                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
+                }
+            }
+
+            if (seasons != null)
+            {
+                if(products.Count() < 1)
+                {
+                    products = GetAllBySeasons(seasons);
+                }
+                else
+                {
+                    var filtrProducts = GetAllBySeasons(seasons);
+                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
+                }
+            }
+
+            return products;
+        }
+
+        private List<ProductDTO> GetProducts(Func<Product, bool> predicate)
+        {
+            List<ProductDTO> products = new List<ProductDTO>();
             var list = unitOfWork.Products.GetAll()
-                .Where(item => names.Any(name => item.Name.Contains(name)))
                 .Include(p => p.Images)
                 .Include(p => p.Price)
                 .Include(p => p.ProductSeason)
                     .ThenInclude(c => c.Season)
                 .Include(p => p.ProductSizes)
                     .ThenInclude(c => c.Size)
-                .ToList();
-
-            BindTables(list, products);
-
-            return products;
-
-        }
-        public List<ProductDTO> GetAllByPrice(int from, int to)
-        {
-            List<ProductDTO> products = new List<ProductDTO>();
-
-            var list = unitOfWork.Products.GetAll().Where(item => item.Price.SalePrice >= from && item.Price.SalePrice <= to)
-                .Include(p => p.Images)
-                .Include(p => p.Price)
-                .Include(p => p.ProductSeason)
-                    .ThenInclude(c => c.Season)
-                .Include(p => p.ProductSizes)
-                    .ThenInclude(c => c.Size);
+                .Where(predicate);
 
             BindTables(list, products);
 
             return products;
         }
-        public List<ProductDTO> GetAllBySizes(string[] sizes)
-        {
-            List<ProductDTO> products = new List<ProductDTO>();
-
-            var sizesIdentifiers = unitOfWork.Sizes.GetAll().Where(size => sizes.Any(sizeValue => size.SizeValue == sizeValue)).Select(size => size.Id);
-            var productsIdentifiers = unitOfWork.ProductSizes.GetAll().Where(productSize => sizesIdentifiers.Any(sizeId => sizeId == productSize.SizeId)).Select(productSize => productSize.ProductId);
-            var list = unitOfWork.Products.GetAll().Where(product => productsIdentifiers.Any(productId => product.Id == productId))
-                .Include(p => p.Images)
-                .Include(p => p.Price)
-                .Include(p => p.ProductSeason)
-                    .ThenInclude(c => c.Season)
-                .Include(p => p.ProductSizes)
-                    .ThenInclude(c => c.Size);
-
-            BindTables(list, products);
-
-            return products;
-        }
-        public List<ProductDTO> GetAllByMaterials(string[] materials)
-        {
-            List<ProductDTO> products = new List<ProductDTO>();
-
-            var list = unitOfWork.Products.GetAll()
-                .Where(product => materials.Any(material => product.Material == material))
-                .Include(p => p.Images)
-                .Include(p => p.Price)
-                .Include(p => p.ProductSeason)
-                    .ThenInclude(c => c.Season)
-                .Include(p => p.ProductSizes)
-                .ThenInclude(c => c.Size)
-                .ToList();
-
-            BindTables(list, products);
-
-            return products;
-        }
-        //public IEnumerable<ProductDTO> GetAllByAges(string[] ages)
-        //{
-
-        //}
-
-
-
-
-        //public IEnumerable<ProductDTO> GetAllBySizons(string[] sizons)
-        //{
-
-        //}
-
 
         public void BindTables(IEnumerable<Product> list, List<ProductDTO> products)
         {

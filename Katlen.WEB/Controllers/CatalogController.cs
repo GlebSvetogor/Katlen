@@ -26,6 +26,7 @@ namespace Katlen.WEB.Controllers
         private readonly AutoMapperWEB autoMapper;
         private readonly ICatalog ct;
         private readonly int pageSize = 4;
+        private List<ProductCardViewModel> productsCards = new();
 
         public CatalogController(ICatalog ct, IMapper mapper)
         {
@@ -33,88 +34,37 @@ namespace Katlen.WEB.Controllers
             autoMapper = new AutoMapperWEB(mapper);
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            List<ProductCardViewModel> productsCards = new List<ProductCardViewModel>();
-            var products = ct.GetAll();
+            if (HttpContext.Session.Keys.Contains("productsCards"))
+            {
+                IndexViewModel viewModel = GetIndexViewModel(page);
+                return View(viewModel);
 
-            autoMapper.MapProductsToProductCards(productsCards, products);
+            }
+            else
+            {
+                var products = ct.GetAll();
 
-            HttpContext.Session.Set("productsCards", productsCards);
+                autoMapper.MapProductsToProductCards(productsCards, products);
 
-            IndexViewModel viewModel = GetIndexViewModel();
-            return View(viewModel);
+                HttpContext.Session.Set("productsCards", productsCards);
+
+                IndexViewModel viewModel = GetIndexViewModel();
+                return View(viewModel);
+            }
         }
 
         [HttpGet]
-        public IActionResult Filtr(string[] names=null, int priceFrom=0, int priceTo=0, string[] sizes = null, string[] materials=null)
+        public IActionResult Filtr(string[] names=null, int priceFrom=0, int priceTo=0, string[] sizes = null, string[] materials=null, string[] seasons=null)
         {
-            List<ProductCardViewModel> productsCards = new List<ProductCardViewModel>();
-            List<ProductDTO> products = new List<ProductDTO>();
-            Dictionary<string, string[]> filtrs = new Dictionary<string, string[]>();
-
-            if (names != null)
-            {
-                products = ct.GetAllByNames(names);
-                filtrs.Add("Одежда", names);
-            }
-
-            if(priceFrom != priceTo)
-            {
-                if(products.IsNullOrEmpty())
-                {
-                    products = ct.GetAllByPrice(priceFrom, priceTo);
-                }
-                else
-                {
-                    var filtrProducts = ct.GetAllByPrice(priceFrom, priceTo);
-                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id)); 
-                }
-                filtrs.Add("Цена", new string[] {priceFrom.ToString(), priceTo.ToString()});
-            }
-
-            if (sizes != null)
-            {
-                if (products.IsNullOrEmpty())
-                {
-                    products = ct.GetAllBySizes(sizes);
-                }
-                else
-                {
-                    var filtrProducts = ct.GetAllBySizes(sizes);
-                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
-                }
-                filtrs.Add("Размеры", sizes);
-
-            }
-
-            if (materials != null)
-            {
-                if (products.IsNullOrEmpty())
-                {
-                    products = ct.GetAllByMaterials(materials);
-                }
-                else
-                {
-                    var filtrProducts = ct.GetAllByMaterials(materials);
-                    products.RemoveAll(product => !filtrProducts.Any(fp => fp.Id == product.Id));
-                }
-                filtrs.Add("Материалы", materials);
-            }
-
+            var products = ct.MakeFiltr(names, priceFrom, priceTo, sizes, materials, seasons);
+            
             autoMapper.MapProductsToProductCards(productsCards, products);
-
             HttpContext.Session.Set("productsCards", productsCards);
-            HttpContext.Session.Set("filtrs", filtrs);
 
             IndexViewModel viewModel = GetIndexViewModel();
 
-            return View("Index", viewModel);
-        }
-
-        public IActionResult IndexDefault(int page)
-        {
-            IndexViewModel viewModel = GetIndexViewModel(page);
             return View("Index", viewModel);
         }
 
@@ -123,7 +73,7 @@ namespace Katlen.WEB.Controllers
         {
             List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
             IEnumerable<ProductCardViewModel> sortedList = new List<ProductCardViewModel>();
-            
+
             switch (value)
             {
                 case "priceSort":
@@ -144,25 +94,7 @@ namespace Katlen.WEB.Controllers
                 default:
                     return BadRequest("Value is required");
             }
-
-            HttpContext.Session.Set("productsCards", sortedList.ToList());
-
-            IndexViewModel viewModel = GetIndexViewModel();
-            return View("Index", viewModel);
-        }
-
-        [HttpGet]
-        public IActionResult GetSeasonSelectedValue(string value)
-        {
-            List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
-            IEnumerable<ProductCardViewModel> sortedList = new List<ProductCardViewModel>();
-
-            if(value == "allSeasons") return RedirectToAction("Index");
-
-            sortedList = from pc in productsCards
-                            where pc.Seasons.Contains(value)
-                            select pc;
-
+            
             HttpContext.Session.Set("productsCards", sortedList.ToList());
 
             IndexViewModel viewModel = GetIndexViewModel();
@@ -172,24 +104,20 @@ namespace Katlen.WEB.Controllers
         [HttpGet]
         public IActionResult GetOptionSelectedValue(string value)
         {
-            List<ProductCardViewModel> productsCards = new List<ProductCardViewModel>();
-            var products = ct.GetAll();
-            autoMapper.MapProductsToProductCards(productsCards, products);
-
             switch (value)
             {
                 case "allProducts":
-                    HttpContext.Session.Set("productsCards", productsCards);
-                    break;
+                    HttpContext.Session.Clear();
+                    return RedirectToAction("Index");
                 case "newProducts":
-                    productsCards = productsCards.AsEnumerable().Reverse().ToList();
+                    var products = ct.GetAllByNew();
+                    autoMapper.MapProductsToProductCards(productsCards, products);
                     HttpContext.Session.Set("productsCards", productsCards);
                     break;
                 case "bestProducts":
-                    var sortedList = from pc in productsCards
-                                    orderby pc.Rate
-                                    select pc;
-                    HttpContext.Session.Set("productsCards", sortedList.AsEnumerable().Reverse().ToList());
+                    products = ct.GetAllByRate();
+                    autoMapper.MapProductsToProductCards(productsCards, products);
+                    HttpContext.Session.Set("productsCards", productsCards);
                     break;
                 default:
                     return BadRequest("Value is required");
@@ -201,6 +129,7 @@ namespace Katlen.WEB.Controllers
         public IndexViewModel GetIndexViewModel(int page = 1)
         {
             List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
+            
             var count = productsCards.Count();
             var items = productsCards.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
@@ -215,6 +144,7 @@ namespace Katlen.WEB.Controllers
 
             return viewModel;
         }
+
     }
 
 

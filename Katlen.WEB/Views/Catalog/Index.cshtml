@@ -36,14 +36,13 @@
                     </div>
 
                     <div class="catalog__menu-item catalog__menu-item--sort">
-                        <p class="catalog__text fut-l m-0">Сезон:</p>
+                        <p class="catalog__text fut-l m-0">Категория:</p>
                         <div class="sort">
-                            <select id="seasonSelect" onchange="sendSeasonSelectedValue()" class="sort__choice fut-b" name="seasonsChoice">
-                                <option class="sort__option" value="allSeasons" selected>Все сезоны</option>
-                                <option class="sort__option" value="Лето">Лето</option>
-                                <option class="sort__option" value="Осень">Осень</option>
-                                <option class="sort__option" value="Зима">Зима</option>
-                                <option class="sort__option" value="Весна">Весна</option>
+                            <select id="seasonSelect" onchange="sendCategorySelectedValue()" class="sort__choice fut-b" name="categoriesChoice">
+                                <option class="sort__option" value="" selected>Все категории</option>
+                                <option class="sort__option" value="">Для мальчиков</option>
+                                <option class="sort__option" value="">Для девочек</option>
+                                <option class="sort__option" value="">Для новорожденных</option>
                             </select>
                             <img class="dropdown-arrow dropdown-arrow--sort fut-b" src="/images/dropDown_BlackArrow-icon.svg" alt="dropdown arrow">
                         </div>
@@ -74,15 +73,15 @@
                                 </div>
                                 <div class="dropdown__list close__dropdown dropdown__list--active">
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="names" value="Костюм" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Одежда") && Model.Filtrs["Одежда"].Contains("Костюм") ? "checked" : "")>
+                                        <input class="catalog__filtr-input" type="checkbox" name="names" value="Костюм" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Одежда") && Model.Filtrs["Одежда"] != null && Model.Filtrs["Одежда"].Contains("Костюм") ? "checked" : "")>
                                         <p class="text m-0 fut-l">Костюм</p>    
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="names" value="Платье">
+                                        <input class="catalog__filtr-input" type="checkbox" name="names" value="Платье" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Одежда") && Model.Filtrs["Одежда"] != null && Model.Filtrs["Одежда"].Contains("Платье") ? "checked" : "")>
                                         <p class="text m-0 fut-l">Платье</p>
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="names" value="Комплект">
+                                        <input class="catalog__filtr-input" type="checkbox" name="names" value="Комплект" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Одежда") && Model.Filtrs["Одежда"] != null && Model.Filtrs["Одежда"].Contains("Комплект") ? "checked" : "")>
                                         <p class="text m-0 fut-l">Комплект</p>
                                     </div>
                                 </div>
@@ -94,8 +93,8 @@
                                     <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                                 </div>
                                 <div class="dropdown__list price__dropdown dropdown__list--active">
-                                    <input name="priceFrom" id="from" class="window__input price__dropdown-input m-0" type="text" placeholder="от 39">
-                                    <input name="priceTo" id="to" class="window__input price__dropdown-input m-0" type="text" placeholder="до 249">
+                                    <input name="priceFrom" id="from" class="window__input price__dropdown-input m-0" type="text" placeholder="от 39" value=@(Model.Filtrs != null && Model.Filtrs.ContainsKey("Цена") && Convert.ToInt32(Model.Filtrs["Цена"][0]) > 0 ? Model.Filtrs["Цена"][0] : "")>
+                                    <input name="priceTo" id="to" class="window__input price__dropdown-input m-0" type="text" placeholder="до 249" value=@(Model.Filtrs != null && Model.Filtrs.ContainsKey("Цена") && Convert.ToInt32(Model.Filtrs["Цена"][1]) > 0 ? Model.Filtrs["Цена"][1] : "")>
                                 </div>
                             </li>
                             <hr>
@@ -106,27 +105,27 @@
                                 </div>
                                 <div class="dropdown__list size__dropdown dropdown__list--active">
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XS">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XS" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("XS") ? "checked" : "")>
                                         <p class="text m-0 fut-l">XS</p>
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="S">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="S" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("S") ? "checked" : "")>
                                         <p class="text m-0 fut-l">S</p>
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="M">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="M" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("M") ? "checked" : "")>
                                         <p class="text m-0 fut-l">M</p>
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="L">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="L" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("L") ? "checked" : "")>
                                         <p class="text m-0 fut-l">L</p>
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XL">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XL" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("XL") ? "checked" : "")>
                                         <p class="text m-0 fut-l">XL</p>
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XXL">
+                                        <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XXL" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("XXL") ? "checked" : "")>
                                         <p class="text m-0 fut-l">XXL</p>
                                     </div>
                                 </div>
@@ -139,20 +138,44 @@
                                 </div>
                                 <div class="dropdown__list color__dropdown dropdown__list--active">
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="materials" value="Шелк">
+                                        <input class="catalog__filtr-input" type="checkbox" name="materials" value="Шелк" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Материалы") && Model.Filtrs["Материалы"] != null && Model.Filtrs["Материалы"].Contains("Шелк") ? "checked" : "")>
                                         <p class="text m-0 fut-l">Шелк</p>
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="materials" value="Ткань">
+                                        <input class="catalog__filtr-input" type="checkbox" name="materials" value="Ткань" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Материалы") && Model.Filtrs["Материалы"] != null && Model.Filtrs["Материалы"].Contains("Ткань") ? "checked" : "")>
                                         <p class="text m-0 fut-l">Ткань</p>
                                     </div>
                                     <div class="dropdown__list-item">
-                                        <input class="catalog__filtr-input" type="checkbox" name="materials" value="Синтетика">
+                                        <input class="catalog__filtr-input" type="checkbox" name="materials" value="Синтетика" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Материалы") && Model.Filtrs["Материалы"] != null && Model.Filtrs["Материалы"].Contains("Синтетика") ? "checked" : "")>
                                         <p class="text m-0 fut-l">Синтетика</p>
                                     </div>
                                 </div>
                             </li>
                             <hr>
+                            <li class="catalog__list-item">
+                                <div class="catalog__list-content" bis_skin_checked="1">
+                                    <h3 class="catalog__filter-title fut-m">Сезон</h3>
+                                    <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
+                                </div>
+                                <div class="dropdown__list color__dropdown dropdown__list--active">
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Лето">
+                                        <p class="text m-0 fut-l">Лето</p>
+                                    </div>
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Осень">
+                                        <p class="text m-0 fut-l">Осень</p>
+                                    </div>
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Зима">
+                                        <p class="text m-0 fut-l">Зима</p>
+                                    </div>
+                                    <div class="dropdown__list-item">
+                                        <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Весна">
+                                        <p class="text m-0 fut-l">Весна</p>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                         <input class="but-link fut-b" type="submit" value="Применить фильтры"/>
                     </form>
@@ -247,7 +270,7 @@
 
                             @if (Model.PageViewModel.HasPreviousPage)
                             {
-                                <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber - 1)">
+                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber - 1)">
                                     <li class="catalog__pages-item catalog__pages-arrow">
                                         <img src="/images/pageArrow-icon.svg" alt="previous page">
                                     </li>
@@ -255,7 +278,7 @@
                             }
                             else
                             {
-                                <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber)">
+                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber)">
                                     <li class="catalog__pages-item catalog__pages-arrow">
                                         <img src="/images/pageArrow-icon.svg" alt="previous page">
                                     </li>
@@ -266,13 +289,13 @@
                             {
                                 if(Model.PageViewModel.PageNumber == item)
                                 {
-                                    <a asp-action="IndexDefault" asp-route-page="@item">
+                                    <a asp-action="Index" asp-route-page="@item">
                                         <li class="catalog__pages-item catalog__pages-item--active">@item</li>
                                     </a>
                                 }
                                 else
                                 {
-                                    <a asp-action="IndexDefault" asp-route-page="@item">
+                                    <a asp-action="Index" asp-route-page="@item">
                                         <li class="catalog__pages-item">@item</li>
                                     </a>
                                 }
@@ -280,7 +303,7 @@
 
                             @if (Model.PageViewModel.HasNextPage)
                             {
-                                <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber + 1)">
+                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber + 1)">
                                 <li class="catalog__pages-item catalog__pages-arrow">
                                         <img class="catalog__pages-arrow--rotate" src="/images/pageArrow-icon.svg" alt="next page">
                                     </li>
@@ -288,7 +311,7 @@
                             }
                             else
                             {
-                                <a asp-action="IndexDefault" asp-route-page="@(Model.PageViewModel.PageNumber)">
+                                <a asp-action="Index" asp-route-page="@(Model.PageViewModel.PageNumber)">
                                     <li class="catalog__pages-item catalog__pages-arrow">
                                         <img class="catalog__pages-arrow--rotate" src="/images/pageArrow-icon.svg" alt="next page">
                                     </li>
