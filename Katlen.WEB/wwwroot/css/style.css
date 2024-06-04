@@ -791,11 +791,12 @@ input[type="checkbox"]{
     padding: 76px 0 89px;
 }
 
-.products{
-    display:grid;
+.products {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap:30px;
+    gap: 30px;
     margin-bottom: 40px;
+    justify-items: center;
 }
 
 .products__item{

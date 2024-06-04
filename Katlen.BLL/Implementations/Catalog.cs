@@ -48,17 +48,19 @@ namespace Katlen.BLL.Implementations
         {
             var sizesIdentifiers = unitOfWork.Sizes.GetAll()
                 .Where(size => sizes.Any(sizeValue => size.SizeValue == sizeValue))
-                .Select(size => size.Id);
+                .Select(size => size.Id)
+                .ToList();
 
             var productsIdentifiers = unitOfWork.ProductSizes.GetAll()
                 .Where(productSize => sizesIdentifiers.Contains(productSize.SizeId))
-                .Select(productSize => productSize.ProductId);
+                .Select(productSize => productSize.ProductId)
+                .ToList();
 
             return GetProducts(p => productsIdentifiers.Contains(p.Id));
         }
         public List<ProductDTO> GetAllByMaterials(string[] materials)
         {
-            return GetProducts(p => materials.Contains(p.Material));
+            return GetProducts(item => materials.Contains(item.Material));
         }
 
         public List<ProductDTO> GetAllBySeasons(string[] seasons)
@@ -71,11 +73,15 @@ namespace Katlen.BLL.Implementations
             {
                 var seasonsIdentifiers = unitOfWork.Seasons.GetAll()
                     .Where(season => seasons.Contains(season.Name))
-                    .Select(season => season.Id);
+                    .Select(season => season.Id)
+                .ToList();
+
 
                 var productsIdentifiers = unitOfWork.ProductSeasons.GetAll()
                     .Where(productSeason => seasonsIdentifiers.Contains(productSeason.SeasonId))
-                    .Select(productSeason => productSeason.ProductId);
+                    .Select(productSeason => productSeason.ProductId)
+                .ToList();
+
 
                 return GetProducts(p => productsIdentifiers.Contains(p.Id));
             }

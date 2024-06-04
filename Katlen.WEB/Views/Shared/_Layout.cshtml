@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@model Katlen.WEB.ViewModels.RegisterModel;
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,8 +17,10 @@
     <script src="~/js/cardLikedAnimation.js" defer></script>
     <script src="~/js/commentWindow.js" defer></script>
     <script src="~/js/sendSelectedValue.js" defer></script>
+    <script src="~/js/navigateOnPage.js" defer></script>
     <link rel="stylesheet" href="~/fonts/fonts.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <script src="jquery-3.6.3.js"></script>
 </head>
 
 <body class="fut-l">
@@ -85,17 +90,22 @@
                         <div class="window__wrapper">
                             <div class="window__inner">
                                 <h2 class="title window__title fut-b">Регистрация</h2>
-                                <form method="post" asp-controller="Account" asp-action="Register" class="window__form">
+                                <form asp-controller="Account" asp-action="Register" asp-anti-forgery="true" class="window__form">
 
-                                    <input class="window__input" type="text" placeholder="Почта">
+                                    <input asp-for="Email" class="window__input" type="text" placeholder="Почта">
+                                    <span asp-validation-for="Email" />
 
-                                    <input class="window__input" type="text" placeholder="Имя">
+                                    <input asp-for="Name" class="window__input" type="text" placeholder="Имя">
+                                    <span asp-validation-for="Name" />
 
-                                    <input class="window__input" type="text" placeholder="Телефон">
+                                    <input asp-for="Phone" class="window__input" type="text" placeholder="Телефон">
+                                    <span asp-validation-for="Phone" />
 
-                                    <input class="window__input" type="text" placeholder="Пароль">
+                                    <input asp-for="Password" class="window__input" type="text" placeholder="Пароль">
+                                    <span asp-validation-for="Password" />
 
-                                    <input class="window__input" type="text" placeholder="Повторите пароль">
+                                    <input asp-for="ConfirmPassword" class="window__input" type="text" placeholder="Повторите пароль">
+                                    <span asp-validation-for="ConfirmPassword" />
 
                                     <p class="window__text">
                                         Уже есть аккаунт?&nbsp;
@@ -553,7 +563,7 @@
                         </a>
                     </div>
                 </div>
-                <a class="footer__getUp" href="#">Вверх</a>
+                <a id="getUp" class="footer__getUp">Вверх</a>
             </div><!-- ./ footer__inner -->
         </div>
     </footer>

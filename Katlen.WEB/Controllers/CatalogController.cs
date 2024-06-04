@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc.Routing;
 using Katlen.WEB.AutoMapper;
 using Katlen.WEB.Extensions;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Katlen.WEB.Controllers
 {
@@ -34,26 +35,31 @@ namespace Katlen.WEB.Controllers
             autoMapper = new AutoMapperWEB(mapper);
         }
 
-        public IActionResult Index(int page = 1)
+        [Authorize]
+        public IActionResult Index()
         {
-            if (HttpContext.Session.Keys.Contains("productsCards"))
-            {
-                IndexViewModel viewModel = GetIndexViewModel(page);
-                return View(viewModel);
-
-            }
-            else
-            {
-                var products = ct.GetAll();
-
-                autoMapper.MapProductsToProductCards(productsCards, products);
-
-                HttpContext.Session.Set("productsCards", productsCards);
-
-                IndexViewModel viewModel = GetIndexViewModel();
-                return View(viewModel);
-            }
+            return Content(User.Identity.Name);
         }
+
+        //public IActionResult Index(int page = 1)
+        //{
+        //    if (HttpContext.Session.Keys.Contains("productsCards"))
+        //    {
+        //        IndexViewModel viewModel = GetIndexViewModel(page);
+        //        return View(viewModel);
+        //    }
+        //    else
+        //    {
+        //        var products = ct.GetAll();
+
+        //        autoMapper.MapProductsToProductCards(productsCards, products);
+
+        //        HttpContext.Session.Set("productsCards", productsCards);
+
+        //        IndexViewModel viewModel = GetIndexViewModel();
+        //        return View(viewModel);
+        //    }
+        //}
 
         [HttpGet]
         public IActionResult Filtr(string[] names=null, int priceFrom=0, int priceTo=0, string[] sizes = null, string[] materials=null, string[] seasons=null)
