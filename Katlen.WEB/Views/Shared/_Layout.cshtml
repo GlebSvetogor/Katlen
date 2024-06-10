@@ -90,39 +90,9 @@
                         <div class="window__wrapper">
                             <div class="window__inner">
                                 <h2 class="title window__title fut-b">Регистрация</h2>
-                                <form asp-controller="Account" asp-action="Register" asp-anti-forgery="true" class="window__form">
+                                
+                                <div id="registerPartialContainer"></div>
 
-                                    <input asp-for="Email" class="window__input" type="text" placeholder="Почта">
-                                    <span asp-validation-for="Email" />
-
-                                    <input asp-for="Name" class="window__input" type="text" placeholder="Имя">
-                                    <span asp-validation-for="Name" />
-
-                                    <input asp-for="Phone" class="window__input" type="text" placeholder="Телефон">
-                                    <span asp-validation-for="Phone" />
-
-                                    <input asp-for="Password" class="window__input" type="text" placeholder="Пароль">
-                                    <span asp-validation-for="Password" />
-
-                                    <input asp-for="ConfirmPassword" class="window__input" type="text" placeholder="Повторите пароль">
-                                    <span asp-validation-for="ConfirmPassword" />
-
-                                    <p class="window__text">
-                                        Уже есть аккаунт?&nbsp;
-                                        <span class="window__link window__login-btn" href="#">Войти</span>
-                                    </p>
-
-                                    <div class="window__approval">
-                                        <input class="m-0" type="checkbox">
-                                        <p class="window__text m-0">Я согласен с условиями <u>персональных данных</u></p>
-                                    </div>
-
-                                    <input class="but-link fut-b" type="submit" value="Зарегестрироваться">
-
-                                    <button class="window__close-btn window__close-btn--signup">
-                                        <img src="~/images/closeBtn-icon.svg" alt="close-btn icon">
-                                    </button>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -569,6 +539,18 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '@Url.Action("Register", "Account")',
+                type: 'GET',
+                success: function (data) {
+                    $('#registerPartialContainer').html(data);
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Katlen.WEB", "Katlen.WEB\Ka
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Katlen.DAL", "Katlen.DAL\Katlen.DAL.csproj", "{95DEF4DC-1D29-41D2-9EFF-88B6300A07C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katlen.BLL", "Katlen.BLL\Katlen.BLL.csproj", "{DE79B9D0-8D34-4FCC-8E1D-1A5483CFF06F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Katlen.BLL", "Katlen.BLL\Katlen.BLL.csproj", "{DE79B9D0-8D34-4FCC-8E1D-1A5483CFF06F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

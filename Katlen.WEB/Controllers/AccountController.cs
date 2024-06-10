@@ -17,71 +17,27 @@ namespace Katlen.WEB.Controllers
         {
             this.db = db;
         }
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginModel model)
-        {
-            if(ModelState.IsValid)
-            {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
-                if(user != null)
-                {
-                    await Authenticate(model.Email);
 
-                    return RedirectToAction("Index", "Home");
-                }
-                ModelState.AddModelError("", "Некорректные логин и (или) пароль");
-            }
-            return View(model);
-        }
-        [HttpGet]
+        // Метод для отображения формы регистрации
         public IActionResult Register()
         {
-            return View();
+            return PartialView("_RegisterPartial", new RegisterModel());
         }
+
+        // Метод для обработки данных формы регистрации
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterModel model)
+        public IActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
-                if (user == null)
-                {
-                    db.Users.Add(new DAL.Entities.User { Phone = model.Phone ,Name = model.Name ,Email = model.Email, Password = model.Password });
-                    await db.SaveChangesAsync();
+                // Здесь можно добавить логику для регистрации пользователя.
+                // Например, добавить пользователя в базу данных.
 
-                    await Authenticate(model.Email);
-
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                return Json(new { success = true });
             }
-            return View(model);
+
+            return PartialView("_RegisterPartial", model);
         }
 
-        private async Task Authenticate(string userName)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
-            };
-
-            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookid", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-        
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
-        }
-
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "Account");
-        }
     }
 }
