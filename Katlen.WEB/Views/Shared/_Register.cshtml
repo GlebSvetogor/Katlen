@@ -1,0 +1,51 @@
+﻿@model Katlen.WEB.ViewModels.RegisterModel
+
+<form id="contactForm" class="window__form">
+    
+    <input asp-for="Email" class="window__input" type="text" placeholder="Почта">
+    <span asp-validation-for="Email" />
+
+    <input asp-for="Name" class="window__input" type="text" placeholder="Имя">
+    <span asp-validation-for="Name" />
+
+    <input asp-for="Phone" class="window__input" type="text" placeholder="Телефон">
+    <span asp-validation-for="Phone" />
+
+    <input asp-for="Password" class="window__input" type="text" placeholder="Пароль">
+    <span asp-validation-for="Password" />
+
+    <input asp-for="ConfirmPassword" class="window__input" type="text" placeholder="Повторите пароль">
+    <span asp-validation-for="ConfirmPassword" />
+
+    <p class="window__text">
+        Уже есть аккаунт?&nbsp;
+        <span class="window__link window__login-btn" href="#">Войти</span>
+    </p>
+
+    <div class="window__approval">
+        <input class="m-0" type="checkbox">
+        <p class="window__text m-0">Я согласен с условиями <u>персональных данных</u></p>
+    </div>
+
+    <input id="SignUpBtn" class="but-link fut-b" type="submit" value="Зарегестрироваться">
+</form>
+
+@section GetSignUpForm {
+    $(document).ready(function () {
+                        $('#contactForm').on('submit', function (e) {
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("Register", "Account")',
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            $('#formContent').html(response);
+                        },
+                        error: function () {
+                            $('#formContent').html('<div class="error">Ошибка при отправке данных.</div>');
+                        }
+                    });
+                });
+            });
+}

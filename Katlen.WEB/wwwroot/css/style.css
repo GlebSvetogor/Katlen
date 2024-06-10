@@ -73,6 +73,10 @@ hr{
     background:#EBEBEB;
 }
 
+.active{
+    display:flex !important;
+}
+
 .title{
     font-size: 50px;
     line-height: 79.7%; /* 39.85px */
