@@ -5,6 +5,7 @@ const closeSignupBtn = document.querySelector(".window__close-btn--signup");
 const loginBtn = document.querySelector(".header__heading-user");
 const loginWindow = document.querySelector(".window--login");
 const loginWindowSignupBtn = document.querySelector(".window__signup-btn");
+console.log('from login to signup = ' + loginWindowSignupBtn)
 const closeLoginBtn = document.querySelector(".window__close-btn--login");
 
 function toggleWindowVisibility(element) {
@@ -58,57 +59,3 @@ inputField.addEventListener('focus', function() {
     outputBlock.classList.add('hidden');
   });
 
-
-//closeLoginBtn.addEventListener('click',() => {
-//    const result = getClassNameFromElement(loginWindow);
-//    windowVisibility(result);
-//});
-
-//loginBtn.addEventListener('click', () => {
-//    const result = getClassNameFromElement(loginWindow);
-//    windowVisibility(result);
-//});
-
-//loginWindowSignupBtn.addEventListener('click',() => {
-//    const resultSignup = getClassNameFromElement(signupWindow);
-//    const resultLogin = getClassNameFromElement(loginWindow);
-//    windowVisibility(resultLogin);
-//    windowVisibility(resultSignup);
-//});
-
-//closeSignupBtn.addEventListener('click', () => {
-//    const result = getClassNameFromElement(signupWindow);
-//    windowVisibility(result);
-//});
-
-//signupWindowLoginBtn.addEventListener('click', () => {
-//    const resultSignup = getClassNameFromElement(signupWindow);
-//    const resultLogin = getClassNameFromElement(loginWindow);
-//    windowVisibility(resultLogin);
-//    windowVisibility(resultSignup);
-//})
-
-function windowVisibility(elementClassName) {
-    var el = document.querySelector(elementClassName);
-    if(el){
-        const computedStyle = window.getComputedStyle(el);
-        const displayValue = computedStyle.getPropertyValue('display');
-        switch (displayValue){
-            case "none":
-                el.style.display = "flex";
-                break;
-            case "flex":
-                el.style.display = "none";
-                break;
-            default:
-                console.log("element not found");
-        }
-    }
-}
-
-function getClassNameFromElement(el){
-    const inputString = el.className;
-    const startIndex = inputString.indexOf(" ") + 1;
-    const result = "." + inputString.substring(startIndex);
-    return result;
-}

@@ -3,29 +3,29 @@
 <div id="registerFormContainer">
 
      <form asp-action="Register" asp-controller="Account" id="registerForm">
-         <div class="form-group">
+         <div class="form-group text-start">
+            <span asp-validation-for="Email" class="text-danger"></span>
             <input asp-for="Email" class="window__input" placeholder="Почта"/>
-             <span asp-validation-for="Email" class="text-danger"></span>
          </div>
-        <div class="form-group">
-            <input asp-for="Name" class="window__input" placeholder="Имя" />
+        <div class="form-group text-start">
             <span asp-validation-for="Name" class="text-danger"></span>
+            <input asp-for="Name" class="window__input" placeholder="Имя" />
         </div>
-        <div class="form-group">
+        <div class="form-group text-start">
             <input asp-for="Phone" class="window__input" placeholder="Телефон" />
         </div>
-        <div class="form-group">
-            <input asp-for="Password" class="window__input" placeholder="Пароль" />
+        <div class="form-group text-start">
             <span asp-validation-for="Password" class="text-danger"></span>
+            <input asp-for="Password" class="window__input" placeholder="Пароль" />
         </div>
-         <div class="form-group">
-             <input asp-for="ConfirmPassword" class="window__input" placeholder="Повторите пароль" />
+         <div class="form-group text-start">
              <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+             <input asp-for="ConfirmPassword" class="window__input" placeholder="Повторите пароль" />
          </div>
-
+         
         <p class="window__text">
             Уже есть аккаунт?&nbsp;
-            <span class="window__link window__login-btn" href="#">Войти</span>
+            <span class="window__link window__login-btn">Войти</span>
         </p>
 
         <div class="window__approval">
@@ -35,84 +35,28 @@
 
         <input class="but-link fut-b" type="submit" value="Зарегестрироваться">
 
-        <button class="window__close-btn window__close-btn--signup">
-            <img src="~/images/closeBtn-icon.svg" alt="close-btn icon">
-        </button>
      </form>
-
-    @* <form asp-controller="Account" asp-action="Register" id="registerForm" class="window__form">
-        <div class="form-group">
-            <label asp-for="Email"></label>
-            <input asp-for="Email" class="window__input form-control" type="text" placeholder="Почта">
-            <span asp-validation-for="Email" class="text-danger"/>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="window__input form-control" type="text" placeholder="Имя">
-            <span asp-validation-for="Name" />
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Phone"></label>
-            <input asp-for="Phone" class="window__input form-control" type="text" placeholder="Телефон">
-            <span asp-validation-for="Phone" />
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Password"></label>
-            <input asp-for="Password" class="window__input form-control" type="text" placeholder="Пароль">
-            <span asp-validation-for="Password" class="text-danger" />
-        </div>
-
-        <div class="form-group">
-            <label asp-for="ConfirmPassword"></label>
-            <input asp-for="ConfirmPassword" class="window__input form-control" type="text" placeholder="Повторите пароль">
-            <span asp-validation-for="ConfirmPassword" class="text-danger"/>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Register</button>
-        <p class="window__text">
-            Уже есть аккаунт?&nbsp;
-            <span class="window__link window__login-btn" href="#">Войти</span>
-        </p>
-
-        <div class="window__approval">
-            <input class="m-0" type="checkbox">
-            <p class="window__text m-0">Я согласен с условиями <u>персональных данных</u></p>
-        </div>
-
-        <input class="but-link fut-b" type="submit" value="Зарегестрироваться">
-
-        <button class="window__close-btn window__close-btn--signup">
-            <img src="~/images/closeBtn-icon.svg" alt="close-btn icon">
-        </button>
-
-    </form> *@
 
 </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-    <script>
-        $(document).ready(function () {
-            $('#registerForm').submit(function (event) {
-                event.preventDefault();
-                var form = $(this);
-                $.ajax({
-                    type: form.attr('method'),
-                    url: form.attr('action'),
-                    data: form.serialize(),
-                    success: function (response) {
-                        if (response.success) {
-                            // Здесь можно добавить логику после успешной регистрации.
-                            alert("Registration successful!");
-                        } else {
-                            $('#registerFormContainer').html(response);
-                        }
+<script>
+    $(document).ready(function () {
+        $('#registerForm').submit(function (event) {
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                type: form.attr('method'),
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        // Здесь можно добавить логику после успешной регистрации.
+                        alert("Registration successful!");
+                    } else {
+                        $('#registerFormContainer').html(response);
                     }
-                });
+                }
             });
         });
-    </script>
-}
+    });
+</script>
