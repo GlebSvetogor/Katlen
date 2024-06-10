@@ -1,11 +1,37 @@
-const loginWindow = document.querySelector(".window--login");
-const loginBtn = document.querySelector(".header__heading-user");
-const loginWindowSignupBtn = document.querySelector(".window__signup-btn");
-const closeLoginBtn = document.querySelector(".window__close-btn--login");
-
 const signupWindow = document.querySelector(".window--signup");
 const signupWindowLoginBtn = document.querySelector(".window__login-btn");
 const closeSignupBtn = document.querySelector(".window__close-btn--signup");
+
+const loginBtn = document.querySelector(".header__heading-user");
+const loginWindow = document.querySelector(".window--login");
+const loginWindowSignupBtn = document.querySelector(".window__signup-btn");
+const closeLoginBtn = document.querySelector(".window__close-btn--login");
+
+function toggleWindowVisibility(element) {
+    element.classList.toggle('active');
+}
+
+loginBtn.addEventListener('click', () => {
+    toggleWindowVisibility(loginWindow);
+});
+
+closeLoginBtn.addEventListener('click', () => {
+    toggleWindowVisibility(loginWindow);
+});
+
+loginWindowSignupBtn.addEventListener('click', () => {
+    toggleWindowVisibility(loginWindow);
+    toggleWindowVisibility(signupWindow);
+})
+
+closeSignupBtn.addEventListener('click', () => {
+    toggleWindowVisibility(signupWindow);
+})
+
+signupWindowLoginBtn.addEventListener('click', () => {
+    toggleWindowVisibility(signupWindow);
+    toggleWindowVisibility(loginWindow);
+})
 
 const inputField = document.getElementById('search-input');
 const outputBlock = document.getElementById('search-result');
@@ -30,36 +56,37 @@ inputField.addEventListener('focus', function() {
 
   inputField.addEventListener('blur', function() {
     outputBlock.classList.add('hidden');
-});
+  });
 
-closeLoginBtn.addEventListener('click',() => {
-    const result = getClassNameFromElement(loginWindow);
-    windowVisibility(result);
-});
 
-loginBtn.addEventListener('click', () => {
-    const result = getClassNameFromElement(loginWindow);
-    windowVisibility(result);
-});
+//closeLoginBtn.addEventListener('click',() => {
+//    const result = getClassNameFromElement(loginWindow);
+//    windowVisibility(result);
+//});
 
-loginWindowSignupBtn.addEventListener('click',() => {
-    const resultSignup = getClassNameFromElement(signupWindow);
-    const resultLogin = getClassNameFromElement(loginWindow);
-    windowVisibility(resultLogin);
-    windowVisibility(resultSignup);
-});
+//loginBtn.addEventListener('click', () => {
+//    const result = getClassNameFromElement(loginWindow);
+//    windowVisibility(result);
+//});
 
-closeSignupBtn.addEventListener('click', () => {
-    const result = getClassNameFromElement(signupWindow);
-    windowVisibility(result);
-});
+//loginWindowSignupBtn.addEventListener('click',() => {
+//    const resultSignup = getClassNameFromElement(signupWindow);
+//    const resultLogin = getClassNameFromElement(loginWindow);
+//    windowVisibility(resultLogin);
+//    windowVisibility(resultSignup);
+//});
 
-signupWindowLoginBtn.addEventListener('click', () => {
-    const resultSignup = getClassNameFromElement(signupWindow);
-    const resultLogin = getClassNameFromElement(loginWindow);
-    windowVisibility(resultLogin);
-    windowVisibility(resultSignup);
-})
+//closeSignupBtn.addEventListener('click', () => {
+//    const result = getClassNameFromElement(signupWindow);
+//    windowVisibility(result);
+//});
+
+//signupWindowLoginBtn.addEventListener('click', () => {
+//    const resultSignup = getClassNameFromElement(signupWindow);
+//    const resultLogin = getClassNameFromElement(loginWindow);
+//    windowVisibility(resultLogin);
+//    windowVisibility(resultSignup);
+//})
 
 function windowVisibility(elementClassName) {
     var el = document.querySelector(elementClassName);
