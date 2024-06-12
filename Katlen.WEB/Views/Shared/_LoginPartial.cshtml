@@ -13,10 +13,10 @@
             <input asp-for="Password" class="window__input" placeholder="Пароль" />
         </div>
 
-        <p class="window__text">
+        @* <p class="window__text">
             Новый пользователь?&nbsp;
             <span class="window__link window__signup-btn">Зарегистрироваться</span>
-        </p>
+        </p> *@
 
         <div class="window__approval">
             <input class="m-0" type="checkbox">
@@ -30,6 +30,7 @@
 </div>
 
 <script>
+    
     $(document).ready(function () {
         $('#loginForm').submit(function (event) {
             event.preventDefault();
@@ -41,6 +42,7 @@
                 success: function (response) {
                     if (response.success) {
                         // Здесь можно добавить логику после успешной регистрации.
+
                         alert("Login successful!");
                     } else {
                         $('#loginFormContainer').html(response);
@@ -49,5 +51,7 @@
             });
         });
     });
+
 </script>
+
 

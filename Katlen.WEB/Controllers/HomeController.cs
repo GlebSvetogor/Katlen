@@ -37,8 +37,7 @@ namespace Katlen.WEB.Controllers
             model.NewProductsCards = newProductsCards;
             model.RateProductsCards = rateProductsCards;
 
-            //return View(model);
-            return View();
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

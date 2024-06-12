@@ -1,4 +1,4 @@
-﻿@* @model Katlen.WEB.ViewModels.HomeViewModel; *@
+﻿@model Katlen.WEB.ViewModels.HomeViewModel; 
 
 @{
     ViewData["Title"] = "Home Page";
@@ -89,7 +89,7 @@
         <div class="container">
             <h2 class="title fut-b">Новинки</h2>
             <div class="products">
-                @*foreach (var item in Model.NewProductsCards)
+                @foreach (var item in Model.NewProductsCards)
                 {
                     <div class="products__item catalog__products-item">
                         @if (item.SalePercent != 0)
@@ -165,7 +165,7 @@
                         </div>
                     </div>
                 
-                @* } *@
+                }
 
             </div><!-- /.products -->
             <a asp-controller="Catalog" asp-action="Index" class="but-link fut-b">Все новинки</a>
@@ -199,7 +199,7 @@
         <div class="container">
             <h2 class="title fut-b">Хиты продаж</h2>
             <div class="products">
-                @* @foreach (var item in Model.RateProductsCards)
+                @foreach (var item in Model.RateProductsCards)
                 {
                     <div class="products__item catalog__products-item">
                         @if (item.SalePercent != 0)
@@ -274,7 +274,7 @@
                             <a asp-controller="CardProduct" asp-action="Index" asp-route-id="@item.Id" class="but-link catalog__but-link fut-b">Детальнее</a>
                         </div>
                     </div>
-                } *@
+                }
 
             </div><!-- /.products -->
             <a asp-controller="Catalog" asp-action="Index" class="but-link fut-b">Все хиты продаж</a>

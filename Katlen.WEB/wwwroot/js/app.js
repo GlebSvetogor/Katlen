@@ -5,33 +5,41 @@ const closeSignupBtn = document.querySelector(".window__close-btn--signup");
 const loginBtn = document.querySelector(".header__heading-user");
 const loginWindow = document.querySelector(".window--login");
 const loginWindowSignupBtn = document.querySelector(".window__signup-btn");
-console.log('from login to signup = ' + loginWindowSignupBtn)
 const closeLoginBtn = document.querySelector(".window__close-btn--login");
 
-function toggleWindowVisibility(element) {
+const butLinkWholesale = document.querySelector(".wholesale__but-link");
+const wholesaleMore = document.querySelector(".wholesale__more");
+const wholesaleIcon = document.querySelector(".wholesale__icon");
+
+function toggleVisibility(element) {
     element.classList.toggle('active');
 }
 
+butLinkWholesale.addEventListener('click', () => {
+    toggleVisibility(wholesaleMore);
+    toggleVisibility(wholesaleIcon);
+})
+
 loginBtn.addEventListener('click', () => {
-    toggleWindowVisibility(loginWindow);
+    toggleVisibility(loginWindow);
 });
 
 closeLoginBtn.addEventListener('click', () => {
-    toggleWindowVisibility(loginWindow);
+    toggleVisibility(loginWindow);
 });
 
 loginWindowSignupBtn.addEventListener('click', () => {
-    toggleWindowVisibility(loginWindow);
-    toggleWindowVisibility(signupWindow);
+    toggleVisibility(loginWindow);
+    toggleVisibility(signupWindow);
 })
 
 closeSignupBtn.addEventListener('click', () => {
-    toggleWindowVisibility(signupWindow);
+    toggleVisibility(signupWindow);
 })
 
 signupWindowLoginBtn.addEventListener('click', () => {
-    toggleWindowVisibility(signupWindow);
-    toggleWindowVisibility(loginWindow);
+    toggleVisibility(signupWindow);
+    toggleVisibility(loginWindow);
 })
 
 const inputField = document.getElementById('search-input');
