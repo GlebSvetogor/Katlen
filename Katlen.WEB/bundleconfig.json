@@ -1,18 +1,22 @@
-{
-  "outputFileName": "wwwroot/js/bundle.min.js",
-  "inputFiles": [
-    "wwwroot/js/activeToggle.js",
-    "wwwroot/js/app.js",
-    "wwwroot/js/cardLikedAnimation.js",
-    "wwwroot/js/commentWindow.js",
-    "wwwroot/js/dropdownFilter.js",
-    "wwwroot/js/navigateOnPage.js",
-    "wwwroot/js/sendSelectedValue.js",
-    "wwwroot/js/swiper.js"
-  ],
-  "minify": {
-    "enabled": true,
-    "renameLocals": true
+[
+  {
+    "outputFileName": "wwwroot/bundles/jsBundle.js",
+    "inputFiles": [
+      "wwwroot/js/app.js",
+      "wwwroot/js/cardLikedAnimation.js",
+      "wwwroot/js/commentWindow.js",
+      "wwwroot/js/dropdownFilter.js",
+      "wwwroot/js/navigateOnPage.js",
+      "wwwroot/js/sendSelectedValue.js",
+      "wwwroot/js/swiper.js"
+    ]
   },
-  "sourceMap": false
-}
+  {
+    "outputFileName": "wwwroot/bundles/cssBundle.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/fonts/fonts.css",
+      "wwwroot/css/style.css"
+    ]
+  }
+]

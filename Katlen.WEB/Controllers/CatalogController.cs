@@ -35,12 +35,6 @@ namespace Katlen.WEB.Controllers
             autoMapper = new AutoMapperWEB(mapper);
         }
 
-        //[Authorize]
-        //public IActionResult Index()
-        //{
-        //    return Content(User.Identity.Name);
-        //}
-
         public IActionResult Index(int page = 1)
         {
             if (HttpContext.Session.Keys.Contains("productsCards"))
