@@ -1,0 +1,18 @@
+{
+  "outputFileName": "wwwroot/js/bundle.min.js",
+  "inputFiles": [
+    "wwwroot/js/activeToggle.js",
+    "wwwroot/js/app.js",
+    "wwwroot/js/cardLikedAnimation.js",
+    "wwwroot/js/commentWindow.js",
+    "wwwroot/js/dropdownFilter.js",
+    "wwwroot/js/navigateOnPage.js",
+    "wwwroot/js/sendSelectedValue.js",
+    "wwwroot/js/swiper.js"
+  ],
+  "minify": {
+    "enabled": true,
+    "renameLocals": true
+  },
+  "sourceMap": false
+}
