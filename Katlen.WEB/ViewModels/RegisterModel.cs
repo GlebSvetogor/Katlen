@@ -4,7 +4,7 @@ namespace Katlen.WEB.ViewModels
 {
     public class RegisterModel
     {
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
        
         [Required(ErrorMessage = "Не указан Email")]
         [EmailAddress]

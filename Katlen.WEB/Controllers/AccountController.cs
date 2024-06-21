@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 
 namespace Katlen.WEB.Controllers
@@ -19,20 +20,24 @@ namespace Katlen.WEB.Controllers
             this.db = db;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public IActionResult Register()
         {
             return PartialView("_RegisterPartial", new RegisterModel());
         }
 
         [HttpPost]
-        public IActionResult Register(RegisterModel model)
+        public async Task<IActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
-                // Здесь можно добавить логику для регистрации пользователя.
-                // Например, добавить пользователя в базу данных.
+                await db.Users.AddAsync(new DAL.Entities.User() { Email = model.Email, Name = model.Name, Password = model.Password, Phone = model.Phone == null ? "" : model.Phone});
 
-                return Json(new { success = true });
+                return PartialView("_SuccessRegister", model);
             }
 
             return PartialView("_RegisterPartial", model);
@@ -44,14 +49,29 @@ namespace Katlen.WEB.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginModel model)
+        public async Task<IActionResult> Login(LoginModel model)
         {
+
             if (ModelState.IsValid)
             {
+                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                if (user is null) Results.Unauthorized();
 
-                return Json(new { success = true });
+                var claims = new List<Claim>() { new Claim(ClaimTypes.Name, model.Email) };
+
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookie");
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+                return RedirectToAction("Index", "Account");
             }
             return PartialView("_LoginPartial", model);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
         
     }
