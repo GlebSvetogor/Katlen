@@ -36,6 +36,7 @@ namespace Katlen.WEB.Controllers
             if (ModelState.IsValid)
             {
                 await db.Users.AddAsync(new DAL.Entities.User() { Email = model.Email, Name = model.Name, Password = model.Password, Phone = model.Phone == null ? "" : model.Phone});
+                await db.SaveChangesAsync();
 
                 return PartialView("_SuccessRegister", model);
             }
@@ -55,13 +56,17 @@ namespace Katlen.WEB.Controllers
             if (ModelState.IsValid)
             {
                 User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
-                if (user is null) Results.Unauthorized();
+                if (user is null)
+                {
+                    ModelState.AddModelError(string.Empty, "Пользователь с таким Email и паролем не найден.");
+                    return PartialView("_LoginPartial", model);
+                }
 
-                var claims = new List<Claim>() { new Claim(ClaimTypes.Name, model.Email) };
+                /*var claims = new List<Claim>() { new Claim(ClaimTypes.Name, model.Email) };
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookie");
 
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));*/
 
                 return RedirectToAction("Index", "Account");
             }

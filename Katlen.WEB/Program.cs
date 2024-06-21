@@ -1,6 +1,5 @@
 using Katlen.DAL.EF;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Katlen.WEB.Models;
 using Microsoft.Extensions.Configuration;
 using Katlen.DAL.Entities;
@@ -22,6 +21,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+        options.LogoutPath = "/Account/Logout";
     });
 
 builder.Services.AddControllersWithViews();
