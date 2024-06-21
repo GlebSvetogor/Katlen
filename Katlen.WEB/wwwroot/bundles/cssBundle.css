@@ -20,6 +20,24 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.user-list{
+
+}
+
+.user-item{
+    padding:5px;
+    border-bottom:1px solid;
+    cursor:pointer;
+}
+
+.user-link {
+    transition: margin .3s ease-in-out;
+}
+
+.user-item:hover .user-link{
+    margin:0 0 0 10px;
+}
 @font-face {
     font-family: 'Futura PT Bold';
     src: url(../fonts/FuturaPTBold.otf);

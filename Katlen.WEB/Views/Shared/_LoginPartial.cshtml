@@ -37,14 +37,13 @@
                 data: form.serialize(),
                 success: function (response) {
                     if (response.success) {
-                        // Здесь можно добавить логику после успешной регистрации.
-
-                        alert("Login successful!");
+                        window.location.href = response.redirectUrl;
                     } else {
                         $('#loginFormContainer').html(response);
                     }
                 }
             });
+            
         });
     });
 

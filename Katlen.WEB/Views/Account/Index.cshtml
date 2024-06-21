@@ -5,7 +5,7 @@
     <section class="promo personal__promo">
         <div class="container-middle">
             <p class="text catalog__text">
-                <a class="catalog__link" href="index.html">Главная</a>
+                <a asp-action="Index" asp-controller="Home" class="catalog__link">Главная</a>
                 <span> / </span>
                 <a class="catalog__link fut-b" href="personalArea.html">Личный кабинет</a>
             </p>
@@ -14,6 +14,27 @@
                     <h2 class="title personal__title">Глеб</h2>
                     <p class="text m-0">asabsiu@mail.ru</p>
                     <p class="text m-0">+375445997262</p>
+                    <ul class="user-list mt-3 mb-3">
+                        <li class="user-item">
+                            <a class="text user-link">История покупок</a>
+                        </li>
+                        <li class="user-item">
+                            <a class="text user-link">Заказы</a>
+                        </li>
+                        <li class="user-item">
+                            <a class="text user-link">Нравится</a>
+                        </li>
+                        <li class="user-item">
+                            <a class="text user-link">Товары в корзине</a>
+                        </li>
+                        <li class="user-item">
+                            <a class="text user-link">Комментарии</a>
+                        </li>
+                        <li class="user-item">
+                            <a class="text user-link">Доставка</a>
+                        </li>
+                    </ul>
+                    <a asp-action="Logout" asp-controller="Account" class="btn btn-primary fs-5 w-100">Выйти</a>
                 </aside>
                 <div class="personal__content box">
                     <h1 class="title personal__title">Заказы</h1>

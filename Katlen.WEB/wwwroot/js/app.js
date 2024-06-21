@@ -21,8 +21,18 @@ butLinkWholesale.addEventListener('click', () => {
 })
 
 loginBtn.addEventListener('click', () => {
-    toggleVisibility(loginWindow);
+    if (isAuthenticated) {
+        // Перенаправляем на личный кабинет, если пользователь авторизован
+        window.location.href = redirectUrl;
+    } else {
+        // Открываем окно входа, если пользователь не авторизован
+        toggleVisibility(loginWindow);
+    }
 });
+
+/*loginBtn.addEventListener('click', () => {
+    toggleVisibility(loginWindow);
+});*/
 
 closeLoginBtn.addEventListener('click', () => {
     toggleVisibility(loginWindow);

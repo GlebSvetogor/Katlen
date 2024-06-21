@@ -21,7 +21,11 @@ butLinkWholesale.addEventListener('click', () => {
 })
 
 loginBtn.addEventListener('click', () => {
-    toggleVisibility(loginWindow);
+    if (isAuthenticated) {
+        window.location.href = redirectUrl;
+    } else {
+        toggleVisibility(loginWindow);
+    }
 });
 
 closeLoginBtn.addEventListener('click', () => {

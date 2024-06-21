@@ -1,5 +1,9 @@
 ﻿@model Katlen.WEB.ViewModels.IndexViewModel;
 
+@{
+    ViewData["Title"] = "Каталог";
+}
+
 <hr>
 
 <main>
@@ -339,3 +343,17 @@
     </section><!-- /. wholesale -->
 
 </main>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("Pager", "Catalog")',
+            type: 'GET',
+            success: function (data) {
+                $('.catalog__products').html(data);
+            }
+        });
+        
+    });
+
+</script>

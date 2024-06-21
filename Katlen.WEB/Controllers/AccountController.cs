@@ -20,9 +20,19 @@ namespace Katlen.WEB.Controllers
             this.db = db;
         }
 
-        public IActionResult Index()
+        [Authorize]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var user = HttpContext.User;
+
+            if (user.Identity.IsAuthenticated)
+            {
+                string userName = user.Identity.Name;
+
+                return View();
+            }
+
+            return Content("Unuotorized user");
         }
 
         public IActionResult Register()
@@ -38,7 +48,8 @@ namespace Katlen.WEB.Controllers
                 await db.Users.AddAsync(new DAL.Entities.User() { Email = model.Email, Name = model.Name, Password = model.Password, Phone = model.Phone == null ? "" : model.Phone});
                 await db.SaveChangesAsync();
 
-                return PartialView("_SuccessRegister", model);
+                /*return PartialView("_SuccessRegister", model);*/
+                return Json(new { success = true });
             }
 
             return PartialView("_RegisterPartial", model);
@@ -52,7 +63,6 @@ namespace Katlen.WEB.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
-
             if (ModelState.IsValid)
             {
                 User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
@@ -62,13 +72,13 @@ namespace Katlen.WEB.Controllers
                     return PartialView("_LoginPartial", model);
                 }
 
-                /*var claims = new List<Claim>() { new Claim(ClaimTypes.Name, model.Email) };
+                var claims = new List<Claim>() { new Claim(ClaimTypes.Name, model.Email) };
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookie");
 
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));*/
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
-                return RedirectToAction("Index", "Account");
+                return Json(new { success = true, redirectUrl = Url.Action("Index", "Account") });
             }
             return PartialView("_LoginPartial", model);
         }
