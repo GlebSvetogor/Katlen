@@ -35,12 +35,17 @@ namespace Katlen.WEB.Controllers
             autoMapper = new AutoMapperWEB(mapper);
         }
 
-        public IActionResult Index(int page = 1)
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Pager(int page = 1)
         {
             if (HttpContext.Session.Keys.Contains("productsCards"))
             {
                 IndexViewModel viewModel = GetIndexViewModel(page);
-                return View(viewModel);
+                return PartialView("_PagerPartial", viewModel);
             }
             else
             {
@@ -51,7 +56,8 @@ namespace Katlen.WEB.Controllers
                 HttpContext.Session.Set("productsCards", productsCards);
 
                 IndexViewModel viewModel = GetIndexViewModel();
-                return View(viewModel);
+                return PartialView("_PagerPartial", viewModel);
+
             }
         }
 
