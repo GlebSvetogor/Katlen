@@ -84,6 +84,7 @@ namespace Katlen.WEB.Controllers
         {
             List<ProductCardViewModel> productsCards = HttpContext.Session.Get<List<ProductCardViewModel>>("productsCards");
             IEnumerable<ProductCardViewModel> sortedList = new List<ProductCardViewModel>();
+            string sortOption = "mixedSort";
 
             switch (value)
             {
@@ -91,12 +92,14 @@ namespace Katlen.WEB.Controllers
                     sortedList = from pc in productsCards
                                     orderby pc.SalePrice
                                     select pc;
+                    sortOption = "priceSort";
                     break;
                 case "sizeSort":
                     sortedList = from pc in productsCards 
                                     orderby pc.MinimumAvailableSize
                                     where pc.MinimumAvailableSize != -1
                                     select pc;
+                    sortOption = "sizeSort";
                     break;
                 case "mixedSort":
                     Random rng = new Random();
@@ -107,9 +110,11 @@ namespace Katlen.WEB.Controllers
             }
             
             HttpContext.Session.Set("productsCards", sortedList.ToList());
+            HttpContext.Session.Set("sortOption", sortOption);
 
             IndexViewModel viewModel = GetIndexViewModel();
-            return View("Index", viewModel);
+            return PartialView("_PagerPartial", viewModel);
+
         }
 
         [HttpGet]
@@ -135,7 +140,7 @@ namespace Katlen.WEB.Controllers
             }
 
             IndexViewModel viewModel = GetIndexViewModel();
-            return View("Index", viewModel);
+            return PartialView("_PagerPartial", viewModel);
         }
         public IndexViewModel GetIndexViewModel(int page = 1)
         {
@@ -150,7 +155,8 @@ namespace Katlen.WEB.Controllers
                 PageViewModel = pageViewModel,
                 PageProductsCards = items,
                 ProductsCardsQuality = productsCards.Count,
-                Filtrs = HttpContext.Session.Get<Dictionary<string, string>>("filtrs")
+                Filtrs = HttpContext.Session.Get<Dictionary<string, string>>("filtrs"),
+                SortOption = HttpContext.Session.Get<string>("sortOption")
             };
 
             return viewModel;

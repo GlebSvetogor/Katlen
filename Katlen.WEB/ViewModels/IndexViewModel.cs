@@ -8,6 +8,7 @@ namespace Katlen.WEB.ViewModels
         public int ProductsCardsQuality {  get; set; }
         public PageViewModel PageViewModel { get; set; }
         public Dictionary<string, string> Filtrs { get; set; }
+        public string SortOption = null;
         
     }
 }
