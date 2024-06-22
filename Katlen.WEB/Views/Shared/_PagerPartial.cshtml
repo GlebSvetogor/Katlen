@@ -70,15 +70,15 @@
                         </div>
                         <div class="dropdown__list close__dropdown dropdown__list--active">
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="names" value="Костюм" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Одежда") && Model.Filtrs["Одежда"] != null && Model.Filtrs["Одежда"].Contains("Костюм") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="names" value="Костюм" @(Model.Filtrs["Костюм"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">Костюм</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="names" value="Платье" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Одежда") && Model.Filtrs["Одежда"] != null && Model.Filtrs["Одежда"].Contains("Платье") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="names" value="Платье" @(Model.Filtrs["Платье"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">Платье</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="names" value="Комплект" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Одежда") && Model.Filtrs["Одежда"] != null && Model.Filtrs["Одежда"].Contains("Комплект") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="names" value="Комплект" @(Model.Filtrs["Комплект"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">Комплект</p>
                             </div>
                         </div>
@@ -90,8 +90,8 @@
                             <img class="catalog__filter-arrow" src="/images/arrow-down-sign-to-navigate.svg" alt="dropDown arrow">
                         </div>
                         <div class="dropdown__list price__dropdown dropdown__list--active">
-                            <input name="priceFrom" id="from" class="window__input price__dropdown-input m-0" type="text" placeholder="от 39" value=@(Model.Filtrs != null && Model.Filtrs.ContainsKey("Цена") && Convert.ToInt32(Model.Filtrs["Цена"][0]) > 0 ? Model.Filtrs["Цена"][0] : "")>
-                            <input name="priceTo" id="to" class="window__input price__dropdown-input m-0" type="text" placeholder="до 249" value=@(Model.Filtrs != null && Model.Filtrs.ContainsKey("Цена") && Convert.ToInt32(Model.Filtrs["Цена"][1]) > 0 ? Model.Filtrs["Цена"][1] : "")>
+                            <input name="priceFrom" id="from" class="window__input price__dropdown-input m-0" type="text" placeholder="от 39" value=@(Model.Filtrs["priceFrom"] != "false" ? Convert.ToInt32(Model.Filtrs["priceFrom"]) : null)>
+                            <input name="priceTo" id="to" class="window__input price__dropdown-input m-0" type="text" placeholder="до 249" value=@(Model.Filtrs["priceTo"] != "false" ? Convert.ToInt32(Model.Filtrs["priceTo"]) : null)>
                         </div>
                     </li>
                     <hr>
@@ -102,27 +102,27 @@
                         </div>
                         <div class="dropdown__list size__dropdown dropdown__list--active">
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XS" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("XS") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XS" @(Model.Filtrs["XS"] == "true" ? "checked" : "" )>
                                 <p class="text m-0 fut-l">XS</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="S" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("S") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="S" @(Model.Filtrs["S"] == "true" ? "checked" : "" )>
                                 <p class="text m-0 fut-l">S</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="M" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("M") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="M" @(Model.Filtrs["M"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">M</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="L" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("L") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="L" @(Model.Filtrs["L"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">L</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XL" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("XL") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XL" @(Model.Filtrs["XL"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">XL</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XXL" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Размеры") && Model.Filtrs["Размеры"] != null && Model.Filtrs["Размеры"].Contains("XXL") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="sizes" value="XXL" @(Model.Filtrs["XXL"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">XXL</p>
                             </div>
                         </div>
@@ -135,15 +135,15 @@
                         </div>
                         <div class="dropdown__list color__dropdown dropdown__list--active">
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="materials" value="Шелк" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Материалы") && Model.Filtrs["Материалы"] != null && Model.Filtrs["Материалы"].Contains("Шелк") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="materials" value="Шелк" @(Model.Filtrs["Шелк"] == "true" ? "checked" : "" )>
                                 <p class="text m-0 fut-l">Шелк</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="materials" value="Ткань" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Материалы") && Model.Filtrs["Материалы"] != null && Model.Filtrs["Материалы"].Contains("Ткань") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="materials" value="Ткань" @(Model.Filtrs["Ткань"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">Ткань</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="materials" value="Синтетика" @(Model.Filtrs != null && Model.Filtrs.ContainsKey("Материалы") && Model.Filtrs["Материалы"] != null && Model.Filtrs["Материалы"].Contains("Синтетика") ? "checked" : "")>
+                                <input class="catalog__filtr-input" type="checkbox" name="materials" value="Синтетика" @(Model.Filtrs["Синтетика"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">Синтетика</p>
                             </div>
                         </div>
@@ -156,19 +156,19 @@
                         </div>
                         <div class="dropdown__list color__dropdown dropdown__list--active">
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Лето">
+                                <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Лето" @(Model.Filtrs["Лето"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">Лето</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Осень">
+                                <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Осень" @(Model.Filtrs["Осень"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">Осень</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Зима">
+                                <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Зима" @(Model.Filtrs["Зима"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">Зима</p>
                             </div>
                             <div class="dropdown__list-item">
-                                <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Весна">
+                                <input class="catalog__filtr-input" type="checkbox" name="seasons" value="Весна" @(Model.Filtrs["Весна"] == "true" ? "checked" : "")>
                                 <p class="text m-0 fut-l">Весна</p>
                             </div>
                         </div>

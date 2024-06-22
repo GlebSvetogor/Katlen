@@ -23,6 +23,10 @@ namespace Katlen.BLL.Implementations
     {
         private readonly IMapper _mapper;
         UnitOfWork unitOfWork;
+        private readonly string[] filtrNames = new string[]{"Костюм", "Платье", "Комплект"};
+        private readonly string[] filtrSizes = new string[]{"XS", "S", "M", "L", "XL", "XXL"};
+        private readonly string[] filtrMaterials = new string[]{"Шелк", "Ткань", "Синтетика"};
+        private readonly string[] filtrSeasons = new string[]{"Лето", "Осень", "Зима", "Весна"};
         public Catalog(KatlenContext db, IMapper mapper)
         {
             unitOfWork = new UnitOfWork(db);
@@ -230,6 +234,83 @@ namespace Katlen.BLL.Implementations
 
                 products.Add(product);
             }
+        }
+
+        public Dictionary<string, string> GetFiltr(string[] names = null, int priceFrom = 0, int priceTo = 0, string[] sizes = null, string[] materials = null, string[] seasons = null)
+        {
+            Dictionary<string, string> filtrs = new();
+            foreach (var name in filtrNames)
+            {
+                filtrs[name] = "false";
+                if (names != null)
+                {
+                    if (names.Contains(name)) { filtrs[name] = "true"; }
+                }
+            }
+
+            if(priceFrom != 0) { filtrs["priceFrom"] = priceFrom.ToString(); }
+            else { filtrs["priceFrom"] = "false"; }
+
+            if (priceTo != 0) { filtrs["priceTo"] = priceTo.ToString(); }
+            else { filtrs["priceTo"] = "false"; }
+
+            foreach (var size in filtrSizes)
+            {
+                filtrs[size] = "false";
+                if (sizes != null)
+                {
+                    if (sizes.Contains(size)) { filtrs[size] = "true"; }
+                }
+            }
+
+            foreach (var material in filtrMaterials)
+            {
+                filtrs[material] = "false";
+                if(materials != null)
+                {
+                    if (materials.Contains(material)) { filtrs[material] = "true"; } 
+                }
+            }
+
+            foreach (var season in filtrSeasons)
+            {
+                filtrs[season] = "false";
+                if(seasons != null)
+                {
+                    if (seasons.Contains(season)) { filtrs[season] = "true"; } 
+                }
+            }
+
+            return filtrs;
+        }
+
+        public Dictionary<string, string> InitFiltrs()
+        {
+            Dictionary<string, string> filtrs = new();
+            foreach (var name in filtrNames)
+            {
+                filtrs[name] = "false"; 
+            }
+
+            filtrs["priceFrom"] = "false"; 
+            filtrs["priceTo"] = "false"; 
+
+            foreach (var size in filtrSizes)
+            {
+                filtrs[size] = "false"; 
+            }
+
+            foreach (var material in filtrMaterials)
+            {
+                filtrs[material] = "false"; 
+            }
+
+            foreach (var season in filtrSeasons)
+            {
+                filtrs[season] = "false"; 
+            }
+
+            return filtrs;
         }
 
     }

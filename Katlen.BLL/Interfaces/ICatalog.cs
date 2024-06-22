@@ -19,6 +19,9 @@ namespace Katlen.BLL.Interfaces
         public List<ProductDTO> GetAllByRate();
         public List<ProductDTO> GetAllByCategory(string category);
         public List<ProductDTO> MakeFiltr(string[] names = null, int priceFrom = 0, int priceTo = 0, string[] sizes = null, string[] materials = null, string[] seasons = null);
+        public Dictionary<string, string> GetFiltr(string[] names = null, int priceFrom = 0, int priceTo = 0, string[] sizes = null, string[] materials = null, string[] seasons = null);
+        public Dictionary<string, string> InitFiltrs();
+
 
     }
 }

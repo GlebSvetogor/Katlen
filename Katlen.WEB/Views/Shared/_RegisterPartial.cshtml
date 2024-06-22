@@ -44,12 +44,7 @@
                 url: form.attr('action'),
                 data: form.serialize(),
                 success: function (response) {
-                    if (response.success) {
-                        // Здесь можно добавить логику после успешной регистрации.
-                        alert("Registration successful!");
-                    } else {
-                        $('#registerFormContainer').html(response);
-                    }
+                    $('#registerFormContainer').html(response);
                 }
             });
         });

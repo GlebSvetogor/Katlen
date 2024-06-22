@@ -50,10 +50,12 @@ namespace Katlen.WEB.Controllers
             else
             {
                 var products = ct.GetAll();
+                var filtrs = ct.InitFiltrs();
 
                 autoMapper.MapProductsToProductCards(productsCards, products);
 
                 HttpContext.Session.Set("productsCards", productsCards);
+                HttpContext.Session.Set("filtrs", filtrs);
 
                 IndexViewModel viewModel = GetIndexViewModel();
                 return PartialView("_PagerPartial", viewModel);
@@ -65,12 +67,15 @@ namespace Katlen.WEB.Controllers
         public IActionResult Filtr(string[] names=null, int priceFrom=0, int priceTo=0, string[] sizes = null, string[] materials=null, string[] seasons=null)
         {
             var products = ct.MakeFiltr(names, priceFrom, priceTo, sizes, materials, seasons);
-            
+            var filtrs = ct.GetFiltr(names, priceFrom, priceTo, sizes, materials, seasons);
+
             autoMapper.MapProductsToProductCards(productsCards, products);
             HttpContext.Session.Set("productsCards", productsCards);
+            HttpContext.Session.Set("filtrs", filtrs);
 
             IndexViewModel viewModel = GetIndexViewModel();
 
+            /*return PartialView("_PagerPartial", viewModel);*/
             return View("Index", viewModel);
         }
 
@@ -145,7 +150,7 @@ namespace Katlen.WEB.Controllers
                 PageViewModel = pageViewModel,
                 PageProductsCards = items,
                 ProductsCardsQuality = productsCards.Count,
-                Filtrs = HttpContext.Session.Get<Dictionary<string, string[]>>("filtrs")
+                Filtrs = HttpContext.Session.Get<Dictionary<string, string>>("filtrs")
             };
 
             return viewModel;

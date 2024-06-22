@@ -48,8 +48,7 @@ namespace Katlen.WEB.Controllers
                 await db.Users.AddAsync(new DAL.Entities.User() { Email = model.Email, Name = model.Name, Password = model.Password, Phone = model.Phone == null ? "" : model.Phone});
                 await db.SaveChangesAsync();
 
-                /*return PartialView("_SuccessRegister", model);*/
-                return Json(new { success = true });
+                return PartialView("_SuccessRegister", model);
             }
 
             return PartialView("_RegisterPartial", model);
