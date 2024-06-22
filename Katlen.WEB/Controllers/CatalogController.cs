@@ -76,7 +76,7 @@ namespace Katlen.WEB.Controllers
             IndexViewModel viewModel = GetIndexViewModel();
 
             /*return PartialView("_PagerPartial", viewModel);*/
-            return View("Index", viewModel);
+            return PartialView("_PagerPartial", viewModel);
         }
 
         [HttpGet]
