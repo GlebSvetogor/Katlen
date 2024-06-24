@@ -16,7 +16,7 @@
 <body class="fut-l">
 
     <header class="header">
-        <div class="container">
+        <div class="container position-relative">
             <div class="header__heading">
                 <div class="header__heading-info">
                     <div class="header__heading-lang">
@@ -36,12 +36,12 @@
                     <p class="header__heading-text fut-book">производитель детской одежды</p>
                 </div>
                 <div class="header__heading-menu">
-                    <form class="header__heading-form" action="">
-                        <input id="search-input" class="header__heading-input" type="text" placeholder="Поиск по сайту">
-                        <div class="header__heading-search">
-                            <img class="header__heading-icon" src="~/images/search-icon.svg" alt="search icon">
-                        </div>
-                    </form>
+                    
+                    <div id="search-date">
+
+                        @* Форма поиска *@
+
+                    </div>
 
                     <button class="header__heading-user">
                         <img class="header__heading-icon" src="~/images/user-icon.svg" alt="user icon">
@@ -560,6 +560,16 @@
                     $('#catalog-wrapper').html(data);
                 }
             });
+
+            $.ajax({
+                url: '@Url.Action("Search", "Home")',
+                type: 'GET',
+                success: function (data) {
+                    $('#search-date').html(data);
+                }
+            });
+
+           
 
         });
     </script>

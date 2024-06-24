@@ -40,6 +40,11 @@ namespace Katlen.WEB.Controllers
             return View(model);
         }
 
+        public IActionResult Search()
+        {
+            return PartialView("SearchPartial");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -475,7 +475,9 @@ input[type="checkbox"]{
     height: 16px;
 }
 
-#search-result{}
+#search-result {
+    right: 45px;
+}
 
 .menu__window{
     display: grid;
@@ -516,12 +518,12 @@ input[type="checkbox"]{
 
 #basket-result{}
 
-.basket__window{
+.basket__window {
     height: auto;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: space-between;
-    right: 1px;
+    right: 14px;
     padding: 10px 0 10px 10px;
 }
 
