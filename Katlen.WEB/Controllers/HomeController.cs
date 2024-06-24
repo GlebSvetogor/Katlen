@@ -96,7 +96,8 @@ namespace Katlen.WEB.Controllers
                     SalePrice = model.SalePrice,
                     Image = model.Images[0],
                     Quality = quantity,
-                    Size = size
+                    Size = size,
+                    Material = model.Material,
                 };
 
                 List<BasketViewModel> list = new();

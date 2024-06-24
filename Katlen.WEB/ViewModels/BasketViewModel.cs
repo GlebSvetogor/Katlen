@@ -9,5 +9,6 @@
         public string Image { get; set; }
         public int Quality { get; set; }
         public string Size { get; set; }
+        public string Material { get; set; }
     }
 }
