@@ -20,7 +20,7 @@ builder.Services.AddDbContext<KatlenContext>(options => options.UseSqlServer(con
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+        options.LoginPath = "/Home/Index";
         options.LogoutPath = "/Account/Logout";
     });
 

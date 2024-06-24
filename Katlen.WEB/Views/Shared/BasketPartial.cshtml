@@ -1,0 +1,88 @@
+﻿@model List<Katlen.WEB.ViewModels.BasketViewModel>;
+
+<div id="basket-result" class="menu__window basket__window position-absolute">
+    @if(Model != null)
+    {
+        @foreach(var item in Model)
+        {
+        
+            <div class="basket__window-wrapper">
+                <div class="menu__window-item">
+                    <img class="h-75 w-50 menu__window-img" src="@item.Image" alt="window img">
+                    <div class="menu__window-content">
+                        <h3 class="menu__window-title fut-l m-0 p-3">@item.Name</h3>
+                        @if(item.SalePrice != item.FullPrice)
+                        {
+                            <div class="d-flex justify-content-between w-100 p-3 align-items-center">
+                                <span class="products__sale-value fut-b">Цена со скидкой:</span>
+                                <span class="products__sale-value fut-b">@item.SalePrice руб</span>
+                            </div>
+                            <div class="d-flex justify-content-between w-100 p-3 align-items-center">
+                                <span class="products__sale-value fut-b">Цена без скидки:</span>
+                                <span class="products__sale-value fut-b">@item.FullPrice руб</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="d-flex justify-content-between w-100 p-3 align-items-center">
+                                <span class="products__sale-value fut-b">Цена:</span>
+                                <span class="products__sale-value fut-b">@item.SalePrice руб</span>
+                            </div>
+                        }
+
+                        <div class="d-flex justify-content-between w-100 p-3 align-items-center">
+                            <span class="products__sale-value fut-b">Количество:</span>
+                            <span class="products__sale-value fut-b">@item.Quality</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between w-100 p-3 align-items-center">
+                            <span class="products__sale-value fut-b">Размер:</span>
+                            <span class="products__sale-value fut-b">@item.Size</span>
+                        </div>
+                    </div>
+                    <button class="basket__delete-btn">
+                        <img class="basket__delete-icon" src="~/images/BasketClose-icon.svg" alt="basket close-btn icon">
+                    </button>
+                </div>
+            </div>
+        }
+        <hr>
+        <div class="basket__window-total">
+            <div class="basket__window-info">
+                <p class="text m-0 fut-m">Товаров @Model.Count</p>
+                <span class="products__sale-value fut-b">
+                    @{
+                        int resultPrice = 0;
+                        foreach(var item in Model)
+                        {
+                            resultPrice += item.SalePrice * item.Quality;
+                        }
+                    }
+                    @resultPrice
+                </span>
+            </div>
+            <a asp-controller="Order" asp-action="Index" class="but-link basket__but-link fut-b">Перейти к оформлению заказа</a>
+        </div>
+    }
+    else
+    {
+        <div class="d-flex justify-content-center align-items-center w-100 h-100">
+            <p class="text m-0 fut-b">Добавьте в коризну товары</p>
+        </div>
+    }
+</div>
+
+                
+
+<script>
+
+    $(document).ready(function () {
+        const basketOutputBlock = document.getElementById('basket-result');
+
+
+        document.addEventListener('click', function () {
+            basketOutputBlock.classList.add('hidden');
+        });
+    });
+
+</script>

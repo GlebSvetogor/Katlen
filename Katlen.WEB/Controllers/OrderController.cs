@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Katlen.WEB.Controllers
 {
     public class OrderController : Controller
     {
-        // GET: OrderController
+        /*[Authorize]*/
         public ActionResult Index()
         {
+
             return View();
         }
 

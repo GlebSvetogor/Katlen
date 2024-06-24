@@ -1,37 +1,62 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<Katlen.WEB.ViewModels.SearchViewModel>;
 
-<div id="search-content">
+<div id="search-result" class="menu__window search-window">
 
-    <form id="search-form" class="header__heading-form" method="get">
-        <input id="search-input" class="header__heading-input" type="text" placeholder="Поиск по сайту">
-        <div class="header__heading-search">
-            <img class="header__heading-icon" src="~/images/search-icon.svg" alt="search icon">
+    @if(Model != null && Model.Count > 0)
+    {
+
+        @foreach(var item in Model)
+        {
+            <div class="menu__window-item">
+                <img class="menu__window-img search-img" src="@item.Image" alt="window img">
+                <div class="menu__window-content">
+                    <h3 class="menu__window-title fut-b">
+                        @item.Name
+                    </h3>
+                    <div class="products__sale">
+                        <span class="products__sale-value fut-b">@item.SalePrice</span>
+                        <span class="products__full-price fut-b">
+                            @item.FullPrice
+                            <svg class="cross-line" xmlns="http://www.w3.org/2000/svg" width="62" height="18" viewBox="0 0 62 18" fill="none">
+                                <path d="M61 1L1 17" stroke="#FF003D"></path>
+                            </svg>
+                        </span>
+                    </div>
+                    <a asp-controller="Catalog" asp-action="Details" asp-route-id="@item.Id" class="but-link fut-b">
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+        }
+
+    }
+    else
+    {
+        <div class="d-flex justify-content-center align-items-center w-100 h-100">
+            <p class="text m-0 fut-b">Ничего не найдено</p>
         </div>
-    </form>
+    }
 
 </div>
 
 <script>
 
     $(document).ready(function () {
+        // Элемент, который нужно скрыть при клике вне его зоны
+        var $block = $('#search-result');
 
-        $("#search-form").submit(function () {
-            var form = $(this);
-            $.ajax({
-                url: '@Url.Action("Home", "Search")',
-                method: form.attr('method');
-                type: 'GET',
-                data: form.serialize(),
-                success: function (data) {
-                    $('#search-content').html(data);
-                }
-            });
-        })
+        // Обработчик клика по документу
+        $(document).on('click', function (event) {
+            // Проверяем, что клик был вне элемента $block
+            if (!$block.is(event.target) && $block.has(event.target).length === 0) {
+                $block.addClass('hidden');
+            }
+        });
 
+        // Опционально: чтобы показать блок, когда на него кликают (может быть полезно для тестирования)
+        $block.on('click', function (event) {
+            $block.removeClass('hidden');
+        });
     });
 
 </script>

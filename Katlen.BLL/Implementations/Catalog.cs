@@ -178,6 +178,11 @@ namespace Katlen.BLL.Implementations
             return products;
         }
 
+        public ProductDTO GetProductById(int id)
+        {
+            return GetProducts(p =>  p.Id == id).FirstOrDefault();
+        }
+
         private List<ProductDTO> GetProducts(Func<Product, bool> predicate)
         {
             List<ProductDTO> products = new List<ProductDTO>();

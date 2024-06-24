@@ -21,8 +21,20 @@ body {
   margin-bottom: 60px;
 }
 
-.user-list{
+.transform-none{
+    transform: none !important;
+}
 
+.search-window{
+    width:438px !important;
+}
+
+.search-img{
+    width:100px !important;
+    height:100px;
+}
+
+.user-list {
 }
 
 .user-item{
@@ -525,6 +537,7 @@ input[type="checkbox"]{
     justify-content: space-between;
     right: 14px;
     padding: 10px 0 10px 10px;
+    width:578px;
 }
 
 .basket__window-wrapper{
@@ -1708,10 +1721,12 @@ input[type="checkbox"]{
     width: 100%;
 }
 
-.card__info{
-    width:100%;
-    position:relative;
-
+.card__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    gap: 20px;
 }
 
 .card__title{
@@ -1729,9 +1744,10 @@ input[type="checkbox"]{
     margin-bottom: 31px;
 }
 
-.cards__item-list{
-    gap:30px;
-    margin-bottom: 31px;
+.cards__item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .cards__item-content{

@@ -1,0 +1,106 @@
+﻿@model Katlen.BLL.DTO.ProductDTO;
+
+
+<main>
+
+    <section>
+        <p class="text catalog__text">
+            <a asp-controller="Catalog" asp-action="Index" class="catalog__link">Каталог</a>
+            <span> / </span>
+            <a class="catalog__link fut-b" href="#">Детальнее</a>
+        </p>
+
+        <div class="container">
+
+            <div class="card__inner">
+                <div class="card__img">
+                    <img src="@Model.Images[0]" alt="@Model.Name" class="card__img-icon">
+                </div>
+                <aside class="card__aside">
+                    <h1 class="mb-3 fut-b">@Model.Name</h1>
+                    <form id="add-to-cart-form" class="card__info">
+
+                        <ul class="cards__item-list">
+                            <li class="products__item-content cards__item-content">
+                                <span class="cards__item-text fut-l">Размерный ряд:</span>
+                                <span class="cards__item-text fut-b">@string.Join("-", Model.Sizes)</span>
+                            </li>
+                            <li class="products__item-content cards__item-content">
+                                <span class="cards__item-text fut-l">Ткань:</span>
+                                <span class="cards__item-text fut-l">@Model.Material</span>
+                            </li>
+                            <li class="products__item-content cards__item-content">
+                                <span class="cards__item-text fut-l">Наличие:</span>
+                                <span class="cards__item-text fut-b">@string.Join("-", Model.SizesAreAvailable)</span>
+                            </li>
+                            <li class="products__item-content cards__item-content">
+                                <span class="cards__item-text fut-l">Размер:</span>
+                                <div class="sort sort--size">
+                                    @if (Model.SizesAreAvailable is not null)
+                                    {
+                                        <select class="sort__choice fut-b" name="size" id="size">
+                                            @foreach (var size in Model.SizesAreAvailable)
+                                            {
+                                                <option value="@size">@size</option>
+                                            }
+                                        </select>
+                                        <img class="dropdown-arrow dropdown-arrow--sort fut-b" src="~/images/dropDown_BlackArrow-icon.svg" alt="dropdown arrow">
+                                    }
+                                    else
+                                    {
+                                        <p class="text m-0">Нет размеров</p>
+                                    }
+                                </div>
+                            </li>
+                            <li class="products__item-content cards__item-content">
+                                <span class="cards__item-text fut-l">Цена:</span>
+                                <span class="cards__item-text fut-b">@Model.SalePrice</span>
+                            </li>
+                        </ul>
+
+                        <div class="products__item-content cards__item-content">
+                            <label class="fut-b fs-6">Количество:</label>
+                            <input class="fut-b p-3 fs-6" type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" id="add-to-cart-button" class="but-link m-0 fut-b">Добавить товар в корзину</button>
+                        </div>
+
+                        <input type="hidden" id="product-id" value="@Model.Id" />
+                    </form>
+
+                        @* <div class="card__liked">
+                            <img src="images/liked-icon.svg" alt="liked button" class="card__liked-img">
+                            <img src="~/images/liked-icon.svg" alt="liked button" class="card__liked-img">
+                        </div> *@
+
+            </div><!-- ./ card__info -->
+
+            <div class="card__comments__inner">
+                <div class="card__comment-item">
+                    <img class="card__comment-img" src="~/images/rectangleComment-img.jpg" alt="rectangle img">
+                    <div class="card__comment-content">
+                        <h3 class="card__comment-title fut-b">Алексей Зиновьев</h3>
+                        <p class="text card__comment-text m-0 fut-l">Товарищи! постоянное информационно-пропагандистское обеспечение нашей деятельности в значительной степени обуславливает создание новых предложений. Значимость этих проблем настолько очевидна, что дальнейшее развитие различных форм деятельности играет важную роль в формировании модели развития. Разнообразный и богатый опыт реализация намеченных плановых заданий позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет выполнять важные задания по разработке существенных финансовых и административных условий.</p>
+                    </div>
+                </div>
+
+        </div>
+
+    </section>
+
+    <section class="wholesale">
+        <div class="container">
+            <div class="wholesale__wrapper justify-content-start">
+                <div class="wholesale__wrapper-inner transform-none">
+                    <h2 class="title wholesale__title fut-b">Детская одежда оптом</h2>
+                    <p class="text wholesale__text m-0">
+                        Детская одежда оптом от производителя официальный сайт Катлен – это только качественные вещи, которые предоставляет ведущая украинская фабрика, способные отлично подойти ребенку любого возраста, не раздражая его кожу. Все изделия выполнены из натуральных тканей, что позволяет каждому чувствовать себя уютно и комфортно. Катлен, как производитель детской одежды, занимается оптовыми продажами (крупный и мелкий опт) всех разновидностей товара в любом уголке Украины: Днепр, Киев, Львов, Запорожье, Харьков, Одесса и др.
+                    </p>
+                </div>
+            </div><!-- /. wholesale__wrapper -->
+        </div><!-- /. container -->
+    </section><!-- /. wholesale -->
+
+</main>
+

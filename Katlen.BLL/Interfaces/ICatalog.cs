@@ -22,6 +22,8 @@ namespace Katlen.BLL.Interfaces
         public Dictionary<string, string> GetFiltr(string[] names = null, int priceFrom = 0, int priceTo = 0, string[] sizes = null, string[] materials = null, string[] seasons = null);
         public Dictionary<string, string> InitFiltrs();
 
+        public ProductDTO GetProductById(int id);
+
 
     }
 }

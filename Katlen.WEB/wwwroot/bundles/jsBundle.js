@@ -15,17 +15,28 @@ function toggleVisibility(element) {
     element.classList.toggle('active');
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const searchForm = document.getElementById('search-form');
+    const searchButton = searchForm.querySelector('button');
+    const searchResult = document.getElementById('search-result');
+
+    searchButton.addEventListener('click', function (event) {
+        // Предотвращаем отправку формы
+        event.preventDefault();
+        // Переключаем класс 'hidden' для элемента search-result
+        searchResult.classList.toggle('hidden');
+    });
+});
+/*
 butLinkWholesale.addEventListener('click', () => {
     toggleVisibility(wholesaleMore);
     toggleVisibility(wholesaleIcon);
-})
+})*/
 
 loginBtn.addEventListener('click', () => {
     if (isAuthenticated) {
-        // �������������� �� ������ �������, ���� ������������ �����������
         window.location.href = redirectUrl;
     } else {
-        // ��������� ���� �����, ���� ������������ �� �����������
         toggleVisibility(loginWindow);
     }
 });
@@ -52,39 +63,19 @@ signupWindowLoginBtn.addEventListener('click', () => {
     toggleVisibility(loginWindow);
 })
 
-const inputField = document.getElementById('search-input');
-const outputBlock = document.getElementById('search-result');
-
-inputField.addEventListener('focus', function() {
-    outputBlock.classList.remove('hidden');
-});
-
-  inputField.addEventListener('blur', function() {
-    outputBlock.classList.add('hidden');
-  });
-
-const basketBtn = document.getElementById('basket-btn');
-const basketOutputBlock = document.getElementById('basket-result');
-const body = document.getElementsByClassName('body');
-document.addEventListener('click', function(event) {
-    if (event.target != basketBtn && !basketOutputBlock.contains(event.target) && !basketBtn.contains(event.target)) {
-        basketOutputBlock.classList.add('hidden');
-    }
-});
-
-basketBtn.addEventListener('click', function() {
-    basketOutputBlock.classList.toggle('hidden');
-});
 
 
 
-const cardLiked = document.querySelector('.card__liked');
+
+
+
+/*const cardLiked = document.querySelector('.card__liked');
 
 cardLiked.addEventListener('click', ()=>{
     cardLiked.classList.toggle("card__liked--active");
-})
+})*/
 
-const commentBtn = document.getElementById('comment-btn');
+/*const commentBtn = document.getElementById('comment-btn');
 const commentOutputBlock = document.getElementById('comment-block');
 const commentCloseBtn = document.getElementById('comment-closeBtn');
 
@@ -95,7 +86,7 @@ commentBtn.addEventListener('click' ,()=>{
 commentCloseBtn.addEventListener('click' ,()=>{
     commentOutputBlock.classList.add("hidden");
 })
-
+*/
 const catalogList = document.querySelector(".catalog__list");
 
 catalogList.addEventListener('click', (event) => {

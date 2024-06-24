@@ -114,7 +114,6 @@ namespace Katlen.WEB.Controllers
 
             IndexViewModel viewModel = GetIndexViewModel();
             return PartialView("_PagerPartial", viewModel);
-
         }
 
         [HttpGet]
@@ -160,6 +159,19 @@ namespace Katlen.WEB.Controllers
             };
 
             return viewModel;
+        }
+
+        public IActionResult Details(int id)
+        {
+            var product = ct.GetProductById(id);
+            if (product != null)
+            {
+                return View(product);
+            }
+            else
+            {
+                return Problem("Не удается найти товар. Приносим свои извинения");
+            }
         }
 
     }
