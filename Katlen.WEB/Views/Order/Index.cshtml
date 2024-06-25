@@ -17,13 +17,13 @@
                     <img src="~/images/01.png" alt="first img" class="order__inner-num">
                     <div class="order__inner-content">
                         <h3 class="order__inner-title fut-m">Контактная информация</h3>
-                        <form action="" class="order__inner-form">
+                        <form action="" class="order__inner-form" id="contactForm">
                             <div class="order__headline">
-                                <input type="text" class="window__input order__input" placeholder="Имя">
-                                <input type="text" class="window__input order__input" placeholder="Фамилия">
-                                <input type="text" class="window__input order__input" placeholder="Телефон">
+                                <input type="text" class="window__input order__input" placeholder="Имя" id="firstName">
+                                <input type="text" class="window__input order__input" placeholder="Фамилия" id="lastName">
+                                <input type="text" class="window__input order__input" placeholder="Телефон" id="phone">
                             </div>
-                            <input class="window__input order__input" placeholder="Email">
+                            <input type="text" class="window__input order__input" placeholder="Email" id="email">
                         </form>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <img src="~/images/02.png" alt="second img" class="order__inner-num">
                     <div class="order__inner-content">
                         <h3 class="order__inner-title fut-b">Способ доставки</h3>
-                        <form action="" class="order__inner-form">
+                        <form action="" class="order__inner-form" id="deliveryForm">
                             <div class="order__place">
                                 <div class="order__place-region">
                                     <div class="order__place-item">
@@ -76,7 +76,7 @@
                     <div class="order__inner-box">
                         <div class="order__inner-content">
                             <h3 class="order__inner-title fut-b">Способ оплаты</h3>
-                            <form action="" class="order__pay-form">
+                            <form action="" class="order__pay-form" id="paymentForm">
                                 <div class="order__pay-item">
                                     <input id="bank" type="checkbox" class="order__checkbox">
                                     <label class="order__checkbox-label fut-m" for="bank">Банковская карта</label>
@@ -86,8 +86,8 @@
                                     <label class="order__checkbox-label fut-m" for="money">Наличными при получении</label>
                                 </div>
                                 <div class="order__pay-item">
-                                    <input if="" type="checkbox" class="order__checkbox">
-                                    <label class="order__checkbox-label fut-m" for="">Наличными при получении</label>
+                                    <input id="cash" type="checkbox" class="order__checkbox">
+                                    <label class="order__checkbox-label fut-m" for="cash">Наличными при получении</label>
                                 </div>
                             </form>
                         </div>
@@ -158,7 +158,7 @@
                                         <span class="products__sale-value fut-b">@Model.TotalPrice руб.</span>
                                     </li>
                                 </ul>
-                                <a class="but-link fut-b m-0">Оформить заказ</a>
+                                <button class="but-link fut-b m-0" id="submitOrder">Оформить заказ</button>
                             </div>
                         </div>
                     </div>
@@ -168,3 +168,62 @@
         </div>
     </section>
 </main>
+
+<script>
+    $(document).ready(function () {
+
+        document.getElementById('submitOrder').addEventListener('click', function() {
+            // Собираем данные с первой формы
+            const contactData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value
+            };
+
+            // Собираем данные со второй формы
+            const deliveryData = {
+                region: document.getElementById('region').value,
+                city: document.getElementById('city').value,
+                street: document.getElementById('street').value,
+                house: document.getElementById('house').value,
+                float: document.getElementById('float').value,
+                index: document.getElementById('index').value
+            };
+
+            // Собираем данные с третьей формы
+            const paymentData = {
+                bank: document.getElementById('bank').checked,
+                money: document.getElementById('money').checked,
+                cash: document.getElementById('cash').checked
+            };
+
+            // Объединяем все данные в одну модель
+            const orderRequestModel = {
+                contactData,
+                deliveryData,
+                paymentData
+            };
+
+            // Отправляем данные на сервер через AJAX (используем fetch)
+            fetch('/Order/Request', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderRequestModel)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Дополнительные действия при успешной отправке данных
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Дополнительные действия при ошибке
+            });
+        });
+
+    })
+
+</script>

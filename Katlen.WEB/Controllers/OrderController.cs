@@ -41,6 +41,12 @@ namespace Katlen.WEB.Controllers
 
         }
 
+        public ActionResult Request(OrderRequestModel model)
+        {
+
+            return View(model);
+        }
+
         public ActionResult Details(int id)
         {
             return View();
